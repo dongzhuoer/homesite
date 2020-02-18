@@ -1,0 +1,69 @@
+---
+title: 卓尔全体电脑法
+author: Zhuoer Dong
+date: '2017-09-21'
+slug: 卓尔全体电脑法
+tags: []
+---
+
+> 此法一切解释权归董卓尔所有, 所属全体电脑必须遵守，任何反对均无效。
+
+
+# 前言
+
+从最开始沉迷360安全卫士，到现在连 Windows Denfender 也想卸载；从 Dell 自带的单一 Windows，到自己装的 Windows + Ubuntu MATE 双系统，使用电脑的方式一直在发生变化。特此记录一下现行规范，有类似感受想定制自己的操作系统的人可以参考。
+ 
+其实类似于 Error Log 啦。写作动机来自某一天为了省空间想删除 portable 软件的 `.exe`，刚要点击红色的叉叉时。突然想起来，这些文件之所以存在，正是因为之前转移到百度云后，觉得不靠谱，就又都下载下来保留了一份。突然脊背一阵发凉啊，这才意识到花了好久的思辨做出的正确决定，在过了一段时间之后也许就会被遗忘，然后又得走一遍弯路。身为 GitHuber 怎能允许这种事情发生，于是开辟此文，以法律形式保障千辛万苦做出的明智决定不会被遗忘之神玷污，捍卫宝贵的时间。
+
+
+
+# 还我纯净Windows
+
+想要一个主要用于学习工作、不被广告打扰、摆脱流氓软件的 Windows ，其实很简单：
+
+1. 保证你的系统随时可以**重装**，目前尚未发现此招对付不了的流氓软件。
+2. 防病毒用 Windows Defender，清理垃圾用**磁盘清理**，防止开机自启用**任务管理器**，卸载软件用**控制面板**，当然最好的维护方法是不要装那些国产流氓软件。
+
+
+# 分区问题
+
+- ~~给 `/boot` 独立分区~~：不管是装一个系统还是多个系统，目前我没发现这样做有任何优点，担心弄坏的话可以勤用 `tar` 之类备份。缺点倒是有，比如其他 Linux 的`grub` 无法正常生成 `os_probe` 文件。
+- `/home` 倒是可以独立分区，系统坏掉时很方便，重装就好了。不过我用不上，对我而言 `/home` 的寿命和所属的系统一样长。
+- swap 2G 就够了，担心不够的话去看看 Windows 的 `pagefile.sys` 的大小。
+
+
+
+# Rufus: Make bootable USB driver using ISO image
+
+- Rufus 中的不同分区方案指的是U盘的分区方案:
+
+    options | partition & boot theme
+    ------- | -----------------------
+    MBR for BIOS & UEFI |    msdos partition, Legacy+UEFI 
+    UFEI using MBR 	    |    msdos partition, Legacy(fail) + UEFI
+    UEFI using GPT      |    UEFI partition,  Legacy(fail) + UEFI
+
+- Boot scheme for installed OS is consistent with that of installing USB driver, so you should choosing aporpriate boot scheme for the USB driver to let you OS boot in the way you desired.
+- Partition scheme should always manually set by `gparted` (shipped with Ubuntu MATE)
+
+
+
+# `grub`
+
+- `vim` `/etc/default/grub` or `/etc/grub.d/*`
+- `update-grub`(only available on Ubuntu) is better than `grub-mkconfig -o grub_cfg_file`, since you needn't distinguish `/boot/grub/grub.cfg` and `boot/efi/EFI/[ubuntu/grub|centos/grub2]/grub.cfg` 
+
+
+
+# Virtual Box
+
+- Fedora 无法安装扩展光盘
+- Windows 10 支持共享文件和剪切板，主机向虚拟机拖拽文件（但反向不行），但不支持U盘。
+  
+
+
+# Vmware UEFI
+
+  - 先自动安装 Windows 10，得到 450M 恢复 + 104M UEFI + 10M 保留 + 63G ntfs。然后安装 Ubuntu MATE，先用 `gparted` 分区，压缩 ntfs 得 32G free space，在此之上建立 ext4 partition 来 mount `/`, remember to set boot at `/dev/sda`. 最终 `/EFI` 会变成，24M Microsoft + 1.2M Boot + 3.6M ubuntu. And you have two UFEI boot options, of which “ubuntu” is the default, though you can set by F12 easily (add, delete, change order).
+  - `efibootmgr`
+

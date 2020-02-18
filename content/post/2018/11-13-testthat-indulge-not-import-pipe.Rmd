@@ -1,0 +1,30 @@
+---
+title: testthat mask potential bug of not import %>% from magrittr
+author: Zhuoer Dong
+date: '2018-11-13'
+slug: testthat-indulge-not-import-pipe
+tags:
+  - to debug
+---
+
+```{r install-pkg, message=FALSE, eval=Sys.getenv('CI') == 'true'}
+# install needed R packages
+remotes::update_packages(c('testthat'), upgrade = TRUE)
+```
+
+
+**magrittr** is a wonderful package, but the biggest drawback is that you can't write `magrittr::%>%`.
+
+That can cause _great_ pain in package development, I spend a whole morning to debug.
+
+Basically, I summary the following rules:
+
+- **testthat** ignores `.Rprofile`
+- In theory, every pipe operator used _must_ be imported from magrittr
+- except for `%>%` (testthat import and export it)
+
+
+```{r comment=''}
+testthat::`%>%`
+```
+

@@ -1,0 +1,20 @@
+---
+title: study note
+author: Zhuoer Dong
+date: '2019-08-06'
+slug: study-note
+tags:
+  - book-zhuoer
+---
+
+
+# classification measurement
+
+https://en.wikipedia.org/wiki/Sensitivity_and_specificity
+
+把圈的半径不断扩大就成了 ROC 曲线，曲线的形状（AUC）由圆心位置来决定（圆心位于中央即基准线 y=x）
+
+F1 score 用到了 recall 和 precision。因为 precision 只能把圆心向 True 移动来增大，而 recall 虽然也能移圆心，但还是增大半径最有效。这样就能保证找到最好的模型 。
+
+
+

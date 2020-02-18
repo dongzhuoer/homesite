@@ -1,0 +1,218 @@
+---
+title: Linear / Logistic Regression
+author: Zhuoer Dong
+date: '2018-11-12'
+output: 
+    blogdown::html_page:
+        df_print: paged    
+slug: linear-logistic-regression
+tags: []
+editor_options: 
+    chunk_output_type: console
+---
+
+```{r knitr-setup, include=FALSE}
+options(device = "cairo_pdf")
+
+knitr::opts_chunk$set(message = FALSE)
+```
+
+```{r install-pkg, message=FALSE, eval=Sys.getenv('CI') == 'true'}
+# install needed R packages
+remotes::update_packages(c('magrittr', 'tidyverse', 'viridis', 'plot3D'), upgrade = TRUE)
+```
+
+# getting startted
+
+```{r setup, message=FALSE}
+library(magrittr)
+library(ggplot2)
+
+theme_set(theme_classic(20) + theme(plot.title = element_text(hjust = 0.5)))
+set.seed(0)
+```
+
+This guide mainly show the code and plot, for more explanation, please refer to [this PPT](https://cloud.tsinghua.edu.cn/d/f361101fc62e49df960b/files/?p=/Lab%20Training/3.Linear_Logistic-Regression.pptx) .
+ 
+
+
+# linear regression
+
+```{r lm-data}
+modelr::sim1
+```
+
+
+
+```{r plot-lm-data}
+ggplot(modelr::sim1, aes(x, y)) + geom_point() + labs(title = '一元线性回归原始数据')
+```
+
+```{r mean-square-error}
+modelr::sim1 %>% 
+    tibble::add_column(dodge = rep(c(-1, 0, 1) / 20, 10)) %>% 
+    dplyr::mutate(x = x + dodge, pred = 7 + x*1.5) %>%
+    ggplot(aes(x, y)) + 
+        geom_point(colour = "grey40") + 
+        geom_abline(intercept = 7, slope = 1.5, colour = "grey40") +
+        geom_linerange(aes(ymin = y, ymax = pred), colour = "#3366FF") + 
+        labs(title = '均方误差：衡量拟合效果')
+```
+
+```{r k-b-grid}
+sim1_dist <- function(k, b) {
+    predicted <- modelr::sim1 %>% {.[ , -ncol(.)]} %>% as.list() %T>% 
+        {names(.) <- NULL} %>% purrr::pmap_dbl(. %>% {k*. + b})
+    (modelr::sim1 %>% {.[[ncol(.)]]} - predicted) %>% .^2 %>% mean
+}
+
+len <- 25;
+sim1_grid <- expand.grid(b = seq(-5, 20, length = len), k = seq(1, 3, length = len))
+```
+
+```{r all-MSE}
+sim1_grid %<>% dplyr::mutate(dist = purrr::map2_dbl(k, b, sim1_dist)) 
+
+sim1_grid %>% ggplot(aes(k, b)) + 
+    geom_point(aes(color = dist)) + 
+    scale_colour_gradient(low = "#56B1F7", high = "#132B43", name = '均方误差') + 
+    labs(title = '穷举法优化均方误差')
+```
+
+```{r min-MSE}
+sim1_grid %>% ggplot(aes(k, b)) + 
+    geom_point(data = dplyr::filter(sim1_grid, rank(dist) <= 10), size = 4, colour = "red") +
+    geom_point(aes(color = dist)) + 
+    scale_colour_gradient(low = "#56B1F7", high = "#132B43", name = '均方误差') + 
+    labs(title = '穷举法寻找最小的10个均方误差')
+```
+
+
+```{r MSE-min.vs.random}
+linear_aes <- aes(intercept = b, slope = k)
+
+ggplot(modelr::sim1, aes(x, y)) + 
+    geom_point(color = 'red') +
+    geom_abline(linear_aes, alpha = 0.1, 
+                data = tibble::tibble(b = runif(len*10, -20, 40), k = runif(len*10, -5, 5))) + 
+    geom_abline(linear_aes, color = 'blue', dplyr::filter(sim1_grid, rank(dist) <= 10)) + 
+    labs(title = '随机模型 vs 均方误差最小模型')
+```
+
+```{r lm-model}
+sim1_mod <- lm(y ~ x, modelr::sim1)
+sim1_coef <- sim1_mod$coefficients
+```
+
+```{r plot-lm-model}
+ggplot(modelr::sim1, aes(x, y)) + 
+    geom_point() + ylim(c(0, NA)) + 
+    geom_abline(slope = sim1_coef[2], intercept = sim1_coef[1], 
+                color = 'blue', size = 0.8) + 
+    labs(title = sprintf('y = %.3f * x + %.3f', sim1_coef[2], sim1_coef[1]))
+```
+
+# general linear regression
+
+
+```{r glm-data}
+set.seed(0)
+
+sim0 <- runif(20, 0, 10) %>% {tibble::tibble(x = ., y = 2*x + 5 + runif(20, 0, 4))} %>%
+    dplyr::mutate(y = 1.25 ^ y)
+sim0
+```
+
+```{r plot-glm-data}
+ggplot(sim0, aes(x, y)) + geom_point() + ylim(c(0, NA)) + 
+    labs(title = '广义线性回归原始数据')
+
+ggplot(sim0, aes(x, log(y))) + geom_point() + ylim(c(0, NA)) + 
+    labs(y = 'ln(y)', title = '对因变量做对数变换')
+```
+
+
+```{r glm-model}
+sim0_mod <- lm(log(y) ~ x, sim0)
+sim0_coef <- sim0_mod$coefficients;
+```
+
+```{r plot-glm-model}
+ggplot(sim0, aes(x, log(y))) + 
+    geom_point() + ylim(c(1, NA)) + labs(y = 'ln(y)') + 
+    geom_abline(slope = sim0_coef[2], intercept = sim0_coef[1], 
+                color = 'blue', size = 0.8) + 
+    labs(title = sprintf('ln(y) = %.3f * x + %.3f', sim0_coef[2], sim0_coef[1])) + 
+    theme(plot.title = element_text(hjust = 0.5))
+
+ggplot(sim0, aes(x, y)) + 
+    geom_point() + ylim(c(0, NA)) + 
+    stat_function(fun = . %>% {exp(sim0_coef[2] * . + sim0_coef[1])}, 
+                  color = 'blue', size = 0.8) + 
+    labs(title = sprintf('y = exp(%.3f * x + %.3f)', sim0_coef[2], sim0_coef[1])) + 
+    theme(plot.title = element_text(hjust = 0.5))
+```
+
+
+# logistic regression
+
+```{r logistic-data}
+iris_df <- iris %>% dplyr::as_tibble() %>% 
+    dplyr::filter(Species != 'setosa') %>% 
+    dplyr::mutate(versicolor = as.integer(Species == 'versicolor')) %>% 
+    dplyr::select(2, 4, versicolor)
+iris_df
+```
+
+```{r plot-logistic-data}
+ggplot(iris_df) + 
+    geom_point(aes(Sepal.Width, Petal.Width, size = factor(versicolor))) + 
+    scale_size_manual(name = 'versicolor', values = c('0' = 0.5, '1' = 2), labels = c('no', 'yes')) + 
+    labs(title = '对数几率回归原始数据')
+```
+
+
+```{r logistic-model}
+iris_model <- glm(versicolor ~ Sepal.Width + Petal.Width + 0, data = iris_df, family = 'binomial') 
+iris_coef <- iris_model$coefficients
+```
+
+```{r plot-logistic-model, fig.width=12, fig.height=8}
+logistic_plot_base <- iris_df %>% 
+    {tibble::add_column(., probability = predict(iris_model, .[ , 1:2], 'response'))} %>% 
+    ggplot(aes(Sepal.Width, Petal.Width)) + 
+        geom_point(aes(color = probability, size = factor(versicolor))) + 
+        viridis::scale_color_viridis(name = 'versicolor') +
+        scale_size_manual(values = c('0' = 1, '1' = 2), labels = c('no', 'yes'))
+        
+logistic_plot_base + labs(title = '使用 R 进行对数几率回归')
+
+logistic_plot_base + 
+    geom_abline(slope = -iris_coef[1]/iris_coef[2], intercept = log(1)/iris_coef[2]) + 
+    labs(title = '对数几率回归中的“线性”部分')
+
+logistic_plot_base + xlim(c(2, 4.5)) +
+    geom_abline(slope = -6/-10, intercept = log(1)/-20) + 
+    geom_abline(slope = -3/-12, intercept = log(1)/-12) + 
+    labs(title = '两种对数几率模型中“线性”部分的比较')
+```
+
+# appendix
+
+I have tried to use 3D plot to show min MSE:
+
+- [plot3D](https://cran.r-project.org/web/packages/plot3D/vignettes/plot3D.pdf)
+- [scatterplot3d](https://cran.r-project.org/web/packages/scatterplot3d/vignettes/s3d.pdf)
+
+I preserve the following code to show how to plot 3D surface with your own data
+
+```{r all-MSE-surfplot}
+head(sim1_grid)
+
+sim1_grid %>% tidyr::spread('b', 'dist') %>% tibble::column_to_rownames('k') %>% as.matrix() %>%
+    {plot3D::surf3D(
+        matrix(rep(rownames(.), len) %>% as.numeric(), ncol = len),
+        matrix(rep(colnames(.), len) %>% as.numeric(), ncol = len, byrow = T),
+        .
+    )} 
+```

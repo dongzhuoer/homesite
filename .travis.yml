@@ -1,0 +1,20 @@
+dist: bionic
+language: minimal
+cache: 
+  directories: [$TRAVIS_BUILD_DIR/static/post, $HOME/.local/lib/R/site-library]
+script: 
+  - docker run -dt --name rlang0 -w /root -v $HOME/.local/lib/R/site-library:/usr/local/lib/R/site-library dongzhuoer/rlang:blogdown 2> /dev/null
+  - docker exec rlang0 bash -c 'echo -e "[user]\n\tname = Zhuoer Dong\n\temail = dongzhuoer@mail.nankai.edu.cn\n" > .gitconfig'
+  - docker cp ./. rlang0:/root
+  - docker exec rlang0 Rscript -e "remotes::install_local(force = TRUE)"
+  - docker exec rlang0 Rscript -e "blogdown::build_site()"
+  - docker exec rlang0 Rscript -e "download.file('https://raw.githubusercontent.com/dongzhuoer/gist/master/cc-license.md', 'public/readme.md')"
+  - docker exec rlang0 test -f public/index.html || exit 1
+  - docker exec rlang0 git clone --depth 1 https://gitlab-ci-token:$GITLAB_TOEKN@gitlab.com/dongzhuoer/www.dongzhuoer.com.git git
+  - docker exec rlang0 mv git/.git public 
+  - docker exec rlang0 rm -r git
+  - docker exec -w /root/public rlang0 git rm -r --cached .
+  - docker exec -w /root/public rlang0 git add --all 
+  - docker exec -w /root/public rlang0 git commit -m "Travis build at `date '+%Y-%m-%d %H:%M:%S'`" --allow-empty 
+  - docker exec -w /root/public rlang0 git push
+  - docker exec -w /root/public rlang0 chown -R `id -u`:`id -g` /usr/local/lib/R/site-library

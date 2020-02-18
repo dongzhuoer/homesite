@@ -1,0 +1,153 @@
+---
+title: 给谢益辉的笑话
+author: Zhuoer Dong
+date: '2017-07-13'
+slug: 给谢益辉的笑话
+tags: []
+---
+
+> 从 knitr 开始逐渐了解了谢益辉，后来翻了他的博客，发现这个人很对我的胃口。看见他在一篇博文中写过，想让他快速解决问题可以附个笑话。暑假没事干时瞎鼓捣 bookdown，花了好多时间之后发现结果很有戏剧性，就给他写了一封邮件。后来还来来往往写了几封，就不转移到博客了，太花时间（这一篇是以前已经写好了的，只需要整理一下）。
+
+
+
+# 废话
+
+我的英文不是很好，而且你也应该看得懂中文，所以我就直接写中文了，反正主要目的是给你讲个笑话。
+
+我叫董卓尔，是南开大学的一名本科生，或者说是 _R语言高级菜鸟_（本来我想自封中级用户的，但不久前在 Stack Overflow 遭受了一次[打击](https://stackoverflow.com/questions/45016841/how-do-you-remove-un-named-columns-with-a-vector/45017445#45017445)，就老实地做菜鸟了）。你可以叫我卓尔。
+
+在学习R语言的过程中不可避免地接触到了你（**bookdown** 真的超棒），并且也在 GitHub 上与你有过多次交流 （我的用户名是`dongzhuoer`）。
+
+这次给你发邮件是为了给你讲个笑话, 我觉得几乎不会重复，因为这个笑话是昨天刚发生的真人真事。本来事件应该像一般的 bug 一样，开一个 Issue 就好了。但是最后发生了出人意料的转折，以至于我觉得这成了一个值得发给你的笑话。
+
+
+
+# 引言
+
+招呼打完了，开始说正事。
+
+起源是我觉得你的《R语言忍者秘笈》写的蛮好，但 [bookdown 网站](https://bookdown.org)实在太慢，就 clone 了 GtiHub 源代码库到本地来 build。然而
+
+```
+R version 3.4.1 (2017-06-30) -- "Single Candle"
+Copyright (C) 2017 The R Foundation for Statistical Computing
+
+...
+
+Type 'q()' to quit R.
+
+Error in yaml::yaml.load(string, ...) : 
+  Reader error: invalid trailing UTF-8 octet: #EF at 9
+```
+刚打开 R project 就报错，还能不能愉快地玩耍了？
+
+
+
+# 开端
+
+不过查错是忍者的基本技能，一番鼓捣之后，发现问题出在这：
+
+```r
+yaml::yaml.load_file('_bookdown.yml')
+```
+
+```
+Error in yaml.load(paste(readLines(input, encoding = "UTF-8"), collapse = "\n"),  : 
+  Reader error: invalid leading UTF-8 octet: #B5 at 39
+```
+
+废话少说，开始调试：
+
+```r
+debug(yaml::yaml.load_file)
+yaml::yaml.load_file('_bookdown.yml')
+```
+
+```
+debugging in: yaml::yaml.load_file("_bookdown.yml")
+debug: {
+    yaml.load(paste(readLines(input, encoding = "UTF-8"), collapse = "\\n"), 
+        ...)
+}
+```
+
+我觉得是 `readLines()` 的问题：
+
+```
+Browse[2]> readLines(input, encoding = "UTF-8")
+[1] "book_filename: r-ninja"                  "chapter_name: [\"�\xda\", \"\xd5\xc2\"]"
+[3] "repo: https://github.com/yihui/r-ninja/" "output_dir: _book"                      
+[5] "clean: [packages.bib, r-ninja.bbl]"  
+```
+
+果然不正常，看看 `readr::read_lines()` 怎么样：
+
+```   
+Browse[2]> readr::read_lines(input)
+[1] "book_filename: r-ninja"                  "chapter_name: [\"第\", \"章\"]"         
+[3] "repo: https://github.com/yihui/r-ninja/" "output_dir: _book"                      
+[5] "clean: [packages.bib, r-ninja.bbl]" 
+```
+
+这个好，看来要改 **yaml** 源代码或者向作者报告了。
+
+
+
+# 发展
+
+然而在 `viking/r-yaml` 写 Issue 时，我又有了新发现：
+
+```
+Browse[2]> readLines(input)
+[1] "book_filename: r-ninja"                  "chapter_name: [\"第\", \"章\"]"         
+[3] "repo: https://github.com/yihui/r-ninja/" "output_dir: gitbook"                    
+[5] "clean: [packages.bib, r-ninja.bbl]" 
+```
+
+这可真是太神奇了，怎么不加 `encoding = "UTF-8"` 反而好了？
+
+继续写 Issue，把上面的情况也加上去。写着写着，我突然想到另一件与 `"UTF-8"` 有关的事，之前我在 `.Rprofile` 加了这句话：
+
+```r
+options(encoding = "UTF-8")
+```
+
+也许是这句话惹的祸？果然，去掉之后（`encoding` 取默认值`"native.enc"`），就一切正常了。
+
+
+
+# 高潮
+
+华丽丽的分割线。
+
+到此为止，都是一个正常的Issue，接下来才是笑话的重点。
+
+由于刚学会 Git，可以从一个新的高度来使用 GitHub（之前连 clone 都不会，只会下载 `*.zip`），我暂时还处于一种比较新鲜的状态。于是找到 **yaml** 的[源代码库](https://github.com/viking/r-yaml/)之后，我没事翻了一下 contributors
+![](https://user-images.githubusercontent.com/15871952/28147684-d3d48e82-67b4-11e7-9ddf-991d2d4787ba.PNG)
+
+哇，有 hadley 大人耶，还有益辉。按你的博客说的，我就不加扩展名（老师	、大牛等）了。
+
+然后，我更加没事地翻了一下你的 commit
+![](https://user-images.githubusercontent.com/15871952/28147749-3670bdfe-67b5-11e7-8eee-ae05bd070c99.PNG)
+
+结果闪瞎我的狗眼啊！！！
+![](https://user-images.githubusercontent.com/15871952/28147874-ee71a760-67b5-11e7-9f21-3bc5e753d417.PNG)
+
+这句话居然是你加的！含有中文的 `.yml` 文件也是你写的！这是搬起石头砸自己的脚吗？可为什么受到伤害的是我啊！
+
+我觉得更贴切的比喻应该是这样的：你先挖了一个大坑（居然往`.yml`文件塞中文，定时炸弹啊），为了不让路人掉进去，你很负责地在周围设置了护栏（在 `yaml::yaml.load_file` 中加入 `encoding = "UTF-8"`）。然而人算不如天算，还是留了一个缺口，最后我就很开心地偏偏对着这个缺口冲过去了（`options(encoding = "UTF-8")`）。
+
+
+
+# 结局
+
+不管怎么说，我还是花了一小时认真写好 Issue，希望能被 Google 收录。这样以后再有人遇到同样的问题时，可以查到很有用的参考资料。
+
+最后，希望你不要觉得这是一个冷笑话吧。
+
+
+# 尾声
+
+有空麻烦看一下 **bookdown** 的这个 [Issue](https://github.com/rstudio/bookdown/issues/419)。虽然我也做过[网站](http://2016.igem.org/Team:NKU_China)，HTML、CSS、Javascript 也都会用，但是我觉得还是开发者解决起来更高效一些。
+
+

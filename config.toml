@@ -1,0 +1,161 @@
+baseURL = "https://dongzhuoer.com/"
+title = "Zhuoer Dong -|-  董卓尔"
+theme = "minimo"
+paginate = 100
+ignoreFiles = ["\\.Rmd$","\\.Rmarkdown$", "_files$", "_cache$"]
+hasCJKLanguage = true
+
+# Minimo default --------------
+copyright = ""        # for smart copyright line, leave this blank and check [params.copyright]
+disqusShortname = ""  # dongzhuoer
+googleAnalytics = ""  # UA-111169603-1
+preserveTaxonomyNames = true
+enableRobotsTXT = true # generate robots.txt
+pygmentsCodefences = true       # Syntax Highlighting ( https://gohugo.io/content-management/syntax-highlighting/ )
+enableEmoji = true
+defaultContentLanguage = "en"   # Missing translations will default to this content language
+
+
+
+[permalinks]
+  post = "/:year/:month/:slug/"
+
+[taxonomies]
+category = "categories"
+tag = "tags"
+archive = "archives"
+
+
+[params.widgets]
+header = [] # "breadcrumbs"
+homepage = ["recent_posts"]
+sidebar = ["about","search","sidebar_menu","taxonomy_cloud", "social_menu"]
+footer = []
+
+
+[[menu.sidebar]]
+name = "book"
+weight = 1
+url = "/post/book"
+
+[[menu.sidebar]]
+name = "caprice"
+weight = 2
+url = "/post"
+
+[[menu.sidebar]]
+name = "about"
+weight = 3
+url = "/about"
+
+[[menu.sidebar]]
+name = "repo"
+weight = 3
+url = "https://github.com/dongzhuoer/homesite"
+
+
+[params.info]
+description = "Zhuoer Dong's personal website"
+title404 = "Nothing's here!"
+
+[params.assets]
+favicon = "/images/GitHub.jpg"
+customCSS = ["css/custom.css"]
+customJS = ["js/custom.js"]
+gopher = "" # used in 404 template ( Generator: https://gopherize.me )
+
+[params.copyright]
+prefix = ""
+holder = "Zhuoer Dong"
+startYear = "2017"
+suffix = ", under a [CC BY-NC 4.0](http://creativecommons.org/licenses/by-nc/4.0/) license [![](https://i.creativecommons.org/l/by-nc/4.0/88x31.png)](http://creativecommons.org/licenses/by-nc/4.0/)"
+
+[params.settings]
+# date & time format: https://golang.org/pkg/time/
+dateFormat = "2006, Jan 02"
+listDateFormat = "2006, Jan 02"
+archiveDateFormat = "Jan 02"
+hideEntryNavigation = ["page"] # boolean / array of sections
+hideEntryMeta = ["page"] # boolean / array of sections
+showReadingTime = true
+showLastmod = true
+taxonomyCloudShuffle = true
+accentColor = "#ffcd00"
+hideMainMenu = true
+rtl = false
+
+[params.social]
+email = "dongzhuoer@mail.nankai.edu.cn"
+facebook = "dongzhuoer"
+github = "dongzhuoer"
+gitlab = "dongzhuoer"
+linkedin = "zhuoer-dong-78106015a"
+twitter = "dongzhuoer"
+google_scholar = "y5JBhk0AAAAJ"
+
+
+
+# Minimo default --------------
+[languages]
+# edit this block for your own language
+[languages.en]
+lang = "en"
+languageName = "English"
+weight = 1
+
+[params.sidebar]
+enable = true
+
+[params.opengraph.facebook]
+admins = [] # array of Facebook IDs
+appID = ""
+pageID = ""
+
+[params.opengraph.twitter]
+page = "" # Twitter page username
+
+[params.seo]
+# Title Separator: - – — · • * ⋆ | ~ « » < >
+titleSeparator = "•"
+
+[params.comments]
+enable = false
+
+# Isso: https://posativ.org/isso/
+[params.comments.isso]
+enable = false
+scriptSrc = "" # "https://isso.example.com/js/embed.min.js"
+dataAttrs = "" # "data-isso='https://isso.example.com' data-isso-require-author='true'"
+
+[params.comments.staticman]
+enable = true
+apiEndpoint = "https://api.staticman.net/v2/entry"
+maxDepth = 2
+username = "MunifTanjim"
+repository = "minimo"
+
+# Utterances: https://utteranc.es
+[params.comments.utterances]
+enable = false
+issueTerm = "pathname" # pathname / url / title
+
+[params.comments.utterances.github]
+username = "MunifTanjim"
+repository = "minimo"
+
+[params.search]
+client = "fuse" # algolia / fuse / lunr
+
+[params.search.algolia]
+appId = ""
+indexName = ""
+searchApiKey = ""
+
+
+
+
+
+[blackfriday]
+hrefTargetBlank = true
+
+

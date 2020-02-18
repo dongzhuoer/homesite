@@ -1,0 +1,13 @@
+.main-content-wrap {
+    max-width: 100rem;
+}
+
+
+.post .post-content {
+    font-size: 2rem;
+}
+
+.post .post-content img {
+    width: 75%;
+    margin: auto;
+}

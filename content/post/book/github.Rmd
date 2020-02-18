@@ -1,0 +1,12 @@
+---
+title: GitHub
+author: Zhuoer Dong
+date: '2017-11-06'
+tags:
+  - book-program
+slug: github
+---
+
+# Pages
+
+`CNAME` `_config.yml` should goes to the folder _where pages lives_

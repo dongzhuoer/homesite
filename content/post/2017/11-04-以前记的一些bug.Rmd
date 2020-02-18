@@ -1,0 +1,100 @@
+---
+title: 以前记的一些bug
+author: Zhuoer Dong
+date: '2017-11-04'
+slug: 以前记的一些bug
+tags: []
+---
+
+> 在 homesite 第二版的时候，建了 `misc.Rmd` 来记录遇到的 bug。一方面当时没时间写成 post，另一方面有些 bug 要过一天甚至好几天才有定论。
+
+
+# R `source()` can't access system env variable (11/04)
+
+In this situation, only the env virables in `.profile` can be accessed
+
+Afterword: later I develop a way to set env variable both in `.bashrc` and `.profile`. This may alleivate the problem.
+
+
+
+# Windows ignores `~/.Rprofile`
+
+> Windows is really a terrific tool to waste time.
+
+For Git-bash, `R -e "dirname('~')"` gives "C:/Users", so `~/.Rporfile` gets ignored ^[it seems that I have already found the latter point several weeks ago.].
+
+
+# bookdown `path for html_dependency not found`
+
+
+```
+Error: path for html_dependency not found: W:/program/lib/R/htmlwidgets/www
+```
+
+It may occur when you first build the book under Windows and then build the book under Ubuntu. Thus the R packages directory is changed.
+
+The solution is to delete `_bookdown_files/`.
+
+
+
+# bookdown build pdf 
+
+```Batchfile
+tlmgr install lm fancyvrb framed titling ec xltxtra fontspec booktabs
+tlmgr install collection-xetex
+```
+
+
+#  WPS from Ubuntu Kylin doesn't work (10/31)
+
+use WPS community version instead.
+
+
+
+
+# http proxy (11/01)
+
+> 那时候从 GitHub 装 R 包巨慢，还经常把 RStudio 给卡住，就想利用我的翻墙代理。最后的方案是一律使用 Terminal （而不是 RStudio）。
+
+```bashrc
+http_proxy='http://127.0.0.1:1081'
+https_proxy='http://127.0.0.1:1081'
+```
+
+But I don't know why it doesn't work in RStudido's terminal.
+
+
+
+# RStudio indexing and diagnostics disabled (10/30)
+
+```
+Warning message:
+File monitoring failed for project at "/path/to/work/RStudio/widget"
+Error 28 (No space left on device)
+Features disabled: R source file indexing, Diagnostics
+```
+
+Maybe you have too many files.
+
+
+
+# can't change default Terminal (10/30)
+
+> When I open a application from Ubuntu MATE top panel, such as **Vim**, it uses `xterm` and looks really ugly. So I try to set the default ternimal and finally give up.
+
+
+`export TERM="gnome-terminal"` doesn't work
+
+
+refer to `man terminfo`, `ls /lib/terminfo` and https://askubuntu.com/questions/388945/
+
+
+
+# others
+
+
+- `.Rprofile` 一定要以新行结尾
+
+- 干活前先看看你想的是不是对的 ^[有些二级域名的网站也可以不用 `/` 的，比如 pkgdown 的包们，为我修改十多个 apache `.conf` 的半小时默哀。]
+
+

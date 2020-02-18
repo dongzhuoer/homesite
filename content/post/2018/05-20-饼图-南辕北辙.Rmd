@@ -1,0 +1,141 @@
+---
+title: 饼图中的南辕北辙
+author: Zhuoer Dong
+date: '2018-05-20'
+slug: 饼图-南辕北辙
+tags: []
+---
+
+```{r knitr-setup, include=FALSE}
+knitr::opts_chunk$set(message = FALSE, collapse = TRUE)
+```
+
+```{r install-pkg, message=FALSE, eval=Sys.getenv('CI') == 'true'}
+# install needed R packages
+remotes::update_packages(c('magrittr', 'tidyverse', 'cowplot'), upgrade = TRUE)
+```
+
+
+# Beginning
+
+为了展示毕业论文的数据，我想要画个饼图。`pie()` 虽然简单，但我肯定要用高大上的“哥哥作图”（**ggplot2**）。
+
+```{r}
+library(magrittr)
+library(ggplot2)
+
+df <- tibble::tribble(
+    ~type, ~n,
+    'GDS', 1772,
+    'other GSE', 18309
+) %>% dplyr::mutate(percent = n/sum(n), label = scales::percent(percent))
+
+df
+```
+
+
+# Development
+
+Althought I already know pie chart is a variant of bar plot with polar coordinate, I don't know the precise code. As usual, Stack Overflow provides a good [example](https://stackoverflow.com/questions/45657990#answer-45659764).
+
+I applied the code, but the order of label seems to be wrong:
+
+
+```{r}
+ggplot(df) +
+  geom_bar(aes(x = "", y = percent, fill = type), stat="identity", width = 1) +
+  coord_polar("y", start = 0) +
+  theme_void() +
+  geom_text(aes(x = 1, y = cumsum(percent) - percent/2, label = label))
+```
+
+After a while, I find a solution:
+
+```{r}
+ggplot(df) +
+  geom_bar(aes(x = "", y = percent, fill = factor(type, levels = rev(type))), stat="identity", width = 1) +
+  coord_polar("y", start = 0)+
+  theme_void()+
+  geom_text(aes(x = 1, y = cumsum(percent) - percent/2, label = label))
+```
+
+
+# Climax
+
+However, I still don't understand what happens, so I start to explore it step by step.
+
+I refered to the [official documentation](https://ggplot2.tidyverse.org/reference/coord_polar.html) for how pie chart is evolved from bar plot. 
+
+To understand why the order of label is incorrect, we need to examine what happens in the original bar plot:
+
+```{r fig.dim=c(12, 3), out.extra='style="width:100%;"'}
+cowplot::plot_grid(
+    ggplot(df) + 
+        geom_col(aes(type, percent, fill = type)) + 
+        geom_text(aes(x=type, y =  percent/2, label=type)),
+    ggplot(df) + 
+        geom_col(aes('', percent, fill = type)) + 
+        geom_text(aes(x='', y = cumsum(percent) - percent/2, label=type)),
+    ggplot(dplyr::arrange(df, dplyr::desc(type)))+ 
+        geom_col(aes('', percent, fill = type)) + 
+        geom_text(aes(x='', y = cumsum(percent) - percent/2, label=type)),
+    nrow = 1
+)        
+```
+
+- y of label is determined by the row order in data, i,e, the earlier a row appears, the smaller y value, and the lower position. 
+- The order of bar is determined by factor level order (default is lexicographic order of level strings). The smaller level order the higher position.
+
+So `dplyr::arrange(..., dplyr::desc(...))` can make top row have small y value and big level order, thus sovle the problem ^[`factor(type, levels = rev(type))` is a coincidence, it only works in this case.].
+
+
+# Afterword
+
+When I come back to polish this post on 2019/03/03, I  ponder the official documentation for half an hour and realize I still haven't fully understand the transition from bar plot to pie chart. 
+
+I think the documentation is not quiet clear. The most confusing thing is how radius is determined, since it's neither mentioned nor deducible from examples.
+
+The examples have two drawbacks:
+ 
+1. the yuse real data, so reader can't know the exact value of y.
+2. the corresponding bar plot is not shown, so reader have to imagine it.
+
+Therefore, I write the following examples, hoping they can save time when I forget how pie chart is drawn the next time:
+
+```{r fig.dim=c(9, 3)}
+tbl <- tibble::tribble(
+    ~class, ~value,
+    'A', 1,
+    'B', 2,
+    'C', 4
+)
+
+bar <- ggplot(tbl) + geom_col(aes(class, value), width = 1)
+cowplot::plot_grid(
+    bar,
+    bar + coord_polar(theta = 'x'),
+    bar + coord_polar(theta = 'y'),
+    nrow = 1
+)
+```
+
+From the aboving plots, we can know that:
+
+- `theta = 'x'`: x becomes angle, y becomes radius
+- `theta = 'y'`: x becomes radius, y becomes angle
+
+```{r fig.dim=c(9, 3)}
+stack <- ggplot(tbl) + geom_col(aes('1', value, fill = class), width = 1)
+cowplot::plot_grid(
+    stack,
+    stack + coord_polar(theta = 'x'),
+    stack + coord_polar(theta = 'y'),
+    nrow = 1
+)
+```
+
+In the aboving plots, `fill` divide y value:
+
+- When y is radius, we have concentric circles.
+- When y is angle, we have sectors.
+

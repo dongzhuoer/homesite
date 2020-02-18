@@ -1,0 +1,107 @@
+---
+title: 记一下以前写的 R 代码和干的蠢事
+author: Zhuoer Dong
+date: '2019-01-23'
+slug: 记一下以前写的-r-代码和干的蠢事
+tags: []
+---
+
+
+# 保存旧番是浪费时光的一大法宝
+
+大学时我曾把看过的番存到百度云盘，原因之一应该是有些番很好看，留着以后看（好像我也没有再看过）；还有有的续集内容记不清，翻出以前的复习一下（好像我一般查百科，或者直接接受设定）；更奇葩的是留着截图用（做公能素质测评时很想把鹿丸开导鸣人走出自来也阵亡阴影的片段截一下，最后变成了复习了几集火影，离deadline更近了几小时）
+
+一般是去百度云找，另一种来源是 Windows Store 的哔哩哔哩是可以下载的（移动端经常显示版权受限）。
+
+## `script for joint video.R`
+
+但是哔哩哔哩的一个问题是一集会分成好几个文件，于是我就找软件将其合并在一起：`videocutterjoiner` 小巧好用，良心推荐
+
+GUI 的软件选择文件有点麻烦，为了方便使用，我就想着把这样的文件
+
+```
+01/1.mp4
+01/2.mp4
+01/3.mp4
+02/1.mp4
+02/2.mp4
+02/3.mp4
+```
+
+重命名成这样
+
+```
+01_1.mp4
+01_2.mp4
+01_3.mp4
+02_1.mp4
+02_2.mp4
+02_3.mp4
+```
+
+然后就可以一次选中好几集了
+
+
+```r
+#library(stringr)
+(dir('.',full.names = T, recursive = T, pattern = 'flv|mp4')->old)
+str_replace_all(old, '/', '_')->new
+(str_replace(new, '^\\._', '')->new)
+
+file.rename(old,new)
+```
+
+
+## `serialize filename for video.R`
+
+还有就是文件排序
+
+这样就很傻了
+
+```
+1
+10
+11
+2
+3
+...
+```
+
+有些软件会智能排序，但我更喜欢由自己掌控。
+
+变成这样就好了
+
+```
+01
+02
+03
+...
+10
+11
+```
+
+```r
+dir.name <- '.'
+(old <- dir(dir.name,full.names = T))
+#(old <- dir(dir.name,full.names = T, recursive = T, pattern = 'fl'))
+num <- c(paste0('0',1:9),paste0(10:99))
+post <- stringr::str_extract(old,'\\.\\w*$')
+(new <- paste0(dir.name, '/', num[seq_along(old)],post))
+file.rename(old,new)
+```
+
+
+# 干点正事——刷 GRE 单词
+
+第一遍背的时候，好多单词都不认识，牛津词典的英文释义能更好地把握单词的本意，还有标准的音标和发音。
+
+写个 R 脚本一次查好多个单词
+
+```r
+readr::read_lines('data-raw/words.md') %>% 
+    paste0('https://www.oxfordlearnersdictionaries.com/definition/english/', .) %>% 
+    plyr::l_ply(. %>% {browseURL(.); system('sleep 1')})
+```
+
+
+核心很简单，就是打开多个网页。但是要保证网页的顺序和输入的单词列表的顺序是一样的。

@@ -1,0 +1,41 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "type": "shell",
+    "problemMatcher": [],
+    "presentation": {
+        "reveal": "silent",
+    },
+    "tasks": [
+        {
+            "label": "build",
+            "command": "Rscript .vscode/render.R",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "clean rendered .html",
+            "command": "Rscript .vscode/clean.R"
+        },
+        {
+            "label": "rebuild",
+            "dependsOn": [
+                "clean rendered .html",
+                "build"
+            ],
+            "dependsOrder": "sequence"
+        },
+        {
+            "label": "new post",
+            "type": "shell",
+            "command": "R --slave -e 'blogdown:::new_post_addin()'",
+        },
+        {
+            "label": "view GitHub",
+            "command": "firefox https://github.com/dongzhuoer/${workspaceFolderBasename} 2> /dev/null",
+        },
+    ]
+}

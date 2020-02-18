@@ -1,0 +1,33 @@
+---
+title: 用叠嶂图审查p值歧视
+author: Zhuoer Dong
+date: '2018-04-08'
+slug: 用叠嶂图审查p值歧视
+tags: []
+---
+
+```{r install-pkg, message=FALSE, eval=Sys.getenv('CI') == 'true'}
+# install needed R packages
+remotes::update_packages(c('magrittr', 'dplyr', 'ggplot2', 'ggridges'), upgrade = TRUE)
+remotes::install_github(c('jtleek/tidypvals'))
+```
+
+
+今天看了统计之都的一篇文章, [<<叠嶂图的前世今生>>](https://cosx.org/2018/04/ridgeline-story/)，感觉写得蛮好的，遂把最后一段抠到这里 ^[我觉得对原文的代码写得不好，意思没表达清楚，于是整理了一下。]：
+
+> 这里我们还是举个比较实际的例子，下面这组数据收集了348414份期刊论文里的3623355个p值，横跨28个学科：
+
+```{r message=FALSE, warning=FALSE}
+library(magrittr)
+
+p_value <- dplyr::bind_rows(tidypvals::head2015, tidypvals::chavalarias2016, tidypvals::brodeur2016)
+p_value %<>% dplyr::distinct() %>% dplyr::filter(!is.na(field))
+
+ggplot2::ggplot(p_value, ggplot2::aes(pvalue, field)) +
+    ggridges::geom_density_ridges() + 
+    ggplot2::xlim(0, 0.25)
+```
+
+> 现在我问你：哪个学科最有可能在p值上造假或者有发表歧视？
+
+

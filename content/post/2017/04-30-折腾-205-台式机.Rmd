@@ -1,0 +1,31 @@
+---
+title: 折腾 205 台式机
+author: Zhuoer Dong
+date: '2017-04-30'
+slug: 折腾-205-台式机
+tags: []
+---
+
+> 那时沉迷于装系统，尤其是双系统，于是205的台式机就成了我的试验品了。
+
+
+BIOS + MBR 曾经实现过 Win7 + Ubuntu + Win10 + CentOS7，其中前三个为主分区，最后和公用 swap 为逻辑分区。装 CentOS 时应该已经选了 boot 放在 `sda5`，但 CentOS 还是强制覆盖了启动项。启动时，CentOS 可以识别 Ubuntu，Ubuntu 可以识别 Win10 和 CentOS7，EasyBCD 可以引导另一 Windows 和 Ubuntu，也就是说至少有一个系统得二次引导。
+
+后来删了 Ubuntu 和 CentOS，再次安装 Ubuntu MATE 时总是会分区冲突。Ubuntu MATE 安装时总是喜欢做成主分区（第四个），然后用 Windows 分好的逻辑分区就挂了；而且这个主分区占着扩展分区的坑，Windows 也识别不了，无法通过盘符访问，自然也就无法用 EasyBCD 引导。最后得出结论：MBR 老老实实分4个主分区就好了，想要更多就去找 GPT。（新版的 Ubuntu 分区表根本不提供主分区或逻辑分区的选项，CentOS 好像有）。
+
+用 gparted 删除所有扩展、逻辑等分区，然后手动建立，就可以安装 Ubuntu MATE 了，至少 EasyBCD 可以识别。但由于是UFEI方案，所以无法引导，而 Windows 究竟能否正常识别则有点记不清了。接着重新安装一遍时，又把逻辑分区弄成主分区了，目前还不清楚具体原理。 
+
+于是就用 Windows 将另一块硬盘转化成了 GPT，并用 Rufus 制作了 GPT + UEFI 的启动盘。但是 GParted 无法在这块硬盘划分出 efi 分区（不能设置 boot 的 flags），我就用 GParted 重新转化成 GPT。第一分区设为 efi，引导必须设置在硬盘，而不能是某一分区。
+
+装好后在 F12 无法从第二硬盘启动，Windows 的 Easy BCD 也无法引导。但 `update-grub` 又一次超神，Ubuntu MATE 启动一次后就可以 F12 选择第二硬盘启动。后来第二次安装还是不能引导，但用 EasyBCD 添加 grub 引导 sdb 之后，提示错误，再按回车就又能神奇地启动了。从两次的共同点来看应该是，在 boot setup 设置第二硬盘为第一启动顺序。
+
+- 有人说第一分区必须是 efi 分区，但是我的 Dell 笔记本就把第一分区做了恢复分区，efi 则在第二分区。
+
+- 还有人说每个新装的系统先在 efi 分区建立自己的文件夹（如 `/EFI/Microsoft/`，`/EFI/ubuntu/`），在里面放好自己的引导文件（`.efi`文件等），再把 `.efi` 文件复制到根目录以覆盖默认启动项。但 Ubuntu MATE 只建立了 `/EFI/ubuntu/`，Dell 的 Windows 倒是建了一个 `/EFI/Boot/`，且放了一个 `bootx64.efi`文件。UEFI多系统具体是如何互相覆盖默认启动还得深入探究。
+
+- 乱码：Windows 上的文件名的中文在 Ubuntu MATE 会变成乱码，而且即使是在 Virtual Box 的 Windows 7 虚拟机中也还是乱码。但是 `.zip` 中子文件（夹）中的乱码在虚拟机中能正常显示，而且从 `Ubuntu MATE`再拷回来也还是乱码。
+
+
+
+
+	

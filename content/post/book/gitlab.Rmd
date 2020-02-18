@@ -1,0 +1,42 @@
+---
+title: GitLab
+author: Zhuoer Dong
+date: '2017-11-06'
+tags:
+  - book-program
+slug: gitlab
+---
+
+# Pages
+
+`.gitlab-ci.yml`
+```yaml
+pages:
+  stage: deploy
+  script:
+    - mkdir .public
+    - cp -r * .public
+    - mv .public public
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
+```
+
+
+
+# Create repo
+
+You can create a repo by directly push a local repo to GitLab:
+
+1. open `empty`, 
+2. `export repo=repo_name`
+3. push to GitLab using following code
+   ```bash
+   git remote add gitlab git@gitlab.com:dongzhuoer/$repo.gitbook.git
+   git push -u gitlab master
+   git remote remove gitlab
+   ```
+
+

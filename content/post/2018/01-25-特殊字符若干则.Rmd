@@ -1,0 +1,32 @@
+---
+title: 特殊字符若干则
+author: Zhuoer Dong
+date: '2018-01-25'
+slug: 特殊字符若干则
+tags: []
+---
+
+学过编程的人肯定都体验过特殊字符的痛，这里列一下以前写的几篇 post。
+
+
+
+# 2018-01-05 sequence file
+
+- `U` will ruin `mafft` unless you add the [`--anysymbol` option](https://mafft.cbrc.jp/alignment/software/anysymbol.html) 
+- `*` (stop codon) will corrupt `muscle` and PAUP\*, you might consider replacing it with `X`
+
+
+
+# 2018-01-24 Bash
+
+`R -e "rzhuoer::gitbook$css"` should be `R -e "rzhuoer::gitbook\$css"`
+
+
+
+# 2018-01-25 `\d` in `sed`
+
+> In GNU `sed`, `\d` introduces a decimal character code of one to three digits in the range 0-255. For example, to remove a tab you could do: sed `'s/\d9//'` (or `09` or `009`) or replace some unprintable characters with spaces: `sed 's/[\d1-\d31]/ /g'`
+>
+> --- https://stackoverflow.com/questions/3421095
+
+

@@ -1,0 +1,37 @@
+---
+title: Git果然是万能的时光机，我再也不乱倒垃圾了
+author: Zhuoer Dong
+date: '2018-12-12'
+slug: git万岁-不敢乱倒垃圾
+tags: []
+---
+
+# Beginning
+
+周一（12/10）完成了 R 包模板的更新，然后就各种 rebase（主要是合并一些小的comit以及清理`u`）。期间有几个包怎么都不听话（害得我回宿舍都延迟了），总是说什么 `README.md` 冲突，当时也没仔细看，直接用 VSCode 的 `Undo last commit` 摆平。
+
+
+# develop
+
+今天突然发现有问题了，好容易改好的 `NEWS.md` 成了旧版的 `news.md` (`README.md`的损失先不提)，昨晚关机前还清理了垃圾桶。怎么办啊，找不回来了啊！
+
+`git rev-list --all | xargs git grep <expression>` 没用，因为 `rev-list` 只会列出当前 branch 的所有 commit
+
+
+# Climax
+
+最后找到了 `git reflog` 这一神器，只要你还记得一些关键字^[还好 `NEWS.md` 中的 `# pgmcs 0.3.0` 是昨晚的 commit _独有_ 的]，就一定能找回来（Git 时光机的称号岂是浪得虚名）：
+
+```bash
+git reflog show --all | cut -f 1 -d ' ' | xargs git grep '# pgmcs 0.3.0'
+```
+
+- `git reflog show --all` 列出所有的 commit 的 ID 和 message
+- `cut -f 1 -d ' '` 取出 commit ID
+- `git grep` 从特定 commit 的全部文件中搜索指定 pattern
+
+
+# Epilogue
+
+最后真被我找到了，Git 大法好啊，内心美滋滋。
+

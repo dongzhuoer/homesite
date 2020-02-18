@@ -1,0 +1,23 @@
+---
+title: citation is a great tool to waste both my and your time
+author: Zhuoer Dong
+date: '2018-01-25'
+tags:
+  - book-research
+slug: citation
+---
+
+# APA
+
+- [in text](https://owl.english.purdue.edu/owl/resource/560/03/)
+
+  + use `&` in `()`; use `and` in text
+  + One: `(Surname1, 2012)` `Surname1 (2012)`
+  + Two: `(Surname1 & Surname2, 2012)`
+  + Three to Five
+
+    ```
+    (Surname1, Surname2, Surname3, Surname4, & Surname5, 2012)
+    (Surname1 et al., 2012)
+    ```
+  + Six +: `(Surname1 et al., 2012)`

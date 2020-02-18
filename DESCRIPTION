@@ -1,0 +1,28 @@
+Package: dongzhuoer.homesite
+Type: Blog
+Title: Does not matter.
+Version: 0.0.0.9000
+Authors@R: person("Zhuoer", "Dong", email = "dongzhuoer@mail.nankai.edu.cn", 
+    role = c("aut", "cre"))
+Imports:
+    blogdown,
+    magrittr,
+    ggplot2,
+    tibble,
+    dplyr,
+    cowplot,
+    learningr,
+    testthat,
+    gginnards,
+    Lahman,
+    DiagrammeR,
+    plot3D,
+    randomForest,
+    ggridges,
+    svglite,
+    modelr,
+    tidypvals,
+    datamodelr
+Remotes:
+    jtleek/tidypvals,
+    bergant/datamodelr

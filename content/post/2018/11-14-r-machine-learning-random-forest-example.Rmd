@@ -1,0 +1,291 @@
+---
+title: 'machine learning in R: using random forest as an example'
+author: Zhuoer Dong
+date: '2018-11-14'
+output: 
+    blogdown::html_page:
+        df_print: paged    
+slug: r-machine-learning-random-forest-example
+tags: []
+---
+
+```{r knitr-setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, error=TRUE, collapse=TRUE)
+```
+
+We will introduce the basic ideas of machine learning in R, use random forest model as an example.
+
+
+
+# preparation
+
+we need to install the following packages [^packages]:  
+
+```{r install-pkg, message=FALSE, eval=Sys.getenv('CI') == 'true'}
+# install needed R packages
+remotes::update_packages(c('magrittr', 'dplyr', 'randomForest', 'ROCR', 'GGally'), upgrade = TRUE)
+```
+
+To avoid conflict of function name, in the following code, I will try me best to use `pkg::fun()` instead of `library(pkg)`. But **magrittr** is special, we have to `library()` it. 
+
+```{r}
+library(magrittr)
+```
+
+Before we start, let set the random seed to make our results reproducible:
+
+```{r}
+set.seed(0) 
+```
+
+
+
+# generate data set
+
+We use one of R's built-in data set, `iris`, Edgar Anderson’s Iris Data set. 
+
+The original data set contains observations for four features (sepal length and width, and petal length and width --- all in cm) of 150 flowers of three species (each 50). 
+
+To make things simple, here we only choose two species, `versicolor` and `virginica`. [^explain-make-data]
+
+```{r make-data}
+df <- iris %>% tibble::as_tibble() %>% 
+    dplyr::filter(Species != 'setosa') %>%
+    dplyr::mutate(Species = factor(Species))
+df
+```
+
+> Remember to drops unused level using `factor()`, otherwise `randomForest::randomForest()` would complain. [^why-drop-devel]
+
+Optional: before we build the model, we may explore the correlation between features [^feature-correlation].
+
+
+
+# Split data set
+
+Before we build the model, we need to split the data set into training set and testing set. So we can train our model using data in training set, and evalute the model using data in testing set.
+
+Here we randomly assigns 80 percent samples to the traing set, and the left 20 percent to the testing set [^explain-split-data].
+
+```{r split-data}
+nrow_training <- floor(nrow(df) * 0.8)  # Calculate the size of training sets
+indexes <- sample(1:nrow(df), nrow_training)  # these rows will be select for training
+
+training <- df[indexes, ] 
+testing <- df[-indexes, ]
+```
+
+You may want to have a look at the result [^split-result].
+
+
+
+# Build the model
+
+Then we can build a random forest model [^model-result].
+
+```{r}
+rf_classifier = randomForest::randomForest(Species ~ ., training)
+```
+
+You can feed `randomForest::randomForest()` two arguments:  
+
+  - a `formula`: here `Species` is the response variable, `.` tells that all other variables are features
+  - a data frame to train the model
+
+
+
+# Evaluate the model - basics
+
+After we build the model, the fundamental use is to make prediction. That's exactly where the testing set comes in handy:
+
+```{r}
+predicted_class <- predict(rf_classifier, testing[, -ncol(testing)])
+```
+
+`predict()` needs two arguments: the model and a data frame of _features_ ^[`-ncol(testing)` means to drop the last column, so `testing[, -ncol(testing)` only contains features].
+
+We can compare the predicted class with real class ^[`testing[[ncol(testing)]]` gets the last column, i.e, the real value of `Species` in the testing set]:
+
+```{r}
+real_class = testing[[ncol(testing)]]
+
+tibble::tibble(predicted_class, real_class) %>% 
+    dplyr::mutate(correct = predicted_class == real_class)
+```
+
+To quantify the performance of our model, we can construct a confusion matrix
+
+```{r}
+# we define 'versicolor' as positive class
+TP <- sum((predicted_class == 'versicolor') & (real_class == 'versicolor')) #true positive
+FP <- sum((predicted_class == 'versicolor') & (real_class != 'versicolor')) #false positive
+FN <- sum((predicted_class != 'versicolor') & (real_class == 'versicolor')) #false negative 
+TN <- sum((predicted_class != 'versicolor') & (real_class != 'versicolor')) #true negative 
+
+tibble::tribble(
+    ~'', ~'Predicted versicolor', ~'Predicted virginica',
+    'True versicolor', TP, FP,
+    'True virginica',  FN, TN
+)
+```
+
+and compute common evaluation indicators
+
+```{r}
+tibble::tribble(
+    ~indicator, ~value,
+    'sensitivity', TP/(TP + FN),
+    'specificity', TN/(TN + FP),
+    'accuracy', (TP + TN)/(TP + TN + FP + FN)
+)
+```
+
+
+
+# Evaluate the model - advanced
+
+Except for definite class, the model can also tell us the probability that a given sample belongs to each class:
+
+```{r}
+probability <- predict(rf_classifier, testing[, -ncol(testing)], type = "prob")
+probability %>% tibble::as_tibble()
+```
+
+For example, `r probability[2, 1]` in the second row means the probability of the second sample in the testing set belonging to `versicolor`. 
+
+Actually, the predicted class we see above is determined by judging whether the probability is greater than a given cutoff (the default is 0.5):
+
+```{r}
+all((probability[ , 1, drop = T] > 0.5) == (predicted_class == 'versicolor'))
+```
+
+Using different curoff, we can draw a ROC curve [^explain-ROC].
+
+```{r ROC}
+label <- testing[[ncol(testing)]] %>% {. ==  'versicolor'} %>% as.integer
+
+prediction <- ROCR::prediction(probability[, 1], label)
+prediction %>% ROCR::performance("tpr", "fpr") %>% ROCR::plot(main = "ROC Curve") 
+```
+
+and cauculate the AUC (area under the curve)
+
+```{r}
+ROCR::performance(prediction, 'auc')@y.values[[1]]
+```
+
+
+
+# Tips and more
+
+If you want to see Importance of each feature
+
+```{r}
+randomForest::randomForest(Species ~ ., training, importance = TRUE) %>% randomForest::varImpPlot()
+```
+
+
+
+
+
+
+[^packages]:  
+    - **magrittr** enable one style of writing R code. For why I use that style, please refer to https://r4ds.had.co.nz/pipes.html#piping-alternatives  
+    - **dplyr**: manipulate data frame  
+    - **randomForest**: build random forest model  
+    - **ROCR**: ROC analysis  
+    - **GGally**: plot correlation between features
+
+
+
+[^explain-make-data]:  
+    ```{r make-data, eval=FALSE}
+    ```
+
+    - The frist line turn `iris` into a **tibble**, a modern reimagining of the `data.frame`.
+    - The second line select rows whose species is not `setosa`, so only `versicolor` and `virginica` are left.
+    - The third line drops unused level of the `Species` factor, 
+
+
+
+[^why-drop-devel]:  
+    This is a little technical: 
+
+    The orignial Species contains three levels, `setosa`, `versicolor` and `virginica`, each has 50 values. 
+
+    ```{r}
+    iris %>% dplyr::count(Species)
+    iris %>% .$Species %>% levels
+    ```
+
+    Although we remove all `setosa` values, 
+
+    ```{r}
+    df0 <- iris %>% tibble::as_tibble() %>% dplyr::filter(Species != 'setosa')
+    df0 %>% dplyr::count(Species)
+    ```
+
+    the `setosa` level still exists, and now this level contains no values. 
+
+    ```{r}
+    df0 %>% .$Species %>% levels
+    ```
+    
+    That would cause `randomForest::randomForest()` to fail.
+
+    ```{r error=T}
+    randomForest::randomForest(Species ~ ., df0)
+    ```
+
+    After we call `factor()`, Species only contains two levels, both do have values.)
+
+    ```{r}
+    df0 %>% .$Species %>% factor %>% levels
+    ```
+
+
+
+[^feature-correlation]:  
+    ```{r}
+    GGally::ggpairs(df, columns = 1:4, ggplot2::aes(color = Species))
+    ```
+
+
+
+[^explain-split-data]:  
+    ```{r split-data, eval=FALSE}
+    ```
+    The code seems a little complicated, and it require you to be familiar with the R language. 
+
+    Anyway, I will try to use a simple example to explain the core idea:  
+
+    - Image your data contains only 5 rows, then 80 percent is 5 * 0.8 = 4 (i.e. `nrow_training` is `4`).   
+    - Image you decide to choose the 1st, 2nd, 3rd and 5th rows for training (i.e. `indexes` is `c(1, 2, 3, 5)`)  
+    - Now `training` contains the 1st, 2nd, 3rd and 5th rows of `df` (`[indexes, ]` means to choose these rows)  
+    - And `testing` contains the 4th row of `df` (`[-indexes, ]` means not to choose these rows, so only the 4th row is left)  
+
+
+
+[^split-result]:   
+    ```{r}
+    training
+    testing
+    ```
+
+
+
+[^model-result]:  
+    ```{r}
+    rf_classifier
+    ```
+
+
+
+[^explain-ROC]:   
+    ```{r ROC, eval=FALSE}
+    ```
+
+    `ROCR::prediction()` needs two arguments:
+
+    - the probability of a set of samples belonging to a given class (`versicolor` here)
+    - the real classes of those samples, `1` means belonging the given class, `0` otherwise
