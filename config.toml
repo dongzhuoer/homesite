@@ -39,18 +39,23 @@ weight = 1
 url = "/post/book"
 
 [[menu.sidebar]]
-name = "caprice"
+name = "paper"
 weight = 2
+url = "/post/paper"
+
+[[menu.sidebar]]
+name = "caprice"
+weight = 3
 url = "/post"
 
 [[menu.sidebar]]
 name = "about"
-weight = 3
+weight = 4
 url = "/about"
 
 [[menu.sidebar]]
 name = "repo"
-weight = 3
+weight = 5
 url = "https://github.com/dongzhuoer/homesite"
 
 
