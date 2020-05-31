@@ -8,7 +8,7 @@ yamls %<>% {.[stringr::str_detect(names(.), '.Rmd$')]}
 for (i in seq_along(yamls))
     if('slug' %in% names(yamls[[i]])) {
         old <- names(yamls)[i]
-        if (basename(dirname(old)) %in% c("book")){
+        if (basename(dirname(old)) %in% c("book", "paper")){
            new <- paste0(dirname(old), '/', yamls[[i]]$slug, '.Rmd')
         } else {
             folder <- paste0(dirname(dirname(old)), '/', stringr::str_sub(yamls[[i]]$date, 1, 4))
