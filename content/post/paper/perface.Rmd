@@ -7,45 +7,30 @@ tags:
 slug: perface
 ---
 
+
+
 感谢李程老师分享的一篇公众号文章——《如何高效地读完一周的 CNS？》[^link]。酝tuo酿了几天后，终于开始了。虽然很鄙视暴利的学术出版，很厌恶唯论文、唯影响因子，也经常戏称灌水CNS；但是以我现在的科研能力和学术视野，好好钻研一番肯定是利大于弊的。
 
 还记得曾经尝试每周去图书馆看纸质版（护眼），但当时连文章类型都分不清楚，别说是摘要，到最后都只能够看标题了。
 
 - https://science.sciencemag.org/#research-articles
 - https://www.nature.com/nature/current-issue#Research
-- https://www.cell.com/cell/current
+- https://www.sciencedirect.com/journal/cell/latest
 
 附模板：
 
 ```md
 # Science - Research Articles
-
 1. title1
-   thoughts 1
 
 # Science - Reports
-
 1. title1
-   thoughts 1
 
-
-# Nature - Articles
-
+# Nature
 1. title1
-   thoughts 1
 
-# Cell - Articles
-
+# Cell
 1. title1
-   thoughts 1
-
-# Cell - Resource
-
-1. title1
-   thoughts 1
 ```
 
-
 [^link]: https://mp.weixin.qq.com/s?__biz=MzIxMjA0NzU0OA==&mid=2650982852&idx=1&sn=db7342410a253a88767c98ec624bd0be&chksm=8cba6a17bbcde301cbe2457ea50d3a4ebbf4fe8f224a5da7b165df4eb99bd514d072d64d2eda&mpshare=1&scene=1&srcid=0522QD5TMIsG3CufLH0emRD7&sharer_sharetime=1590141373843&sharer_shareid=ae50238ead91499c25dfead04d38c61d&exportkey=A4oCPHrde30Rp%2Bhb7pQU0D8%3D&pass_ticket=k1VT%2BdX2S9G9oXBtiXxFNOMWZJmwPVowjz9Y9QYHbZapklseEKbYgrqdGs5rM5iL#rd
-
-
