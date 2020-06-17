@@ -1,0 +1,96 @@
+---
+title: 24周，June12 Science，June11 Nature, June11 Cell
+author: Zhuoer Dong
+date: '2020-06-14'
+tags:
+  - paper
+slug: 2020-24
+---
+
+
+
+# Science - Research Articles
+
+1. Membrane-proximal F-actin restricts local membrane protrusions and directs cell migration
+   膜近端 F-actin 分布呈现前高后低，原因是 cofilin 诱导的 turnover，结果是低浓度的地方出芽。
+1. Structures of cell wall arabinosyltransferases with the anti-tuberculosis drug ethambutol
+   cryoEM 和 X-ray 我都要
+
+
+
+# Science - Reports
+
+1. Far-field excitation of single graphene plasmon cavities with ultracompressed mode volumes
+1. Sequencing seismograms: A panoptic view of scattering in the core-mantle boundary region
+1. Chloride-mediated selective electrosynthesis of ethylene and propylene oxides at high current density
+1. h/e oscillations in interlayer transport of delafossites
+1. Pervasive ice sheet mass loss reflects competing ocean and atmosphere processes
+1. Cascading social-ecological costs and benefits triggered by a recovering keystone predator
+   捕食者回归总体而言是有好处的。
+1. A precise polyrotaxane synthesizer
+1. Disordered proteins follow diverse transition paths as they fold and bind to a partner
+1. Plastic rain in protected areas of the United States
+1. Temporal integration of mitogen history in mother cells controls proliferation of daughter cells
+   细胞一直在感应 mitogen，还能进行积分。
+1. Very fast CRISPR on demand
+   光照之后马上进行 CRISPR。
+1. *A genetic mechanism for sexual dichromatism in birds
+   一个主效应基因就能导致（颜色）性二态。
+1. A noncompeting pair of human neutralizing antibodies block COVID-19 virus binding to its receptor ACE2
+
+
+
+
+# Nature - Articles
+
+1. *Observation of Bose–Einstein condensates in an Earth-orbiting research lab 
+1. Cascade of electronic transitions in magic-angle twisted bilayer graphene  
+1. Cascade of phase transitions and Dirac revivals in magic-angle graphene 
+1. Topological polaritons and photonic magic angles in twisted α-MoO3 bilayers 
+1. Leveraging excited-state coherence for synthetic control of ultrafast dynamics 
+1. Self-templating assembly of soft microparticles into complex tessellations 
+1. Megathrust shear force controls mountain height at convergent plate margins 
+1. The online competition between pro- and anti-vaccination views 
+   反对者 cluster 小而连接紧密。支持者更周边。模型重现了反对者的快速增加，并预测十年内会占主导地位。
+1. A positively selected FBN1 missense variant reduces height in Peruvian individuals 
+   错义突变，一个等位基因矮 2.2cm，可能是为了适应秘鲁的海岸环境。
+1. Identification of type 2 diabetes loci in 433,540 East Asian individuals 
+   GWAS 换人群总能发新文章
+1. Molecular design of hypothalamus development 
+1. Basement membrane remodelling regulates mouse embryogenesis 
+1. Notch signalling drives synovial fibroblast identity and arthritis pathology 
+1. Sialylation of immunoglobulin E is a determinant of allergic pathogenicity 
+1. A calcineurin–Hoxb13 axis regulates growth mode of mammalian cardiomyocytes 
+1. Massively multiplexed nucleic acid detection with Cas13 
+   并行检测多个病人、多种病毒，大大降低成本
+1. poly(UG)-tailed RNAs in genome protection and epigenetic inheritance 
+1. Structure of Mpro from SARS-CoV-2 and discovery of its inhibitors 
+1. The architecture of the Gram-positive bacterial cell wall 
+
+
+
+# Cell - Articles
+
+1. *Illuminating Genetic Mysteries of the Dead Sea Scrolls
+   古卷轴拼图太麻烦？用 DNA 作弊吧，因为是用动物皮做的啊。
+1. Paleolithic to Bronze Age Siberians Reveal Connections with First Americans and across Eurasia
+1. Identification of ALK in Thinness
+   GWAS 发现 ALK- 能抵制体重增加。
+1. Ketogenic Diets Alter the Gut Microbiome Resulting in Decreased Intestinal Th17 Cells
+1. An Immunologic Mode of Multigenerational Transmission Governs a Gut Treg Setpoint
+1. High-Resolution mRNA and Secretome Atlas of Human Enteroendocrine Cells
+1. Sleep Loss Can Cause Death through Accumulation of Reactive Oxygen Species in the Gut
+   不睡觉真的会死，原因竟是肠道活性氧积累。
+1. Metabolic Regulation of the Epigenome Drives Lethal Infantile Ependymoma
+1. Cancer Burden Is Controlled by Mural Cell-β3-Integrin Regulated Crosstalk with Tumor Cells
+   血管增生不仅能带来养分，壁细胞还能通过旁分泌直接促进肿瘤增长。
+1. β-Arrestin-Biased Allosteric Modulator of NTSR1 Selectively Attenuates Addictive Behaviors
+1. Rad54 Drives ATP Hydrolysis-Dependent DNA Sequence Alignment during Homologous Recombination
+   在同源重组时，Rad54 使弥散式搜索转变为ATP供能的序列比对。
+1. Evidence That STK19 Is Not an NRAS-dependent Melanoma Driver
+   大乌龙，去年Cell报道的癌基因居然是注释错误（实际只有110aa），gain-of-function 突变更是跑到了编码区外。而且这个基因只在核内，没有任何激酶活性。
+1. A Reply to ‘‘Evidence that STK19 Is Not an NRAS-Dependent Melanoma Driver”
+   用一张图怼回去。
+1. An Engineered CRISPR-Cas9 Mouse Line for Simultaneous Readout of Lineage Histories and Gene Expression Profiles in Single Cells
+1. Clinically Applicable AI System for Accurate Diagnosis, Quantitative Measurements, and Prognosis of COVID-19 Pneumonia Using Computed Tomography
+   用 AI 诊断新冠CT。
