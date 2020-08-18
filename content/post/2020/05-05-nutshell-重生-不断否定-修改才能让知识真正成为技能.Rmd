@@ -3,8 +3,7 @@ title: nutshell 重生——不断否定、修改才能让知识真正成为技�
 author: Zhuoer Dong
 date: '2020-05-05'
 slug: nutshell-重生-不断否定-修改才能让知识真正成为技能
-categories:
-  - caprice
+categories: []
 tags: []
 authors: []
 ---
