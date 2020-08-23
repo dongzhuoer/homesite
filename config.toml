@@ -124,7 +124,7 @@ page = "" # Twitter page username
 titleSeparator = "•"
 
 [params.comments]
-enable = false
+enable = true
 
 # Isso: https://posativ.org/isso/
 [params.comments.isso]
@@ -133,7 +133,7 @@ scriptSrc = "" # "https://isso.example.com/js/embed.min.js"
 dataAttrs = "" # "data-isso='https://isso.example.com' data-isso-require-author='true'"
 
 [params.comments.staticman]
-enable = true
+enable = false
 apiEndpoint = "https://api.staticman.net/v2/entry"
 maxDepth = 2
 username = "MunifTanjim"
@@ -141,12 +141,13 @@ repository = "minimo"
 
 # Utterances: https://utteranc.es
 [params.comments.utterances]
-enable = false
-issueTerm = "pathname" # pathname / url / title
+enable = true
+issueTerm = "title" # pathname / url / title
+label = "comment"
 
 [params.comments.utterances.github]
-username = "MunifTanjim"
-repository = "minimo"
+username = "dongzhuoer"
+repository = "homesite"
 
 [params.search]
 client = "fuse" # algolia / fuse / lunr
