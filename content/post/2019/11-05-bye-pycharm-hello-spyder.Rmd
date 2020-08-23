@@ -9,9 +9,10 @@ authors: []
 ---
 
 
+
 # Preface
 
-我迟迟没掌握 Python 的一个原因就是没有好用的 IDE（主要原因是我的 R 已经~~炉火纯青~~勉强够用了）。Wing 沉迷于找破解码（Python2 和 Python3 我都有），PyCharm 则执着于比较 Professional ^[南开邮箱可以申请教育许可证] 和 Community 的区别以及方便的安装方式 ^[一度觉得 Snap 不错，除了网速慢]，直到 VSCode 横空出世、统一了所有语言 ^[我用它开发过 R，C++ 和 Python]。
+我迟迟没掌握 Python 的一个原因就是没有好用的 IDE（主要原因是我的 R 已经~~炉火纯青~~勉强够用了）。Wing 沉迷于找破解码（Python2 和 Python3 我都有），PyCharm 则执着于比较 Professional（南开邮箱可以申请教育许可证）和 Community 的区别，以及方便的安装方式（一度觉得 Snap 不错，除了网速慢），直到 VSCode 横空出世、统一了所有语言（我用它开发过 R，C++ 和 Python）。
 
 Python 最麻烦的是用换行和缩进来划分层次，这意味着不能方便地把代码送到 terminal 去执行（R 和 Bash 都是上有 source file、下有 terminal，）。我初学 Python 时就急切地想知道怎样把 Python 代码塞到一行，结果当然是弃疗了，后来 IPython 的 `paste` magic 部分解决了这一问题。
 
@@ -52,6 +53,3 @@ Python 最麻烦的是用换行和缩进来划分层次，这意味着不能方�
 # Afterword
 
 后来想过直接把 spyder 装到 user library，这样更新更快。但是没有 desktop 图标，还是算了吧。
-
-
-
