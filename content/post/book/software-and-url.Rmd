@@ -22,9 +22,8 @@ tags:
 
 > 平时用得不多，但曾经发挥过重要作用
 
-- [Miniconda](https://conda.io/miniconda.html)  
 - [Mathematica](https://tiebamma.github.io/InstallTutorial/)  
-  help me _learn_ Mathematics ([crack](https://github.com/hexinal/mathematica-keygen))
+  help me _learn_ Mathematics
 - [MEGA](https://www.megasoftware.net/home) 要注册，网速还慢
 - [RNAstructure](http://rna.urmc.rochester.edu/RNAstructureDownload.html)
 - [Java SE](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
