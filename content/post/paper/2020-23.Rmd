@@ -1,11 +1,13 @@
 ---
-title: 23周，June05 Science，June04 Nature
+title: 23周：June05 Science, June04 Nature
 author: Zhuoer Dong
 date: '2020-06-07'
 tags:
   - paper
 slug: 2020-23
 ---
+
+
 
 # Science - Research Articles
 
@@ -41,7 +43,6 @@ slug: 2020-23
 
 
 
-
 # Nature - Articles
 
 1. Observation of Laughlin states made of light
@@ -69,8 +70,3 @@ slug: 2020-23
 1. Multilayered mechanisms ensure that short chromosomes recombine in meiosis
    小染色体必须有同源重组（否则会分配不均），那么 DSB（双链断裂）就不是随机分布的（随机的话小染色体概率太小，很可能就没有了），作者在酵母中发现了调节这一过程的生理机制
 1. Structure and mechanism of the mitochondrial Ca2+ uniporter holocomplex
-
-
-# Cell - Articles
-
-1. title1
