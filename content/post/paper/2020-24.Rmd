@@ -1,5 +1,5 @@
 ---
-title: 24周，June12 Science，June11 Nature, June11 Cell
+title: 24周：June12 Science, June11 Nature, June11 Cell
 author: Zhuoer Dong
 date: '2020-06-14'
 tags:
@@ -37,7 +37,6 @@ slug: 2020-24
 1. *A genetic mechanism for sexual dichromatism in birds
    一个主效应基因就能导致（颜色）性二态。
 1. A noncompeting pair of human neutralizing antibodies block COVID-19 virus binding to its receptor ACE2
-
 
 
 
