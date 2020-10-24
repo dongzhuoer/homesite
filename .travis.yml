@@ -7,6 +7,7 @@ script:
   - docker exec rlang0 bash -c 'echo -e "[user]\n\tname = Zhuoer Dong\n\temail = dongzhuoer@mail.nankai.edu.cn\n" > .gitconfig'
   - docker cp ./. rlang0:/root
   - docker exec rlang0 Rscript -e "remotes::install_local(force = TRUE)"
+  - docker exec rlang0 Rscript -e "remotes::install_version('blogdown', '0.20')"
   - docker exec rlang0 Rscript -e "blogdown::build_site(run_hugo = FALSE)"
   - docker exec rlang0 Rscript -e "blogdown::hugo_build()"
   - docker exec rlang0 Rscript -e "download.file('https://raw.githubusercontent.com/dongzhuoer/gist/master/cc-license.md', 'public/readme.md')"
