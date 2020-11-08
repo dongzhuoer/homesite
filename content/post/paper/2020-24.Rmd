@@ -40,7 +40,7 @@ slug: 2020-24
 
 
 
-# Nature - Articles
+# Nature
 
 1. *Observation of Bose–Einstein condensates in an Earth-orbiting research lab 
 1. Cascade of electronic transitions in magic-angle twisted bilayer graphene  
@@ -68,7 +68,7 @@ slug: 2020-24
 
 
 
-# Cell - Articles
+# Cell
 
 1. *Illuminating Genetic Mysteries of the Dead Sea Scrolls
    古卷轴拼图太麻烦？用 DNA 作弊吧，因为是用动物皮做的啊。

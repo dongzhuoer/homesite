@@ -56,7 +56,7 @@ authors: []
 
 
 
-# Nature - Articles
+# Nature
 
 01. H I 21-centimetre emission from an ensemble of galaxies at an average redshift of one
 02. Room-temperature superconductivity in a carbonaceous sulfur hydride
@@ -92,7 +92,7 @@ authors: []
 
 
 
-# Cell - Articles
+# Cell
 
 01. Activate: Randomized Clinical Trial of BCG Vaccination against Infection in the Elderly
     BCG对孩子有用，那么对老人有用吗？

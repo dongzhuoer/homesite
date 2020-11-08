@@ -49,7 +49,7 @@ authors: []
 
 
 
-# Nature - Articles
+# Nature
 
 01. Stellar clustering shapes the architecture of planetary systems
    发现离系外恒星很近的 stellar groups，可以分析其影响。

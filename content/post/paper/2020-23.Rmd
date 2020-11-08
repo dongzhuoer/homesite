@@ -43,7 +43,7 @@ slug: 2020-23
 
 
 
-# Nature - Articles
+# Nature
 
 1. Observation of Laughlin states made of light
 1. Controlling free electrons with optical whispering-gallery modes
