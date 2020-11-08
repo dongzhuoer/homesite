@@ -1,0 +1,128 @@
+---
+title: 44周：Oct30 Science, Oct29 Nature, Oct29 Cell
+author: Zhuoer Dong
+date: '2020-11-02'
+slug: 2020-44
+categories: []
+tags:
+  - paper
+authors: []
+---
+
+
+# Science - Research Articles
+
+1. The coupling mechanism of mammalian respiratory complex I
+   线粒体复合物I是如何把氧化还原与质子泵出偶联起来的呢？原来是通过醌空穴的构象变化，多亏电镜，五种条件的结构 2.3~2.5A，水分子清晰可见，使我们能够明确质子转移的途径
+2. Atomic-scale microstructure of metal halide perovskite
+   扫描电镜的 atomic-scale 已经无法让我感冒了
+3. Multi-omics analyses of radiation survivors identify radioprotective microbes and metabolites
+   肠道微生物组还能防辐射啊，严格来说是辐射后修复
+4. Receptor kinase module targets PIN-dependent auxin transport during canalization
+   有一种假说认为生长素与运输通道反馈调节，作者发现起作用的两个分子。
+5. Origins and genetic legacy of prehistoric dogs
+   27条狗的古基因组，发现了共同祖先
+6. The emergence of SARS-CoV-2 in Europe and North America
+   新冠中国起源论？？据说最早在德国和美国被扑灭了，后来从中国传到意大利和华盛顿，然后爆发。
+
+
+
+# Science - Reports
+
+1. Cryptic transmission of SARS-CoV-2 in Washington state
+   453新冠基因组大部分都是由一个人传播的，在市区管制之前
+2. Singing in a silent spring: Birds respond to a half-century soundscape reversion during the COVID-19 shutdown
+    新冠封锁了，城市安静了，鸟儿可以趁机好好唱歌了
+3. Denisovan ancestry and population history of early East Asians
+4. Denisovan DNA in Late Pleistocene sediments from Baishiya Karst Cave on the Tibetan Plateau
+   总是发两篇，找到了古人类DNA，也许适应了高原气候，还传给了西藏人
+5. Metal-organic magnets with large coercivity and ordering temperatures up to 242°C
+   金属离子和有机物配体，提升磁体矫顽力
+6. Parallel single-shot measurement and coherent control of solid-state spins below the diffraction limit
+   空洞进行量子计算
+7. CdPS3 nanosheets-based membrane with high proton conductivity enabled by Cd vacancies
+   质子高透膜，电池
+8. Generation of helical topological exciton-polaritons
+   让某某不需要低温、强磁场
+9. Surface deformation associated with fractures near the 2019 Ridgecrest earthquake sequence
+10. A complex phenotype in salmon controlled by a simple change in migratory timing
+   一个基因区域就能控制三文鱼迁徙时间
+
+
+
+# Nature
+
+01. Diverse polarization angle swings from a repeating fast radio burst source
+    快速射电爆，15个数据，支持其中一种来源
+02. The Philae lander reveals low-strength primitive ice inside cometary boulders
+    探测器登录彗星
+03. High-throughput calculations of magnetic topological materials
+    高通量计算方法寻找磁性拓扑材料
+04. Efficient epoxidation over dinuclear sites in titanium silicalite-1
+    光谱学和显微镜，揭示 TS-1 催化的具体机理
+05. Metal-free photoinduced C(sp3)–H borylation of alkanes
+06. Large Chinese land carbon sink estimated from atmospheric carbon dioxide data
+    从大气中二氧化碳估计中国的陆地碳沉降
+07. Global priority areas for ecosystem restoration
+    让一部分生态先被修复，带动，啊不，是低成本高回报
+08. Stimulus-specific hypothalamic encoding of a persistent defensive state
+    刺激依赖的缓慢神经动态 -> 持久情绪状态
+09. The innate immunity protein IFITM3 modulates γ-secretase in Alzheimer’s disease
+10. High-depth African genomes inform human migration and health
+    非洲人基因组包含的变异更多，那就使劲测，426人，有很多以前忽视的群体
+11. Exome sequencing and characterization of 49,960 individuals in the UK Biobank
+    UK Biobank 计划测序500k 人和记录表型，先放出 50k 外显组，分析出了一堆 loss-of-function 与xx有关联
+12. Evidence for 28 genetic disorders discovered by combining healthcare and research data
+    31k 父母-孩子对，de nov 突变，发育不良疾病
+13. Inherited causes of clonal haematopoiesis in 97,691 whole genomes
+    年老导致慢性病，一种机理是造血干细胞体细胞突变的累积，作者测序来分析突变的根源
+14. Inherited myeloproliferative neoplasm risk affects haematopoietic stem cells
+15. Infection of dogs with SARS-CoV-2
+    新冠患者家里的狗，15只有2只是无症状感染，病毒序列和主人一模一样
+16. Immune receptor inhibition through enforced phosphatase recruitment
+    药物设计新思路，招募磷酸酶对受体的胞内部分去磷酸化
+17. Capillary cell-type specialization in the alveolus
+    肺泡毛细管细胞非均质，而是两种细胞交错排列
+18. Serine restriction alters sphingolipid diversity to constrain tumour growth
+    丝氨酸限制为什么能抑制肿瘤呢？因为它改变鞘脂多样性（合成有毒的脱氧鞘脂）
+19. In-cell architecture of the nuclear pore and snapshots of its turnover
+    原位结构生物学，核孔 turnover 的快照
+20. Mechanism of strand exchange from RecA–DNA synaptic and D-loop structures
+    电镜，同源重组的链交换机制，duplex opening 有 20% 几率终止，同源性会抑制这一过程
+21. Structure of hepcidin-bound ferroportin reveals iron homeostatic mechanisms
+    电镜
+
+
+
+# Cell
+
+01. Molecular Basis of Chemotactile Sensation in Octopus
+   章鱼的触觉是接触依赖的
+02. An Amygdala Circuit Mediates Experience-Dependent Momentary Arrests during Exploration
+   神经回路，探索时停下来
+03. The Statistical Structure of the Hippocampal Code for Space as a Function of Time, Context, and Value
+    下丘脑细胞感受野的概率模型
+04. TDP-43 Triggers Mitochondrial DNA Release via mPTP to Activate cGAS/STING in ALS
+    TDP-43 引发炎症，是因为其侵入线粒体，释放DNA
+05. Endocannabinoids Inhibit the Induction of Virulence in Enteric Pathogens
+    内源大麻直接作用于细菌，保护宿主免受肠道感染
+06. Translocation of Viable Gut Microbiota to Mesenteric Adipose Drives Formation of Creeping Fat in Humans
+    凭什么得了 Crohn 病就要长胖，原来是某种细菌乱跑
+07. A MicroRNA Linking Human Positive Selection and Metabolic Disorders
+    2q21.3 这个位置被正向选择并仅仅是因为乳糖酶，还有一个 mircoRNA 能活过饥荒（现在却导致肥胖）
+08. Single-Cell Transcriptomics Reveals Early Emergence of Liver Parenchymal and Non-parenchymal Cell Lineages
+    肝脏胚层来源
+09. Assembly Mechanism of Mucin and von Willebrand Factor Polymers
+    粘蛋白如何保护消化道和呼吸道
+10. Molecular Architecture of the SARS-CoV-2 Virus
+    新冠完整病毒的结构
+11. Structural and Functional Analysis of the D614G SARS-CoV-2 Spike Protein Variant
+    新冠S蛋白变体 D614G 在几个月内就取代了古老类型，感染力更强；S蛋白其它不变，但与ACE2受体的亲和力降低
+12. M. tuberculosis Reprograms Hematopoietic Stem Cells to Limit Myelopoiesis and Impair Trained Immunity
+    造血干细胞。。。骨髓生成。。。。通过I型干扰素
+13. Innate Immune Training of Granulopoiesis Promotes Anti-tumor Activity
+    真菌分泌的β-glucan 能增强获得性免疫，从而产生肿瘤抗性，还可以通过骨髓移植而传递
+14. Trained Immunity-Promoting Nanobiologic Therapy Suppresses Tumor Growth and Potentiates Checkpoint Inhibition
+    这三篇互相引用，这个搭了一个纳米生物学平台
+15. A Structural Model of the Endogenous Human BAF Complex Informs Disease Mechanisms
+    BAF 复合体结合到核小体时的结构

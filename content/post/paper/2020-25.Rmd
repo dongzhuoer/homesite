@@ -29,7 +29,7 @@ slug: 2020-25
 # Science - Reports
 
 1. Making ultrastrong steel tough by grain-boundary delamination
-   **分层工艺生产超高强度钢。
+   **分层工艺生产超高强度钢
 1. Microfluidic electrochemistry for single-electron transfer redox-neutral reactions
 1. 3D fault architecture controls the dynamism of earthquake swarms
    深度学习研究地震 swarm 演化

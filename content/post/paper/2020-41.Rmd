@@ -54,7 +54,7 @@ authors: []
 
 
 
-# Nature - Articles
+# Nature
 
 01. Four annular structures in a protostellar disk less than 500,000 years old
 02. Emergent electromagnetic induction in a helical-spin magnet
