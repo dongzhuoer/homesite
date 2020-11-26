@@ -8,6 +8,7 @@ tags:
 ---
 
 
+
 # classification measurement
 
 https://en.wikipedia.org/wiki/Sensitivity_and_specificity
@@ -18,3 +19,8 @@ F1 score 用到了 recall 和 precision。因为 precision 只能把圆心向 Tr
 
 
 
+# Optimizer
+
+- https://ruder.io/optimizing-gradient-descent/
+
+RMSprop is an extension of Adagrad that deals with its radically diminishing learning rates. It is identical to Adadelta, except that Adadelta uses the RMS of parameter updates in the numinator update rule. Adam, finally, adds bias-correction and momentum to RMSprop.
