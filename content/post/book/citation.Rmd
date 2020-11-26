@@ -9,7 +9,8 @@ slug: citation
 
 # APA
 
-- [in text](https://owl.english.purdue.edu/owl/resource/560/03/)
+
+- [in text](https://owl.purdue.edu/owl/research_and_citation/asa_style/in_text_citation_references.html)
 
   + use `&` in `()`; use `and` in text
   + One: `(Surname1, 2012)` `Surname1 (2012)`
@@ -21,3 +22,5 @@ slug: citation
     (Surname1 et al., 2012)
     ```
   + Six +: `(Surname1 et al., 2012)`
+
+![](https://owl.purdue.edu/owl/research_and_citation/apa_style/apa_formatting_and_style_guide/documents/APA%20Poster%2010.22.12.png)
