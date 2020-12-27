@@ -4,7 +4,9 @@ title: GitHub API limit pushs me to learn how to use docker multi-stage build to
 author: Zhuoer Dong
 date: '2018-11-20'
 slug: github-api-limit-teach-new-docker-tip
+categories: 2018
 tags: []
+authors: []
 ---
 
 # cause

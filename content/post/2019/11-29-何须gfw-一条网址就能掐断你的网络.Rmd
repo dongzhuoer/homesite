@@ -3,7 +3,7 @@ title: 何须GFW，一条网址就能掐断你的网络
 author: Zhuoer Dong
 date: '2019-11-29'
 slug: 何须gfw-一条网址就能掐断你的网络
-categories: []
+categories: 2019
 tags: []
 authors: []
 ---

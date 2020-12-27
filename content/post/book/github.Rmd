@@ -2,9 +2,11 @@
 title: GitHub
 author: Zhuoer Dong
 date: '2017-11-06'
+slug: github
+categories: book
 tags:
   - book-program
-slug: github
+authors: []
 ---
 
 # Pages

@@ -3,7 +3,9 @@ title: 救援谢老师工作站
 author: Zhuoer Dong
 date: '2017-06-25'
 slug: 救援谢老师工作站
+categories: 2017
 tags: []
+authors: []
 ---
 
 

@@ -3,7 +3,9 @@ title: UTF 大战和 Google、wikipedia 迷信反思
 author: Zhuoer Dong
 date: '2017-07-17'
 slug: utf-大战和-google-wikipedia-迷信反思
+categories: 2017
 tags: []
+authors: []
 ---
 
 # 写在前面的话

@@ -3,7 +3,9 @@ title: 记一下以前写的 R 代码和干的蠢事
 author: Zhuoer Dong
 date: '2019-01-23'
 slug: 记一下以前写的-r-代码和干的蠢事
+categories: 2019
 tags: []
+authors: []
 ---
 
 

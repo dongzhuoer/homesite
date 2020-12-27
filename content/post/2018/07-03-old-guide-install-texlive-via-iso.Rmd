@@ -3,7 +3,9 @@ title: old guide of installing texlive via ISO
 author: Zhuoer Dong
 date: '2018-07-03'
 slug: old-guide-install-texlive-via-iso
+categories: 2018
 tags: []
+authors: []
 ---
 
 Back to the days in Nankai, I got fascinated with installing system, but the network traffic was expensive, thus Tex Live became a big problem.

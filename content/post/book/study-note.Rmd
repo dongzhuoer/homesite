@@ -3,8 +3,10 @@ title: study note
 author: Zhuoer Dong
 date: '2019-08-06'
 slug: study-note
+categories: book
 tags:
   - book-zhuoer
+authors: []
 ---
 
 

@@ -3,7 +3,9 @@ title: 又一次失败的 Ubuntu 安装
 author: Zhuoer Dong
 date: '2017-11-16'
 slug: another-ubuntu-install-fail
+categories: 2017
 tags: []
+authors: []
 ---
 
 

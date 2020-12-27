@@ -3,7 +3,7 @@ title: 智障火狐，tmux 真香，及搜狗输入法真烦人三则
 author: Zhuoer Dong
 date: '2020-10-19'
 slug: 智障火狐-tmux-真香-及搜狗输入法真烦人三则
-categories: []
+categories: 2020
 tags: []
 authors: []
 ---

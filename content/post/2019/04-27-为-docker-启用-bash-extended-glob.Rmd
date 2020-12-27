@@ -3,7 +3,9 @@ title: 为 Docker 启用 bash extended glob
 author: Zhuoer Dong
 date: '2019-04-27'
 slug: 为-docker-启用-bash-extended-glob
+categories: 2019
 tags: []
+authors: []
 ---
 
 

@@ -3,7 +3,9 @@ title: 终于能控制 MIME 了
 author: Zhuoer Dong
 date: '2019-04-10'
 slug: 终于能控制-mime-了
+categories: 2019
 tags: []
+authors: []
 ---
 
 上午打算看文献，突然想要 Mendeley 的 `open file externally` 能使用 Okular（黄底黑字更护眼）。

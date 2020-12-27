@@ -2,9 +2,11 @@
 title: GitLab
 author: Zhuoer Dong
 date: '2017-11-06'
+slug: gitlab
+categories: book
 tags:
   - book-program
-slug: gitlab
+authors: []
 ---
 
 # Pages

@@ -3,7 +3,9 @@ title: use datamodelr to create database schema diagrams
 author: Zhuoer Dong
 date: '2018-11-10'
 slug: use-datamodelr-show-database-schema
+categories: 2018
 tags: []
+authors: []
 ---
 
 Thanks to _R for Data Science Solutions_ for telling me how to draw database schema diagrams.

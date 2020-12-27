@@ -3,7 +3,9 @@ title: install Utopia Documents, dependency is indeed troublesome
 author: Zhuoer Dong
 date: '2019-04-07'
 slug: install-utopia-documents
+categories: 2019
 tags: []
+authors: []
 ---
 
 In the last section of _Bioinformatics Challenges, at the Interface of Biology and Computer Science, Mind The Gap_, the author recommands Utopia Documents, so I decide to install it (otherwise it should be quite hard to follow the book).

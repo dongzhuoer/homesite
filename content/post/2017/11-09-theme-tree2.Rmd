@@ -2,11 +2,11 @@
 title: 又造了一个小轮子：`ggtree::theme_tree2()`
 author: Zhuoer Dong
 date: '2017-11-09'
-tags:
-  - to revise
 slug: theme-tree2
+categories: 2017
+tags: []
+authors: []
 ---
-
 
 当年在谢强老师实验室的时候，老师推荐我写一个把进化树画到地质年代图上的小程序 ^[https://github.com/dongzhuoer/ggxie]。
 

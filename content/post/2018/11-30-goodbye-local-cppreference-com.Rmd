@@ -3,7 +3,9 @@ title: Goodbye, local cppreference.com
 author: Zhuoer Dong
 date: '2018-11-30'
 slug: goodbye-local-cppreference-com
+categories: 2018
 tags: []
+authors: []
 ---
 
 # Beginning

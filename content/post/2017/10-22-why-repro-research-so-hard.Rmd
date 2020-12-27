@@ -3,7 +3,9 @@ title: why is reproducible research so so so hard?
 author: Zhuoer Dong
 date: '2017-10-22'
 slug: why-repro-research-so-hard
+categories: 2017
 tags: []
+authors: []
 ---
 
 这是跟着 Gao 老师远程实习，做 gene loss 的事了。我得到了两个表格，想比较一下是不是完全一样的。

@@ -3,12 +3,11 @@ title: 44周：Oct30 Science, Oct29 Nature, Oct29 Cell
 author: Zhuoer Dong
 date: '2020-11-02'
 slug: 2020-44
-categories: []
-tags:
-  - paper
+categories: paper
+tags: []
 authors: []
 ---
-
+   
 
 # Science - Research Articles
 

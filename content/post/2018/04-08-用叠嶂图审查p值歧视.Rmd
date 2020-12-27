@@ -3,7 +3,9 @@ title: 用叠嶂图审查p值歧视
 author: Zhuoer Dong
 date: '2018-04-08'
 slug: 用叠嶂图审查p值歧视
+categories: 2018
 tags: []
+authors: []
 ---
 
 ```{r install-pkg, message=FALSE, eval=Sys.getenv('CI') == 'true'}

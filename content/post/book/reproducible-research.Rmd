@@ -3,9 +3,11 @@ title: Reproducible Research
 author: Zhuoer Dong
 date: '2019-12-27'
 slug: reproducible-research
+categories: book
 tags:
   - book-program
   - book-research
+authors: []
 ---
 
 

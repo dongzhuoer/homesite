@@ -3,7 +3,9 @@ title: evolution of R package on travis
 author: Zhuoer Dong
 date: '2018-06-02'
 slug: r-package-travis-evolution
+categories: 2018
 tags: []
+authors: []
 ---
 
 

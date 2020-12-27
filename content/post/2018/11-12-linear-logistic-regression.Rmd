@@ -6,11 +6,10 @@ output:
     blogdown::html_page:
         df_print: paged    
 slug: linear-logistic-regression
+categories: 2018
 tags: []
-editor_options: 
-    chunk_output_type: console
+authors: []
 ---
-
 ```{r knitr-setup, include=FALSE}
 options(device = "cairo_pdf")
 

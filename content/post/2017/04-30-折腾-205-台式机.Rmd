@@ -3,7 +3,9 @@ title: 折腾 205 台式机
 author: Zhuoer Dong
 date: '2017-04-30'
 slug: 折腾-205-台式机
+categories: 2017
 tags: []
+authors: []
 ---
 
 > 那时沉迷于装系统，尤其是双系统，于是205的台式机就成了我的试验品了。

@@ -3,7 +3,9 @@ title: link to .md file on GitHub
 author: Zhuoer Dong
 date: '2018-07-13'
 slug: github-md-link
+categories: 2018
 tags: []
+authors: []
 ---
 
 

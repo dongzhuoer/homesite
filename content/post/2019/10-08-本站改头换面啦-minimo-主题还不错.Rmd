@@ -3,7 +3,7 @@ title: 本站改头换面啦，Minimo 主题还不错
 author: Zhuoer Dong
 date: '2019-10-08'
 slug: 本站改头换面啦-minimo-主题还不错
-categories: []
+categories: 2019
 tags: []
 authors: []
 ---

@@ -3,7 +3,9 @@ title: lobstr segfault leads me to develop a way to debug `rmarkdown::render()`
 author: Zhuoer Dong
 date: '2018-12-20'
 slug: debug-rmarkdown-render
+categories: 2018
 tags: []
+authors: []
 ---
 
 # cause

@@ -3,7 +3,9 @@ title: everlasting battle with GFW
 author: Zhuoer Dong
 date: '2018-05-09'
 slug: everlasting-battle-with-gfw
+categories: 2018
 tags: []
+authors: []
 ---
 
 > 与 GFW 的战斗永不停息，下面是以前写的几篇 post。

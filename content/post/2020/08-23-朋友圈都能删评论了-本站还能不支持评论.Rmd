@@ -3,7 +3,7 @@ title: 朋友圈都能删评论了，本站还能不支持评论
 author: Zhuoer Dong
 date: '2020-08-23'
 slug: 朋友圈都能删评论了-本站还能不支持评论
-categories: []
+categories: 2020
 tags: []
 authors: []
 ---

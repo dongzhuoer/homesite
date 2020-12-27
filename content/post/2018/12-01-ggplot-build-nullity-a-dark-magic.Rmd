@@ -3,7 +3,9 @@ title: '`ggplot2::ggplot_build()` abandans the dark magic I worked pass midnight
 author: Zhuoer Dong
 date: '2018-12-01'
 slug: ggplot-build-nullity-a-dark-magic
+categories: 2018
 tags: []
+authors: []
 ---
 
 

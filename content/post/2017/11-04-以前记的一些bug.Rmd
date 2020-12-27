@@ -3,7 +3,9 @@ title: 以前记的一些bug
 author: Zhuoer Dong
 date: '2017-11-04'
 slug: 以前记的一些bug
+categories: 2017
 tags: []
+authors: []
 ---
 
 > 在 homesite 第二版的时候，建了 `misc.Rmd` 来记录遇到的 bug。一方面当时没时间写成 post，另一方面有些 bug 要过一天甚至好几天才有定论。

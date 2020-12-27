@@ -3,7 +3,7 @@ title: VPS 价格哪家低，我也不知道该找谁啊
 author: Zhuoer Dong
 date: '2020-02-04'
 slug: vps-价格哪家低-我也不知道该找谁啊
-categories: []
+categories: 2020
 tags: []
 authors: []
 ---

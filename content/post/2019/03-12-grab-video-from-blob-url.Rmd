@@ -3,7 +3,9 @@ title: grab video from blob url
 author: Zhuoer Dong
 date: '2019-03-12'
 slug: grab-video-from-blob-url
+categories: 2019
 tags: []
+authors: []
 ---
 
 

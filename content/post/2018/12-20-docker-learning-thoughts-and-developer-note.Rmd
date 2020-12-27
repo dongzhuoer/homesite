@@ -3,7 +3,9 @@ title: Docker 学习感悟和开发笔记 | Docker learning thoughts and develop
 author: Zhuoer Dong
 date: '2018-12-20'
 slug: docker-learning-thoughts-and-developer-note
+categories: 2018
 tags: []
+authors: []
 ---
 
 

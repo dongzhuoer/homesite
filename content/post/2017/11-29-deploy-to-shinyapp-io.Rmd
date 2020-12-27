@@ -3,7 +3,9 @@ title: deploy Shiny App on shinyapp.io
 author: Zhuoer Dong
 date: '2017-11-29'
 slug: deploy-to-shinyapp-io
+categories: 2017
 tags: []
+authors: []
 ---
 
 Google 又抽筋了，得换个 VPS。这样的话，把 pgmcs Shiny app 放在 VPS 就太麻烦了，于是移到了 205 台式机。但这样只能在校园网访问，于是我就开始寻找托管服务，一番比较之后定为 http://www.shinyapps.io/ （其实也没得选）。

@@ -3,7 +3,9 @@ title: 再也不用担心build新的bookdown书了
 author: Zhuoer Dong
 date: '2018-12-03'
 slug: 再也不用担心build新的bookdown书了
+categories: 2018
 tags: []
+authors: []
 ---
 
 今天花了一整天建好了 build-bookdown 的模板，以后 build 新的书就只需要把最前面的参数改一下，再也不用像以前那样加一本书就要数小时。

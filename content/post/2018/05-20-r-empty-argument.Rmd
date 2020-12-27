@@ -3,7 +3,9 @@ title: Yet another dark magic in R, empty argument
 author: Zhuoer Dong
 date: '2018-05-20'
 slug: r-empty-argument
+categories: 2018
 tags: []
+authors: []
 ---
 
 ```{r knitr-setup}

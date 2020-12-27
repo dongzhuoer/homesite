@@ -3,7 +3,9 @@ title: VSCode 的等宽字体终于“等宽”了
 author: Zhuoer Dong
 date: '2018-03-23'
 slug: vscode-font-finally-mono
+categories: 2018
 tags: []
+authors: []
 ---
 
 实在受不了 VSCode 中文和英文不等宽的设定，后来发现其实是 `monospace` 字体的错：`"editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'"`。`Droid Sans Mono` 只有英文，所以中文实际上用的是 `monospace`（前者就像是个小傀儡）。

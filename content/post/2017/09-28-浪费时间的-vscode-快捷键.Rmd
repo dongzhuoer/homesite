@@ -3,7 +3,9 @@ title: 浪费时间的 VSCode 快捷键
 author: Zhuoer Dong
 date: '2017-09-28'
 slug: 浪费时间的-vscode-快捷键
+categories: 2017
 tags: []
+authors: []
 ---
 
 自从上次被 VSCode 的快捷键闪瞎眼之后，我就被深深地迷住了。然而同时使用 Windows 和 Ubuntu 就注定了此路不会顺利，毕竟键盘只有那么小，悲伤却那么大。要想 VSCode 用的爽，就必须让其他程序（甚至是操作系统）开道。

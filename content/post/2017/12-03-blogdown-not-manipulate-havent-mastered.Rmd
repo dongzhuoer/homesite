@@ -4,7 +4,9 @@ title: A lesson from blogdown, never manipulate something you haven't mastered u
 author: Zhuoer Dong
 date: '2017-12-03'
 slug: blogdown-not-manipulate-havent-mastered
+categories: 2017
 tags: []
+authors: []
 ---
 
 Another afternoon is wasted. Maybe I just can't help myself because I can get fun from fiddling with programming.

@@ -3,7 +3,9 @@ title: 永别了，Windows
 author: Zhuoer Dong
 date: '2018-01-25'
 slug: windows-bye
+categories: 2018
 tags: []
+authors: []
 ---
 
 > 以前 Windows 还是我办公的得力助手，现在已经彻底沦为娱乐用途了。

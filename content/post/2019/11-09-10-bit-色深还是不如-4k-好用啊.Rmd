@@ -3,7 +3,7 @@ title: 10-bit 色深还是不如 4K 好用啊
 author: Zhuoer Dong
 date: '2019-11-09'
 slug: 10-bit-色深还是不如-4k-好用啊
-categories: []
+categories: 2019
 tags: []
 authors: []
 ---

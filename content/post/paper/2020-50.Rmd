@@ -3,12 +3,11 @@ title: 50周：Dec11 Science, Dec10 Nature, Dec10 Cell
 author: Zhuoer Dong
 date: '2020-12-14'
 slug: 2020-50
-categories: []
-tags:
-  - paper
+categories: paper
+tags: []
 authors: []
 ---
-
+   
 
 
 # Science - Research Articles

@@ -2,11 +2,12 @@
 title: 25周：June19 Science, June18 Nature
 author: Zhuoer Dong
 date: '2020-09-17'
-tags:
-  - paper
 slug: 2020-25
+categories: paper
+tags: []
+authors: []
 ---
-
+   
 
 
 # Science - Research Articles

@@ -3,7 +3,7 @@ title: How to write easily understandable R package documentation
 author: Zhuoer Dong
 date: '2018-07-15'
 slug: how-to-write-easily-understandable-r-package-documentation
-categories: []
+categories: 2018
 tags: []
 authors: []
 ---
