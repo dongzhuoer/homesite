@@ -3,7 +3,9 @@ title: shadowsocks return to systemd from Docker
 author: Zhuoer Dong
 date: '2019-03-27'
 slug: shadowsocks-back-systemd
+categories: 2019
 tags: []
+authors: []
 ---
 
 > 不能上网果然是一件让人非常不爽的事情。

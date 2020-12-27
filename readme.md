@@ -24,14 +24,22 @@ This blog mainly consists of two parts:
 ## Usage
 
 ```r
-blogdown::build_site()
+blogdown::build_site(local = TRUE, build_rmd = blogdown::filter_md5sum)
+```
+
+
+
+## Developers
+
+```bash
+Rscript -e 'blogdown::new_post("你好，世界", open = F, categories = "2020")'
+Rscript -e 'file.remove( dir(here::here("content"), "\\.html$", full = T, recursive = T) )'
+rm -r public/*
 ```
 
 post (`.md`) 都位于 `content/post/` 下:
-
 - book post (和 `_index.md` 一起) 位于 `content/post/book/`，</post/book/index.html> 就会自动变成 index page
 - caprice post （按年份组织）位于 `content/post/`，</post/index.html> 就会自动变成 index page （由于 `book/` 子目录有 `_index.md`，所以其包含的 post 不会显示在该页面）
-
 这种组织方式对于其它 theme 也是适用的，比如 [hugo-lithium](https://github.com/yihui/hugo-lithium)
 
 

@@ -3,7 +3,9 @@ title: RStudio marry 搜狗拼音输入法
 author: Zhuoer Dong
 date: '2018-03-18'
 slug: rstudio-marry-sogoupinyin
+categories: 2018
 tags: []
+authors: []
 ---
 
 

@@ -3,7 +3,9 @@ title: failed attempt to build Gogs
 author: Zhuoer Dong
 date: '2018-01-06'
 slug: gogs-failed
+categories: 2018
 tags: []
+authors: []
 ---
 
 > 当时对代码的保存总是不放心

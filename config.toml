@@ -49,13 +49,18 @@ weight = 3
 url = "/post"
 
 [[menu.sidebar]]
-name = "about"
+name = "category"
 weight = 4
+url = "/categories"
+
+[[menu.sidebar]]
+name = "about"
+weight = 5
 url = "/about"
 
 [[menu.sidebar]]
-name = "repo"
-weight = 5
+name = "GitHub"
+weight = 6
 url = "https://github.com/dongzhuoer/homesite"
 
 

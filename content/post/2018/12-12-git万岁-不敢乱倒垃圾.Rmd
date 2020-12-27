@@ -3,7 +3,9 @@ title: Git果然是万能的时光机，我再也不乱倒垃圾了
 author: Zhuoer Dong
 date: '2018-12-12'
 slug: git万岁-不敢乱倒垃圾
+categories: 2018
 tags: []
+authors: []
 ---
 
 # Beginning

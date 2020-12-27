@@ -3,12 +3,11 @@ title: 41周：Oct09 Science, Oct08 Nature
 author: Zhuoer Dong
 date: '2020-10-12'
 slug: 2020-41
-categories: []
-tags:
-  - paper
+categories: paper
+tags: []
 authors: []
 ---
-
+   
 
 
 # Science - Research Articles

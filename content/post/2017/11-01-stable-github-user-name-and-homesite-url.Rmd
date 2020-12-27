@@ -3,7 +3,9 @@ title: stable GitHub user name and homesite url
 author: Zhuoer Dong
 date: '2017-11-01'
 slug: stable-github-user-name-and-homesite-url
+categories: 2017
 tags: []
+authors: []
 ---
 
 > 我的 GitHub user name 变来变去，从 `dongzhuoer` 到 `gitzhuoer`，再回到 `dongzhuoer` ^[该死的是有人已经抢占了 `zhuoer`，还一个 repo 都不建，给我多好啊]；连带着 homesite 的 url 也不稳定。下面是我以前写的一篇 post：

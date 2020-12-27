@@ -3,7 +3,9 @@ title: 'yet another will: cross-link between pkgdown websites'
 author: Zhuoer Dong
 date: '2018-12-24'
 slug: cross-link-pkgdown-websites
+categories: 2018
 tags: []
+authors: []
 ---
 
 > sometimes you just need to wait, wait, and wait, then the function you desires would suddenly coming into being.

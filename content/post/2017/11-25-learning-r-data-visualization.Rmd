@@ -5,8 +5,10 @@ date: '2017-11-25'
 output:
   blogdown::html_page:
     dev: png
-tags: []
 slug: learning-r-data-visualization
+categories: 2017
+tags: []
+authors: []
 ---
 
 

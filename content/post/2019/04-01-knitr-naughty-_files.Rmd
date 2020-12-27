@@ -3,7 +3,9 @@ title: knitr 又不听话了，自动生成 _files/ 这能忍？
 author: Zhuoer Dong
 date: '2019-04-01'
 slug: knitr-naughty-_files
+categories: 2019
 tags: []
+authors: []
 ---
 
 这几天在整理 thesis 的几个 repo，把生成图片的代码做成可以 run 的 `.Rmd` 自然不必说。

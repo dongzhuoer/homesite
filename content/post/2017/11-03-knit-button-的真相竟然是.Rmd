@@ -3,7 +3,9 @@ title: Knit button 的真相竟然是
 author: Zhuoer Dong
 date: '2017-11-03'
 slug: knit-button-的真相竟然是
+categories: 2017
 tags: []
+authors: []
 ---
 
 > 那会儿总觉得如果一个 GUI 命令背后的代码不清楚，用起来就会担惊受怕。

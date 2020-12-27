@@ -3,7 +3,9 @@ title: Where there is an error, there is a log
 author: Zhuoer Dong
 date: '2017-12-09'
 slug: journalctl-solves-privoxy
+categories: 2017
 tags: []
+authors: []
 ---
 
 

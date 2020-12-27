@@ -3,7 +3,7 @@ title: Bye PyCharm, Hello Spyder
 author: Zhuoer Dong
 date: '2019-11-05'
 slug: bye-pycharm-hello-spyder
-categories: []
+categories: 2019
 tags: []
 authors: []
 ---

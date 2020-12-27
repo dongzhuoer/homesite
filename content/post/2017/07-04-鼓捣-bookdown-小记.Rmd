@@ -3,7 +3,9 @@ title: 鼓捣 bookdown 小记
 author: Zhuoer Dong
 date: '2017-07-04'
 slug: 鼓捣-bookdown-小记
+categories: 2017
 tags: []
+authors: []
 ---
 
 > 刚接触 **bookdown** 时，鼓捣了好久，这里记一下。

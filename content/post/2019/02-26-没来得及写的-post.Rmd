@@ -3,7 +3,9 @@ title: 没来得及写的 post
 author: Zhuoer Dong
 date: '2019-02-26'
 slug: 没来得及写的-post
+categories: 2019
 tags: []
+authors: []
 ---
 
 整理以前的 post，有些当时只来得及想了个标题，到现在要写的东西已经用不上了。

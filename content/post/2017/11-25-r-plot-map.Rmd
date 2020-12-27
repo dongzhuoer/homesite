@@ -2,8 +2,10 @@
 title: 以前瞎鼓捣画地图
 author: Zhuoer Dong
 date: '2017-11-25'
-tags: []
 slug: r-plot-map
+categories: 2017
+tags: []
+authors: []
 ---
 
 

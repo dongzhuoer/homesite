@@ -3,7 +3,9 @@ title: switch working directory on Windows command line
 author: Zhuoer Dong
 date: '2019-03-12'
 slug: switch-wd-on-win-cmd
+categories: 2019
 tags: []
+authors: []
 ---
 
 

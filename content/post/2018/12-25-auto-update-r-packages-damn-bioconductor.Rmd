@@ -3,7 +3,9 @@ title: automatically update R packages, Bioconductor is annoying as usual
 author: Zhuoer Dong
 date: '2018-12-25'
 slug: auto-update-r-packages-damn-bioconductor
+categories: 2018
 tags: []
+authors: []
 ---
 
 # cause

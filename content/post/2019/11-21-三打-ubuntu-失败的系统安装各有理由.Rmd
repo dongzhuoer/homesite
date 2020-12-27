@@ -3,10 +3,10 @@ title: 三打 Ubuntu，失败的系统安装各有理由
 author: Zhuoer Dong
 date: '2019-11-21'
 slug: 三打-ubuntu-失败的系统安装各有理由
+categories: 2019
 tags: []
 authors: []
 ---
-
 
 
 # Preface

@@ -3,7 +3,9 @@ title: understanding .bashrc, 七窍终于通了六窍
 author: Zhuoer Dong
 date: '2018-01-07'
 slug: bashrc
+categories: 2018
 tags: []
+authors: []
 ---
 
 2019-11-24  feel too complicated, I just need to make link in `~/.local/bin` (`~/.profile` already add it to `PATH`). 

@@ -3,7 +3,9 @@ title: after R on Travis crashed
 author: Zhuoer Dong
 date: '2018-05-16'
 slug: after-r-on-travis-crashed
+categories: 2018
 tags: []
+authors: []
 ---
 
 In the morning, I routinely checked the updates, including e-mail, GitHub notification, etc. When I browsered Travis CI dashboard, I decided to have a look at [build-adv-r](https://github.com/dongzhuoer/build-adv-r) ^[I use this repo to automatically build Hadley's "Advanced R". I might talk about the reason in the future post about my tiny bookdown website.]. The error message is something like `foobar not exported from rlang`. I searched Google ^[Google is so powerful, I decide to search "GitHub" + some stuff first, before searching something directly on GitHub.] and found that the function is renamed, a normal price for using a development package. To avoid editing the source code, I chose to install an early commit, before the function change its name. Then another problem occurred, and I have completely no idea what's going wrong. It's seems I have to `sed` the `.Rmd`, like [what I did with the another book](https://github.com/hadley/r4ds/issues/612#issuecomment-370239689). While I am trying this, I browsered Hadley himself's build and wonder why his just succeed.

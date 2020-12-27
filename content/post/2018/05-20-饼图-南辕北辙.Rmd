@@ -3,7 +3,9 @@ title: 饼图中的南辕北辙
 author: Zhuoer Dong
 date: '2018-05-20'
 slug: 饼图-南辕北辙
+categories: 2018
 tags: []
+authors: []
 ---
 
 ```{r knitr-setup, include=FALSE}

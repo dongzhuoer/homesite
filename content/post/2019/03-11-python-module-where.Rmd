@@ -3,7 +3,9 @@ title: python module 都去哪了
 author: Zhuoer Dong
 date: '2019-03-11'
 slug: python-module-where
+categories: 2019
 tags: []
+authors: []
 ---
 
 自从彻底弄清楚装 R 包的事之后，总觉得 Python module 装得不明不白的，就知道一个 `--user`。今天上午鼓捣了一会儿，终于弄懂了。

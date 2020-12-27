@@ -3,7 +3,9 @@ title: 气煞人的 .ssh 权限 以及 ssh-add
 author: Zhuoer Dong
 date: '2017-11-27'
 slug: file-permission-ruin-ssh
+categories: 2017
 tags: []
+authors: []
 ---
 
 

@@ -3,7 +3,7 @@ title: Ubuntu 20.04, 还我搜狗输入法
 author: Zhuoer Dong
 date: '2020-08-04'
 slug: ubuntu-20-04-还我搜狗输入法
-categories: []
+categories: 2020
 tags: []
 authors: []
 ---

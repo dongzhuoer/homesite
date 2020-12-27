@@ -3,8 +3,10 @@ title: don't be lazy--RStudio Server's Upload button let me feel the
   desperation of genewise failure again
 author: Zhuoer Dong
 date: '2017-12-07'
-tags: []
 slug: not-rely-on-rstudio-server-upload
+categories: 2017
+tags: []
+authors: []
 ---
 
 

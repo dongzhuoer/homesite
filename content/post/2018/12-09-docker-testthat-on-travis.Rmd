@@ -3,7 +3,9 @@ title: Use Docker to test R packages on Travis
 author: Zhuoer Dong
 date: '2018-12-09'
 slug: docker-testthat-on-travis
+categories: 2018
 tags: []
+authors: []
 ---
 
 

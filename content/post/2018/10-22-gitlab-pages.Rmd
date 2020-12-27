@@ -3,7 +3,9 @@ title: project pages -- case study in GitLab
 author: Zhuoer Dong
 date: '2018-10-22'
 slug: gitlab-pages
+categories: 2018
 tags: []
+authors: []
 ---
 
 # Beginning

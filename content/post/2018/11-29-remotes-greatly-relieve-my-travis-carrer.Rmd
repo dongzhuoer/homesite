@@ -3,7 +3,9 @@ title: remotes, a small step of devtools suite, a big step for my Travis carrer
 author: Zhuoer Dong
 date: '2018-11-29'
 slug: remotes-greatly-relieve-my-travis-carrer
+categories: 2018
 tags: []
+authors: []
 ---
 
 

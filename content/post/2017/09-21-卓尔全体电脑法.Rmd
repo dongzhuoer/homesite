@@ -3,7 +3,9 @@ title: 卓尔全体电脑法
 author: Zhuoer Dong
 date: '2017-09-21'
 slug: 卓尔全体电脑法
+categories: 2017
 tags: []
+authors: []
 ---
 
 > 此法一切解释权归董卓尔所有, 所属全体电脑必须遵守，任何反对均无效。

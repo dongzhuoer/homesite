@@ -2,8 +2,10 @@
 title: finally, apt doesn't waste my time
 author: Zhuoer Dong
 date: '2018-03-11'
-tags: []
 slug: apt-ipv4
+categories: 2018
+tags: []
+authors: []
 ---
 
 # Preface

@@ -3,7 +3,9 @@ title: Encounter Travis, automatically build PDF
 author: Zhuoer Dong
 date: '2018-02-11'
 slug: first-travis-auto-build-pdf
+categories: 2018
 tags: []
+authors: []
 ---
 
 

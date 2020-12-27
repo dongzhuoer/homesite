@@ -2,11 +2,12 @@
 title: 26周：June26 Science, June25 Nature, June25 Cell
 author: Zhuoer Dong
 date: '2020-09-24'
-tags:
-  - paper
 slug: 2020-26
+categories: paper
+tags: []
+authors: []
 ---
-
+   
 补番大法，顺延下周
 - https://science.sciencemag.org/content/by/year
 - https://www.nature.com/nature/volumes/582

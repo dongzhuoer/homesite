@@ -3,7 +3,7 @@ title: blog 解除封锁，以后想写就写
 author: Zhuoer Dong
 date: '2020-08-18'
 slug: blog-解除封锁-以后想写就写
-categories: []
+categories: 2020
 tags: []
 authors: []
 ---

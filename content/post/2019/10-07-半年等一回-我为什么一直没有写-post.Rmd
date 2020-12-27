@@ -3,7 +3,9 @@ title: 半年等一回，我为什么一直没有写 post
 author: Zhuoer Dong
 date: '2019-10-07'
 slug: 半年等一回-我为什么一直没有写-post
+categories: 2019
 tags: []
+authors: []
 ---
 
 从四月底的 _Docker extended glob_ 以来，我已经有半年（五个月零10天）没有写新 post 了。严格来说八月份还是有两篇 post 的，但是 _study note_ 只开了个头，至于 _pre convolute_，（就在刚才）我花了快一节课才修订好。这次十一长假终于能抽出时间弄一下 blog，我就想回顾一下之前都是被什么占去了写 post 的时间。

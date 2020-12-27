@@ -3,10 +3,10 @@ title: testthat mask potential bug of not import %>% from magrittr
 author: Zhuoer Dong
 date: '2018-11-13'
 slug: testthat-indulge-not-import-pipe
-tags:
-  - to debug
+categories: 2018
+tags: []
+authors: []
 ---
-
 ```{r install-pkg, message=FALSE, eval=Sys.getenv('CI') == 'true'}
 # install needed R packages
 remotes::update_packages(c('testthat'), upgrade = TRUE)

@@ -3,7 +3,9 @@ title: aria2c backend + MySQL driver 就花了一小时，整理果然好耗功�
 author: Zhuoer Dong
 date: '2019-02-23'
 slug: aria2-backend-mysql-driver-take-1h
+categories: 2019
 tags: []
+authors: []
 ---
 
 # Beginning

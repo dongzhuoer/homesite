@@ -6,7 +6,9 @@ output:
     blogdown::html_page:
         df_print: paged    
 slug: r-machine-learning-random-forest-example
+categories: 2018
 tags: []
+authors: []
 ---
 
 ```{r knitr-setup, include=FALSE}

@@ -2,8 +2,10 @@
 title: Rnw to Rmd waste another afternoon
 author: Zhuoer Dong
 date: '2018-01-23'
-tags: []
 slug: rnw-to-rmd-waste-afternoon
+categories: 2018
+tags: []
+authors: []
 ---
 
 # Beginning

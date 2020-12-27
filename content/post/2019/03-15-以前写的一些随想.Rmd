@@ -3,7 +3,9 @@ title: 以前写的一些随想
 author: Zhuoer Dong
 date: '2019-03-15'
 slug: 以前写的一些随想
+categories: 2019
 tags: []
+authors: []
 ---
 
 

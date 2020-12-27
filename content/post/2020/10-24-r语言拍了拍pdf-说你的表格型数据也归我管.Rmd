@@ -3,7 +3,7 @@ title: R语言拍了拍PDF，说你的表格型数据也归我管
 author: Zhuoer Dong
 date: '2020-10-24'
 slug: r语言拍了拍pdf-说你的表格型数据也归我管
-categories: []
+categories: 2020
 tags: []
 authors: []
 ---

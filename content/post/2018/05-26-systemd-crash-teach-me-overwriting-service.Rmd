@@ -3,7 +3,9 @@ title: a lucky systemd crash teach me how to overwrite systemd service in a eleg
 author: Zhuoer Dong
 date: '2018-05-26'
 slug: systemd-crash-teach-me-overwriting-service
+categories: 2018
 tags: []
+authors: []
 ---
 
 Suddenly, systemd broken, even `systemctl-status` reports error. So I restart Ubuntu, and the situation become even worse: I can't see the desktop. Luckily, after another restart, everything becomes fine.
