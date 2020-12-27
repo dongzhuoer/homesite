@@ -1,0 +1,106 @@
+---
+title: 50周：Dec11 Science, Dec10 Nature, Dec10 Cell
+author: Zhuoer Dong
+date: '2020-12-14'
+slug: 2020-50
+categories: []
+tags:
+  - paper
+authors: []
+---
+
+
+
+# Science - Research Articles
+
+1. Developmental clock and mechanism of de novo polarization of the mouse embryo
+   胚胎极化时钟反映了合子基因开始激活，鉴定了三个基因和下游分子通路
+2. Genetic interaction mapping informs integrative structure determination of protein complexes
+   点突变对应的表型谱，根据后者相似性鉴定出位置接近的残基对，来预测蛋白质结构
+3. Mouse embryonic stem cells self-organize into trunk-like structures with neural tube and somites
+   多能干细胞长成具有神经管和体节的东西，可以类比研究胚胎发育
+4. CiBER-seq dissects genetic networks by quantitative CRISPRi profiling of expression phenotypes
+   CRISPR 高通量，barcoded reporter，在整合压力应答(ISR)通路中，既重复了传统的 uncharged tRNA 途径，又发现了新的 tRNA 不足途径
+5. A transmissible cancer shifts from emergence to endemism in Tasmanian devils
+   用流行病学方法研究袋獾肿瘤，R 从之前的 3.5（预测灭绝）降到了目前的 1 左右
+6. Recent global decline of CO2 fertilization effects on vegetation photosynthesis
+   CO2 多，植物长得好，固定更多 CO2，但这个良性循环在百年尺度上是减弱的
+7. Monolithic perovskite/silicon tandem solar cell with >29% efficiency by enhanced hole extraction
+   高性能串联太阳能电池
+ 
+
+
+# Science - Reports
+
+1. Optically addressable molecular spins for quantum information processing
+   旋转子 for 量子计算
+2. Reversible planar gliding and microcracking in a single-crystalline Ni-rich cathode
+   单晶服镍阳极，观察到一种现象，为降低**损耗提供线索
+3. Protein condensates as aging Maxwell fluids
+   麦克斯韦流体
+4. Resonant collisional shielding of reactive molecules using electric fields
+   控制分子间相互作用 for 量子计算。。人为使反应速率降低一个数量级
+5. Stem-like CD8 T cells mediate response of adoptive cell immunotherapy against human cancer
+   发现一种表型，tumor-infiltrating lymphocytes (TIL)细胞可以分为两类
+6. Indian monsoon derailed by a North Atlantic wavetrain
+   中纬度的 Rossby 波影响印度季风
+7. Preexisting and de novo humoral immunity to SARS-CoV-2 in humans
+   感染前就已经有新冠免疫力，但是抗体种类和丰度与感染者不同
+8. The evolution of a tropical biodiversity hotspot
+   恶劣环境下物种产生的速度更快，但是热带地区在时间尺度累积、形成丰富的生物多样性
+9. Southern Ocean upwelling, Earth’s obliquity, and glacial-interglacial atmospheric CO2 change
+
+
+
+# Nature
+
+01. Detection of large-scale X-ray bubbles in the Milky Way halo
+02. Unveiling the strong interaction among hadrons at the LHC
+03. Dipolar evaporation of reactive molecules to below the Fermi temperature
+04. Operation of an optical atomic clock with a Brillouin laser subsystem
+    原子钟从微波到光波级，作者开发了不需要真空的系统
+05. Capillary condensation under atomic-scale confinement
+    开尔文方程描述了毛细现象，当管径与水分子大小可比时肯定没戏。。等等，作者发现居然是对的，巧合而已，真实原因是管的弹性形变
+06. Catalytic asymmetric addition of an amine N–H bond across internal alkenes
+07. Quantification of an efficiency–sovereignty trade-off in climate policy
+    碳税怎么收？作者认为最好是在统一定价的基础上加适当扰动，辅以适当财政转移
+08. Clustered versus catastrophic global vertebrate declines
+    物种灭绝速率用的是平均数，作者发现受极端值的干扰非常严重
+09. Late Cretaceous bird from Madagascar reveals unique development of beaks
+10. Multiple wheat genomes reveal global variation in modern breeding
+    15个小麦基因组比较
+11. The barley pan-genome reveals the hidden legacy of mutation breeding
+    20个大麦品种基因组，提出 pan基因组来反映序列多样性
+12. PIEZO2 in sensory neurons and urothelial cells coordinates urination
+    PIEZO2 基因控制撒尿
+13. Chemico-genetic discovery of astrocytic control of inhibition in vivo
+    蛋白质组学发现分子机制
+14. The gut microbiota is associated with immune cell dynamics in humans
+    从接受治疗的癌症病人取样，1万份肠道基因组样本，分析其变化与免疫细胞变化的关系
+15. LDLRAD3 is a receptor for Venezuelan equine encephalitis virus
+    CRISPR 筛选出病毒依赖的宿主因子
+16. Sex differences in immune responses that underlie COVID-19 disease outcomes
+    为什么男性得新冠后病情更重，是因为免疫反应的不同
+17. Tunable dynamics of B cell selection in gut germinal centres
+18. Receptor binding and priming of the spike protein of SARS-CoV-2 for membrane fusion
+    spike 蛋白两次剪切，电镜研究分子机制
+19. A metastasis map of human cancer cell lines
+    体内 barcode 研究癌症转移
+20. A map of cis-regulatory elements and 3D genome structures in zebrafish
+    在斑马鱼中把各种组学都做了一遍
+21. Structure of LRRK2 in Parkinson’s disease and model for microtubule interaction
+22. Structures and pH-sensing mechanism of the proton-activated chloride channel
+
+
+
+# Cell
+
+01. 
+02. 
+03. 
+04. 
+05. 
+06. 
+07. 
+
+

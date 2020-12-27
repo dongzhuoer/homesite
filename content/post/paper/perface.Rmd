@@ -9,17 +9,17 @@ slug: perface
 
 > 想看的论文自己收好
 
-- Origins and genetic legacy of prehistoric dogs
-- Behavioral nudges reduce failure to appear for court
+2. Genetic interaction mapping informs integrative structure determination of protein complexes
+   点突变对应的表型谱，根据后者相似性鉴定出位置接近的残基对，来预测蛋白质结构
+- Receptor binding and priming of the spike protein of SARS-CoV-2 for membrane fusion | spike蛋白两次剪切，电镜研究分子机制
 - There’s plenty of room at the Top: What will drive computer performance after Moore’s law?
+- A system hierarchy for brain-inspired computing
+- Information arms race explains plant-herbivore chemical communication in ecological communities
+- The coupling mechanism of mammalian respiratory complex I
+- Manipulating synthetic optogenetic odors reveals the coding logic of olfactory perception
 - Resource conservation manifests in the genetic code
 - Genomic architecture of a genetically assimilated seasonal color pattern
-- A system hierarchy for brain-inspired computing
-- The online competition between pro- and anti-vaccination views 
-- Manipulating synthetic optogenetic odors reveals the coding logic of olfactory perception
-- Information arms race explains plant-herbivore chemical communication in ecological communities
 - Cryo-EM with sub–1 Å specimen movement
-- The coupling mechanism of mammalian respiratory complex I
 
 感谢李程老师分享的一篇公众号文章——《如何高效地读完一周的 CNS？》[^link]。酝tuo酿了几天后，终于开始了。虽然很鄙视暴利的学术出版，很厌恶唯论文、唯影响因子，也经常戏称灌水CNS；但是以我现在的科研能力和学术视野，好好钻研一番肯定是利大于弊的。
 
