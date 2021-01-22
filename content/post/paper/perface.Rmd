@@ -8,10 +8,14 @@ tags: []
 authors: []
 ---
    
-> 想看的论文自己收好
 
-2. Genetic interaction mapping informs integrative structure determination of protein complexes
-   点突变对应的表型谱，根据后者相似性鉴定出位置接近的残基对，来预测蛋白质结构
+- 想看的论文自己收好
+
+
+- Colorectal Cancer Cells Enter a Diapause-like DTP State to Survive Chemotherapy
+    癌细胞进入 drug-tolerant persister 来逃避化疗，作者发现前后并没有遗传瓶颈，就像胚胎“滞育”
+- Senolysis by glutaminolysis inhibition ameliorates various age-associated disorders
+   衰老细胞的溶酶体破损，pH 降低，于是诱导 glutaminase，分解谷氨酰胺，产生氨来中和。。所以抑制这个酶可以去除衰老细胞
 - Receptor binding and priming of the spike protein of SARS-CoV-2 for membrane fusion | spike蛋白两次剪切，电镜研究分子机制
 - There’s plenty of room at the Top: What will drive computer performance after Moore’s law?
 - A system hierarchy for brain-inspired computing
@@ -19,8 +23,24 @@ authors: []
 - The coupling mechanism of mammalian respiratory complex I
 - Manipulating synthetic optogenetic odors reveals the coding logic of olfactory perception
 - Resource conservation manifests in the genetic code
+- Boltzmann generators: Sampling equilibrium states of many-body systems with deep learning 玻尔兹曼采样
 - Genomic architecture of a genetically assimilated seasonal color pattern
 - Cryo-EM with sub–1 Å specimen movement
+
+> 可以看看 figure
+- Local convergence of behavior across species
+  局部环境，在不同物种间选择相似的行为
+- Functional adaptive landscapes predict terrestrial capacity at the origin of limbs
+  四足类登陆，完整化石太少，作者用 40 残肢化石。。发现 transitional..origin..adaptive
+- 11 TOPS photonic convolutional accelerator for optical neural networks
+    光学？卷积网络
+
+> 重点是问题而不是某篇文献
+
+- 单细胞测序是如何产生生物学发现的
+  + Decoding myofibroblast origins in human kidney fibrosis
+    单细胞测序，一堆分析，检测，肾纤维化。 用了多种方法，最后得到结果
+
 
 感谢李程老师分享的一篇公众号文章——《如何高效地读完一周的 CNS？》[^link]。酝tuo酿了几天后，终于开始了。虽然很鄙视暴利的学术出版，很厌恶唯论文、唯影响因子，也经常戏称灌水CNS；但是以我现在的科研能力和学术视野，好好钻研一番肯定是利大于弊的。
 

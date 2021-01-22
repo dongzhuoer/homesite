@@ -32,7 +32,7 @@ blogdown::build_site(local = TRUE, build_rmd = blogdown::filter_md5sum)
 ## Developers
 
 ```bash
-Rscript -e 'blogdown::new_post("你好，世界", open = F, categories = "2020")'
+Rscript -e 'blogdown::new_post("你好，世界", open = F, categories = "2021")'
 Rscript -e 'file.remove( dir(here::here("content"), "\\.html$", full = T, recursive = T) )'
 rm -r public/*
 ```

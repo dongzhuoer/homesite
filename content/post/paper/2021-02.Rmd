@@ -1,0 +1,120 @@
+---
+title: 02周：Jan08 Science, Jan07 Nature, Jan07 Cell
+author: Zhuoer Dong
+date: '2021-01-11'
+slug: 2021-02
+categories: paper
+tags: []
+authors: []
+---
+   
+
+
+# Science - Research Articles
+
+1. Coordination between microbiota and root endodermis supports plant mineral nutrient homeostasis
+   植物，根，内胚层，微生物，共处
+2. Recapitulation of HIV-1 Env-antibody coevolution in macaques leading to neutralization breadth
+   中和抗体与病毒胞膜蛋白共进化，HIV-1 Env 猕猴和人类的。。很像
+3. Tubulin glycylation controls axonemal dynein activity, flagellar beat, and male fertility
+   微管蛋白只在鞭毛和纤毛中才会糖基化，作者在小鼠中敲除糖基化蛋白，从而研究其功能
+4. Mechanism of spliceosome remodeling by the ATPase/helicase Prp2 and its coactivator Spp2
+   Prp2 的原子结构：单独，结合 Spp2，。。。
+5. A noninflammatory mRNA vaccine for treatment of experimental autoimmune encephalomyelitis
+   不发炎。没看懂为什么用抗原能治疗自身免疫
+6. Anterior cingulate inputs to nucleus accumbens control the social transfer of pain and analgesia
+   共情的神经回路
+7. Crossover from hydrogen to chemical bonding
+   实验测量，氢键从什么时候强到成为化合键
+
+
+
+# Science - Reports
+
+1. Carbonaceous chondrite meteorites experienced fluid flow within the past million years
+   地球水来自太空，多个假设，作者挑一个（母星还有冰）
+2. Lithium pollution of a white dwarf records the accretion of an extrasolar planetesimal
+   白矮星，重元素来源
+3. Transmission of SARS-CoV-2 on mink farms between humans and mink and back to humans
+   新冠在牧场，人传动物再传人
+4. Microbial sulfate reduction and organic sulfur formation in sinking marine particles
+   海洋缺氧区
+5. Pre–T cell receptors topologically sample self-ligands during thymocyte β-selection
+6. A ubiquitous tire rubber–derived chemical induces acute mortality in coho salmon
+   银鲑为什么会死？某化学物质
+7. A broadly protective antibody that targets the flavivirus NS1 protein
+   黄病毒广谱抗体
+8. Structural basis for antibody inhibition of flavivirus NS1–triggered endothelial dysfunction
+   三个晶体结构，揭示了上一篇文章的结构机制
+
+
+
+# Nature
+
+01. Competing magnetic orders in a bilayer Hubbard model with ultracold atoms
+    从二维到双层
+02. 11 TOPS photonic convolutional accelerator for optical neural networks
+    光学？卷积网络
+03. Parallel convolutional processing using an integrated photonic tensor core
+    硬件，光子 tensor 核，并行
+04. Origins of structural and electronic transitions in disordered silicon
+05. Single-defect phonons imaged by electron microscopy
+    单个晶体缺陷与光子的作用
+06. Poleward and weakened westerlies during Pliocene warmth
+    西风变弱
+07. Drivers and dynamics of a massive adaptive radiation in cichlid fishes
+    适应辐射
+08. Mobility network models of COVID-19 explain inequities and inform reopening
+    简单的模型就可以解释新冠传播
+09. Neuronal diversity and convergence in a visual system developmental atlas
+    scRNA，果蝇神经系统
+10. Coupling of hippocampal theta and ripples with pontogeniculooccipital waves
+    海马。波
+11. TRF2-independent chromosome end protection during pluripotency
+    TRF2 保护端粒，但胚胎干细胞有另一种机制
+12. TRF2-mediated telomere protection is dispensable in pluripotent stem cells
+    同上，，POT1B or BRD2 是另一机制的分子
+13. A network of transcriptional repressors modulates auxin responses
+    转录因子网络调控生长素受体
+14. Prokaryotic viperins produce diverse antiviral molecules
+    细胞用 Viperin 防病毒，早在细菌就已经用来防噬菌体了
+15. The coding capacity of SARS-CoV-2
+    ribosome-profiling，发现 23 新 ORF，新冠的 mRNA 不是靠翻译效率，而是靠数量取胜（超过人 mRNA）
+16. Commensal-driven immune zonation of the liver promotes host defence
+    肝脏调节免疫细胞的定位
+17. RNA nucleation by MSL2 induces selective X chromosome compartmentalization
+    剂量补偿，MSL2 定位到 X 染色体
+18. Structure of mycobacterial ATP synthase bound to the tuberculosis drug bedaquiline
+    电镜，bedaquiline 如何抗菌
+19. Structure of the class D GPCR Ste2 dimer coupled to two G proteins
+    GPCR 分六类，D 型只在真菌有，我来首次解结构
+
+
+
+# Cell
+
+01. Evaluating the Effects of SARS-CoV-2 Spike Mutation D614G on Transmissibility and Pathogenicity
+    25k 基因组，还是不能确定 D614G 被正向选择
+02. Genome-wide CRISPR Screens Reveal Host Factors Critical for SARS-CoV-2 Infection
+03. Identification of Required Host Factors for SARS-CoV-2 Infection in Human Cells
+04. Genetic Screens Identify Host Factors for SARS-CoV-2 and Common Cold Coronaviruses
+05. Genome-Scale Identification of SARS-CoV-2 and Pan-coronavirus Host Factor Networks
+    四篇都是用 CRISPR 筛新冠的宿主 factor
+06. TMEM41B Is a Pan-flavivirus Host Factor
+    这次筛黄病毒
+07. Synergism of TNF-α and IFN-γ Triggers Inflammatory Cell Death, Tissue Damage, and Mortality in SARS-CoV-2 Infection and Cytokine Shock Syndromes
+    COVID-19 产生过多的细胞因子，作者发现的这条通路很有治疗意义
+08. Functional SARS-CoV-2-Specific Immune Memory Persists after Mild COVID-19
+    感染后抗体持续三个月
+09. Cryo-EM Structure of an Extended SARS-CoV-2 Replication and Transcription Complex Reveals an Intermediate State in Cap Synthesis
+    转录，形成 cap 的中间态
+10. Structural Basis of WLS/Evi-Mediated Wnt Transport and Secretion
+    Wnt，结构生物学
+11. RNA-Mediated Feedback Control of Transcriptional Condensates
+    转录，condensate ，初期正反馈+后期负反馈
+12. Colorectal Cancer Cells Enter a Diapause-like DTP State to Survive Chemotherapy
+    癌细胞进入 drug-tolerant persister 来逃避化疗，作者发现前后并没有遗传瓶颈，就像胚胎“滞育”
+13. Cranial Suture Regeneration Mitigates Skull and Neurocognitive Defects in Craniosynostosis
+    某疾病的小鼠模型
+14. Top-Down Control of Sweet and Bitter Taste in the Mammalian Brain
+    甜味和苦味的神经通路
