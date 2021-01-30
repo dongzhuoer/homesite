@@ -11,11 +11,10 @@ authors: []
 
 - 想看的论文自己收好
 
-
 - Colorectal Cancer Cells Enter a Diapause-like DTP State to Survive Chemotherapy
     癌细胞进入 drug-tolerant persister 来逃避化疗，作者发现前后并没有遗传瓶颈，就像胚胎“滞育”
-- Senolysis by glutaminolysis inhibition ameliorates various age-associated disorders
-   衰老细胞的溶酶体破损，pH 降低，于是诱导 glutaminase，分解谷氨酰胺，产生氨来中和。。所以抑制这个酶可以去除衰老细胞
+- Transvection regulates the sex-biased expression of a fly X-linked gene
+   性二态一般是由sex determination 的遗传机制来控制，作者发现一个基因是通过其它机制控制的
 - Receptor binding and priming of the spike protein of SARS-CoV-2 for membrane fusion | spike蛋白两次剪切，电镜研究分子机制
 - There’s plenty of room at the Top: What will drive computer performance after Moore’s law?
 - A system hierarchy for brain-inspired computing
