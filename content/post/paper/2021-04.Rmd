@@ -1,0 +1,120 @@
+---
+title: 03周：Jan22 Science, Jan21 Nature, Jan21 Cell
+author: Zhuoer Dong
+date: '2021-01-25'
+slug: 2021-04
+categories: paper
+tags: []
+authors: []
+---
+   
+
+
+# Science - Research Articles
+
+1. JARID2 and AEBP2 regulate PRC2 in the presence of H2AK119ub1 and other histone modifications
+   电镜复合体结构，揭示蛋白质作用机制
+2. Developmental cell programs are co-opted in inflammatory skin disease
+   单细胞测序，发现 reemergence of 。。。cellular programs
+3. Regulation of the Dot1 histone H3K79 methyltransferase by histone H4K16 acetylation
+   组蛋白修饰的 cross-talk
+4. Bifurcation of planetary building blocks during Solar System formation
+   行星为什么是分两拨生成的？because 原行星盘的演化和雪线的迁移
+
+
+
+# Science - Reports
+
+1. Ultrafast nanoimaging of the order parameter in a structural phase transition
+   电镜，看到相转变
+2. Unraveling CO adsorption on model single-atom catalysts
+   _Keeping Z-olefins intact with iridium_
+3. Iridium-catalyzed Z-retentive asymmetric allylic substitution reactions
+   _Modeling single-atom reactivity_
+4. Convergent evolution of pain-inducing defensive venom components in spitting cobras
+   趋同演化，三个眼镜蛇支系都演化出了，对付敌人的毒液（本来毒液是主要用于捕猎的）
+5. Nanoscale localized contacts for high fill factors in polymer-passivated perovskite solar cells
+   effective passivation 和 excellent charge extraction 我全都要
+6. Transvection regulates the sex-biased expression of a fly X-linked gene
+   性二态一般是由sex determination 的遗传机制来控制，作者发现一个基因是通过其它机制控制的
+7. Host succinate is an activation signal for Salmonella virulence during intracellular infection
+   沙门氏菌感应到巨噬细胞的琥珀酸盐积累之后，解放自己的毒力
+8. Glycolysis fuels phosphoinositide 3-kinase signaling to bolster T cell immunity
+   _A metabolic circuit in T cell immunity_
+9. Clock genes and environmental cues coordinate Anopheles pheromone synthesis, swarming, and mating
+10. Ancient balancing selection maintains incompatible versions of the galactose pathway in yeast
+    balance 选择让酵母保留了两条不兼容的半乳糖通路
+
+
+
+# Nature
+
+01. Observation of the onset of a blue jet into the stratosphere
+    国际空间站的观测数据
+02. Trapped fractional charges at bulk defects in topological insulators
+03. Bulk–disclination correspondence in topological crystalline insulators
+    同上，这篇强调对拓扑晶体材料进行分类
+04. A reprogrammable mechanical metamaterial with stable memory
+    记忆金属只能记住一个形状，作者直接改造成像硬盘一样随意读写
+05. Transporting and concentrating vibrational energy to promote isomerization
+    荧光共振能量转移，那振动（vibration）也能转移
+06. A stable low-temperature H2-production catalyst by crowding Pt on α-MoC
+    只要挨得近，就不用担心氧使催化剂灭活
+07. Lake heatwaves under climate change
+    heatwave是指某些时段湖的表面非常热，用历史卫星数据预测了全球变暖之后的变化（完全不讲原因啊）
+08. High sensitivity of tropical precipitation to local sea surface temperature
+    local。 很难与 global。 区分开。。但作者发现 local。 对气候模型非常重要
+09. Mapping routine measles vaccination in low- and middle-income countries
+    麻疹疫苗接种数据，地理高精度，2000~2019
+10. Boundary-anchored neural mechanisms of location-encoding for self and others
+    大脑不仅要知道主人的位置，也要知道其他人的位置。。底层 encode 机制有相似性
+11. A brainstem peptide system activated at birth protects postnatal breathing
+    新生儿的第一次呼吸需要神经系统的支持。。敲除发现了重要基因
+12. Pairing of segmentation clock genes drives robust pattern formation
+    想要两个基因协同表达，既可以在染色体临近，也可以共用调控因子。。作者只证明体节分化必须靠前者，并没有从原理上阐明前者的选择优势
+13. Arterialization requires the timely suppression of cell growth
+    动脉形成不是靠。。而是靠 Notch通路来启动动脉分化程序，而是考抑制表皮细胞周期
+14. RANK links thymic regulatory T cells to fetal loss and gestational diabetes in pregnancy
+    胸腺。。免疫。。胚胎着床
+15. Fat1 deletion promotes hybrid EMT state, tumour stemness and metastasis
+16. Sorting nexin 5 mediates virus-induced autophagy and immunity
+    基因组短 RNAi 筛选
+17. Measuring DNA mechanics on the genome scale
+    loop-seq，测量 DNA 的机械性质
+18. Design of biologically active binary protein 2D materials
+    一种蛋白能形成二维膜。。作者设计两种蛋白，形成二维膜
+19. A non-hallucinogenic psychedelic analogue with therapeutic potential
+    化学修饰，把迷幻剂变成治疗成瘾的良药
+
+
+
+# Cell
+
+01. Amplification-free detection of SARS-CoV-2 with CRISPR-Cas13a and mobile phone microscopy
+    快速、便携。检测新冠RNA
+02. A modular master regulator landscape controls cancer transcriptional identity
+    基因组突变如何影响转录组identity 
+03. FBXO44 promotes DNA replication-coupled repetitive element silencing in cancer cells
+    发现 FBXO44 在癌症细胞抑制重复元素(RE)的转录
+04. Structural basis of human monocarboxylate transporter 1 inhibition by anti-cancer drug candidates
+    五个 3A 电镜。。一种抗癌药机理
+05. Spliceosome-targeted therapies trigger an antiviral immune response in triple-negative breast cancer
+    剪接错误的 RNA 能够诱导抗肿瘤
+06. Single-cell landscape of the ecosystem in early-relapse hepatocellular carcinoma
+    scRNA，肝癌复发早期的immune evasion机制
+07. A basophil-neuronal axis promotes itch
+    痒，肿瘤，神经回路
+08. Lymph nodes are innervated by a unique population of sensory neurons with immunomodulatory potential
+    scRNA，如题
+09. Baricitinib treatment resolves lower-airway macrophage inflammation and neutrophil recruitment in SARS-CoV-2-infected rhesus macaques
+    新冠药物的机制
+10. COVID-19-neutralizing antibodies predict disease severity and survival
+    新冠，病情重，抗体高，中和高，potency低
+11. Differential encoding in prefrontal cortex projection neuron classes across cognitive tasks
+    在神经元encoding 研究中，加入细胞类别信息（scRNA）
+12. A circuit logic for sexually shared and dimorphic aggressive behaviors in Drosophila
+    果蝇，冲动，神经机制。。既有性同态，也有性二态
+13. Structural basis of γ-secretase inhibition and modulation by small molecule drugs
+    药物针对 γ-secretase 治疗阿尔兹海默，γ-secretase 分别结合两种药物的电镜结构
+14. KCNE1 is an auxiliary subunit of two distinct ion channel superfamilies
+    KCNE1 作为 auxiliary subunit 脚踩两条船，挑战离子通道分类的教条
