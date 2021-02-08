@@ -119,7 +119,7 @@
 "content/post/2020/12-12-proxy加v2ray加ssl有备而来-chrome却教我讲武德-不要再犯这样的小聪明.Rmd" "b23caa561e20ac817cd6d99a839ecf53"
 "content/post/2020/zsh.Rmd" "1f569611baa814474c5fa4467132d51f"
 "content/post/2021/01-22-zsh.Rmd" "691d3ff1352704b69ae5f4386dafaae4"
-"content/post/2021/01-23-sshfs-与-x11-forward-让-remote-与-local-融合得不分彼此.Rmd" "0b8183316f0982c1937e58d2eae3f138"
+"content/post/2021/01-23-sshfs-与-x11-forward-让-remote-与-local-融合得不分彼此.Rmd" "fbb63e1deec7f6595d1271bf81c39560"
 "content/post/book/citation.Rmd" "7a06fb499889bb4c66ff325a0d255bc0"
 "content/post/book/github.Rmd" "67ef0cfc0f3d67310e0b79918ada3f82"
 "content/post/book/gitlab.Rmd" "2546dd8f09d7d2eeff34dad91046c767"
