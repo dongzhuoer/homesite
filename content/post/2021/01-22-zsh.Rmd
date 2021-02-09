@@ -1,0 +1,43 @@
+---
+title: zsh 相见恨晚，多终端共享命令历史真香
+author: Zhuoer Dong
+date: '2021-01-22'
+slug: zsh
+categories:
+  - '2021'
+tags: []
+authors: []
+---
+
+
+
+tmux 的多终端用着很舒服，另外搬砖脚本把 command 存到 `cmd.txt` 以备查阅。引发出 `cat cmd.txt >> ~/.bash_history` 和 `history -r`，就可以直接用 Up 调出想要的 command。
+
+给小伙伴分享这个“小妙招”时，被 zsh 打脸了；试了一下，配置并不难，（输入前半）直接按 Up 搜索命令真好用。
+
+关键还是命令共享，玩了一下，实时（左边运行完、右边 Up 得到 command）还是无法做到。至少得运行一个命令之后才会 load history，不过“空命令”（直接按 Enter）也行。即左边运行完、右边 Enter + Up 得到命令。
+
+好的，可以批准 zsh 作为我的默认 shell 了（原来 `chsh` 可以不通过 root 就修改默认 shell）。
+
+Bash 里已有的命令历史也不能丢啊，放狗搜到 一个脚本
+
+```python
+import sys
+import time
+
+def main():
+    timestamp = None
+    for line in open("/home/dongzhuoer/.bash_history").readlines():
+        line = line.rstrip('\n')
+        if line.startswith('#') and timestamp is None:
+            t = line[1:]
+            if t.isdigit():
+                timestamp = t
+                continue
+        else:
+            open("/home/dongzhuoer/.zsh_history", "a").write(': %s:0;%s\n' % (timestamp or time.time(), line))
+            timestamp = None
+
+if __name__ == '__main__':
+    main()
+```
