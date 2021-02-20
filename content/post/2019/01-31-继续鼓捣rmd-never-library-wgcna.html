@@ -1,0 +1,211 @@
+---
+title: 继续鼓捣 .Rmd, 打死我也不会 library (WGCNA) 的
+author: Zhuoer Dong
+date: '2019-01-31'
+slug: 继续鼓捣rmd-never-library-wgcna
+categories: 2019
+tags: []
+authors: []
+---
+
+<script src="01-31-继续鼓捣rmd-never-library-wgcna_files/header-attrs/header-attrs.js"></script>
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+</style>
+
+<div id="TOC">
+<ul>
+<li><a href="#beginning"><span class="toc-section-number">1</span> Beginning</a></li>
+<li><a href="#development"><span class="toc-section-number">2</span> Development</a></li>
+<li><a href="#climax"><span class="toc-section-number">3</span> Climax</a></li>
+<li><a href="#epilogue"><span class="toc-section-number">4</span> Epilogue</a></li>
+</ul>
+</div>
+
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install needed R packages</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">update_packages</span>(<span class="fu">c</span>(<span class="st">&#39;magrittr&#39;</span>, <span class="st">&#39;callr&#39;</span>, <span class="st">&#39;purrr&#39;</span>, <span class="st">&#39;rlang&#39;</span>), <span class="at">upgrade =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div id="beginning" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Beginning</h1>
+<p>这几天都在整理前两轮轮转的 <code>.Rmd</code>, 使其完全可重复，于是又把 <a href="https://github.com/dongzhuoer/lulab-rotation-summary/blob/master/RNA-seq/lncRNA-co-expr-net.md">lncRNA network analysis</a> 翻出来了</p>
+<p>之前发现运行失败就直接 library() 了，现在要统一标准，又改成 :: 来调用。</p>
+<pre><code>Error in (function (x, y = NULL, use = &quot;everything&quot;, method = c(&quot;pearson&quot;, : unused arguments (weights.x = NULL, weights.y = NULL, cosine = FALSE)</code></pre>
+</div>
+<div id="development" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Development</h1>
+<p>这次我就查了下错误原因，好像是 <code>cor()</code> 本来应该调用 <code>WGCNA::cor()</code>，结果调用了 <code>stats::cor()</code> （难怪 <code>library()</code> 就好了，因为后者覆盖了前者）</p>
+<p>很奇怪，我以前写包没遇到啊。</p>
+<p>Anyhow, I try <code>detach('package:stats')</code>, still fail</p>
+<p>I search the source code, find WGCNA use <code>get('cor', envir = envir)</code> to get the <code>cor()</code> function, so <code>'package:WGCNA'</code> must be listed in the search path (and before <code>'package:stats'</code>).</p>
+<p>Sticking to <code>::</code>, I decide to use <code>callr::r()</code></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>WGCNA_blockwiseModules <span class="ot">&lt;-</span> <span class="cf">function</span>(..., <span class="at">.show =</span> <span class="cn">TRUE</span>) {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    callr<span class="sc">::</span><span class="fu">r</span>(</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">function</span>(...){</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>            <span class="fu">library</span>(WGCNA)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>            <span class="fu">allowWGCNAThreads</span>()</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>                </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>            <span class="co"># you can directly run following code in current session after `library(WGCNA)` </span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>            <span class="fu">blockwiseModules</span>(...)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        }, <span class="at">args =</span> <span class="fu">list</span>(...), <span class="at">show =</span> .show</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># it takes about 4m</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>network <span class="ot">&lt;-</span> <span class="fu">WGCNA_blockwiseModules</span>(</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    fpkm_t, <span class="at">power =</span> soft_threshold<span class="sc">$</span>powerEstimate, </span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">maxBlockSize =</span> <span class="dv">7000</span>, <span class="at">TOMType =</span> <span class="st">&quot;unsigned&quot;</span>, </span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">minModuleSize =</span> <span class="dv">30</span>, <span class="at">reassignThreshold =</span> <span class="dv">0</span>, <span class="at">mergeCutHeight =</span> <span class="fl">0.25</span>, </span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">numericLabels =</span> <span class="cn">TRUE</span>, <span class="at">pamRespectsDendro =</span> <span class="cn">FALSE</span>, <span class="at">saveTOMs =</span> <span class="cn">FALSE</span>, <span class="at">verbose =</span> <span class="dv">3</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+</div>
+<div id="climax" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Climax</h1>
+<p>Addicted to quasiquotation, I want this helper function to print the executed code like <a href="{{% relref "01-28-rexseek-stand-up-abandon-scater.html#climax" %}}"><code>rexseek::norm_tmm()</code></a>. But this case is more difficult, since the parameter is <code>...</code>, and more importantly the code is evaluated by <code>callr::r()</code>.</p>
+<p>Finally I come out with the following code:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>WGCNA_blockwiseModules <span class="ot">&lt;-</span> <span class="cf">function</span>(...) {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    main_expr <span class="ot">&lt;-</span> rlang<span class="sc">::</span><span class="fu">expr</span>(<span class="fu">blockwiseModules</span>(<span class="sc">!!!</span>rlang<span class="sc">::</span><span class="fu">exprs</span>(...)))</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    exprs <span class="ot">&lt;-</span> rlang<span class="sc">::</span><span class="fu">exprs</span>(<span class="fu">library</span>(WGCNA), <span class="fu">allowWGCNAThreads</span>(), <span class="sc">!!</span>main_expr)    </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    data <span class="ot">&lt;-</span> <span class="fu">as.list</span>(rlang<span class="sc">::</span><span class="fu">caller_env</span>());</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    network <span class="ot">&lt;-</span> callr<span class="sc">::</span><span class="fu">r</span>(</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">function</span>(exprs, data) {purrr<span class="sc">::</span><span class="fu">map</span>(exprs, rlang<span class="sc">::</span>eval_tidy, <span class="at">data =</span> data)}, </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">args =</span> <span class="fu">list</span>(exprs, data)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    )[[<span class="dv">3</span>]]</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">message</span>(<span class="st">&#39;</span><span class="sc">\n</span><span class="st">I use callr to avoid messing the workspace, you can run the following code yourself:</span><span class="sc">\n</span><span class="st">&#39;</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    exprs <span class="sc">%&gt;%</span> <span class="fu">sapply</span>(rlang<span class="sc">::</span>expr_text) <span class="sc">%&gt;%</span> <span class="fu">sapply</span>(message)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(network)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>The most difficult part is passing the environment to <code>rlang::eval_tidy()</code>. At first thought, I think it’s fairly simple with <code>rlang::caller_env()</code>, but it doesn’t work, latter I find that inside <code>callr::r()</code>, the captured environment mysteriously becomes global environment. Then I convert the environment to a list and use data mask, this time it works.</p>
+<p>This case reveals some internal of quasiquotation. Actually, it’s quite reasonable, since <code>callr::r()</code> provides a mechanism to execute code is a <em>seperate</em> session. Write/read <code>.rds</code> is a useful implementation to pass oridnary objects as arguments, but environment is somehow different, you can track along the parents and arrive the current workspace, which is definitely forbidden.</p>
+<p>Looking at the helper function, I fully understand there are some limitation, passing symbols has no problem, while complicated syntax generate issues (like lazy eval, call stack). But those price is necessary for isolating <code>WGCNA::blockwiseModules()</code> inside a independent session.</p>
+</div>
+<div id="epilogue" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Epilogue</h1>
+<p>However, the biggest problem is that I won’t even use it since it takes a long time. That is to say, all my effort is nearly wasted.</p>
+<p>So I write this post, and provide the following toy example to demonstrate the helper function.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>expr_data <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rpois</span>(<span class="dv">100</span>, <span class="dv">10</span>), <span class="at">nrow=</span><span class="dv">10</span>) <span class="sc">+</span> <span class="dv">0</span> <span class="co"># `+ 0` turns integer into numeric </span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>network <span class="ot">&lt;-</span> <span class="fu">WGCNA_blockwiseModules</span>(</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    expr_data, <span class="at">power =</span> <span class="dv">10</span>, </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">maxBlockSize =</span> <span class="dv">7000</span>, <span class="at">TOMType =</span> <span class="st">&quot;unsigned&quot;</span>, </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">minModuleSize =</span> <span class="dv">30</span>, <span class="at">reassignThreshold =</span> <span class="dv">0</span>, <span class="at">mergeCutHeight =</span> <span class="fl">0.25</span>, </span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">numericLabels =</span> <span class="cn">TRUE</span>, <span class="at">pamRespectsDendro =</span> <span class="cn">FALSE</span>, <span class="at">saveTOMs =</span> <span class="cn">FALSE</span>, <span class="at">verbose =</span> <span class="dv">3</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="do">## I use callr to avoid messing the workspace, you can run the following code yourself:</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="do">## library(WGCNA)</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="do">## allowWGCNAThreads()</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="do">## blockwiseModules(expr_data, power = 10, maxBlockSize = 7000, </span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="do">##     TOMType = &quot;unsigned&quot;, minModuleSize = 30, reassignThreshold = 0, </span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="do">##     mergeCutHeight = 0.25, numericLabels = TRUE, pamRespectsDendro = FALSE, </span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="do">##     saveTOMs = FALSE, verbose = 3)</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>network</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="do">## $colors</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] 0 0 0 0 0 0 0 0 0 0</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="do">## $unmergedColors</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] 0 0 0 0 0 0 0 0 0 0</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="do">## $MEs</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="do">##           ME0</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="do">## 1   0.1320520</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="do">## 2  -0.1145554</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="do">## 3  -0.1744860</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="do">## 4   0.2848684</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="do">## 5  -0.1471451</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="do">## 6   0.3766016</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a><span class="do">## 7  -0.4780682</span></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a><span class="do">## 8  -0.2063703</span></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a><span class="do">## 9  -0.2664064</span></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a><span class="do">## 10  0.5935093</span></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a><span class="do">## $goodSamples</span></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</span></span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a><span class="do">## $goodGenes</span></span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</span></span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a><span class="do">## $dendrograms</span></span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a><span class="do">## $dendrograms[[1]]</span></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a><span class="do">## Call:</span></span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a><span class="do">## fastcluster::hclust(d = as.dist(dissTom), method = &quot;average&quot;)</span></span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a><span class="do">## Cluster method   : average </span></span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a><span class="do">## Number of objects: 10 </span></span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a><span class="do">## $TOMFiles</span></span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a><span class="do">## NULL</span></span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a><span class="do">## $blockGenes</span></span>
+<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a><span class="do">## $blockGenes[[1]]</span></span>
+<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1]  1  2  3  4  5  6  7  8  9 10</span></span>
+<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a><span class="do">## $blocks</span></span>
+<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] 1 1 1 1 1 1 1 1 1 1</span></span>
+<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a><span class="do">## $MEsOK</span></span>
+<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] TRUE</span></span></code></pre></div>
+</div>

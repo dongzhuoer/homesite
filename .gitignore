@@ -1,8 +1,5 @@
-content/**/*.html
 public/**
 Rplot*.pdf
-static/post/**
-static/rmarkdown-libs/**
 
 # ---------------
 # History files

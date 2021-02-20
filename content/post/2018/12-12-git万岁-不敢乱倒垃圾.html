@@ -1,0 +1,110 @@
+---
+title: Git果然是万能的时光机，我再也不乱倒垃圾了
+author: Zhuoer Dong
+date: '2018-12-12'
+slug: git万岁-不敢乱倒垃圾
+categories: 2018
+tags: []
+authors: []
+---
+
+<script src="12-12-git万岁-不敢乱倒垃圾_files/header-attrs/header-attrs.js"></script>
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+</style>
+
+<div id="TOC">
+<ul>
+<li><a href="#beginning"><span class="toc-section-number">1</span> Beginning</a></li>
+<li><a href="#develop"><span class="toc-section-number">2</span> develop</a></li>
+<li><a href="#climax"><span class="toc-section-number">3</span> Climax</a></li>
+<li><a href="#epilogue"><span class="toc-section-number">4</span> Epilogue</a></li>
+</ul>
+</div>
+
+<div id="beginning" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Beginning</h1>
+<p>周一（12/10）完成了 R 包模板的更新，然后就各种 rebase（主要是合并一些小的comit以及清理<code>u</code>）。期间有几个包怎么都不听话（害得我回宿舍都延迟了），总是说什么 <code>README.md</code> 冲突，当时也没仔细看，直接用 VSCode 的 <code>Undo last commit</code> 摆平。</p>
+</div>
+<div id="develop" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> develop</h1>
+<p>今天突然发现有问题了，好容易改好的 <code>NEWS.md</code> 成了旧版的 <code>news.md</code> (<code>README.md</code>的损失先不提)，昨晚关机前还清理了垃圾桶。怎么办啊，找不回来了啊！</p>
+<p><code>git rev-list --all | xargs git grep &lt;expression&gt;</code> 没用，因为 <code>rev-list</code> 只会列出当前 branch 的所有 commit</p>
+</div>
+<div id="climax" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Climax</h1>
+<p>最后找到了 <code>git reflog</code> 这一神器，只要你还记得一些关键字<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>，就一定能找回来（Git 时光机的称号岂是浪得虚名）：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reflog show <span class="at">--all</span> <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-f</span> 1 <span class="at">-d</span> <span class="st">&#39; &#39;</span> <span class="kw">|</span> <span class="fu">xargs</span> git grep <span class="st">&#39;# pgmcs 0.3.0&#39;</span></span></code></pre></div>
+<ul>
+<li><code>git reflog show --all</code> 列出所有的 commit 的 ID 和 message</li>
+<li><code>cut -f 1 -d ' '</code> 取出 commit ID</li>
+<li><code>git grep</code> 从特定 commit 的全部文件中搜索指定 pattern</li>
+</ul>
+</div>
+<div id="epilogue" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Epilogue</h1>
+<p>最后真被我找到了，Git 大法好啊，内心美滋滋。</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>还好 <code>NEWS.md</code> 中的 <code># pgmcs 0.3.0</code> 是昨晚的 commit <em>独有</em> 的<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>

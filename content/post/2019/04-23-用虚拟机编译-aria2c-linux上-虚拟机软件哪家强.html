@@ -1,0 +1,107 @@
+---
+title: 用虚拟机编译 aria2c —— （Linux上）虚拟机软件哪家强？
+author: Zhuoer Dong
+date: '2019-04-23'
+slug: 用虚拟机编译-aria2c-linux上-虚拟机软件哪家强
+categories: 2019
+tags: []
+authors: []
+---
+
+<script src="04-23-用虚拟机编译-aria2c-linux上-虚拟机软件哪家强_files/header-attrs/header-attrs.js"></script>
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+</style>
+
+<div id="TOC">
+<ul>
+<li><a href="#virtual-box"><span class="toc-section-number">1</span> Virtual box</a></li>
+<li><a href="#vmware-workstation-14"><span class="toc-section-number">2</span> VMware Workstation 14</a>
+<ul>
+<li><a href="#vmware-workstation-15"><span class="toc-section-number">2.1</span> VMware Workstation 15</a></li>
+</ul></li>
+</ul>
+</div>
+
+<blockquote>
+<p>这是我刚进实验室的事了，那时 single-cell 已经有人了，于是我就去做 isSHAPE database 。那么大的 <code>.fasta.gz</code> 文件，当然是用 aria2c 来下载才爽啊，可惜集群安装不了，binary 也不行（缺 <code>**ssl**.so</code>）。我就琢磨着 <code>build</code> 一个 standalone 的（<code>--static-link</code>）</p>
+</blockquote>
+<div id="virtual-box" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Virtual box</h1>
+<p>首先找到相应的版本，<a href="https://mirror.nsc.liu.se/centos-store/6.6/isos/x86_64/">CentOS 6.6 iso</a>，装好后无法开机。</p>
+<p>于是搜到这个 <a href="https://blog.csdn.net/qq_21397217/article/details/52396861">解决办法</a>，其实没能彻底解决，算是个提示吧。居然可以输入 <code>\EFI\redhat\grub.efi</code> 来开机，boot 也没有那么神秘嘛。</p>
+<p>Virtual box 最烦的是不支持 mouse integration，鼠标要么就被虚拟机捕获（得按 Right Ctrl 才能出来），要么就只能操作主机。最终我还是决定去装 VMware Workstation。</p>
+</div>
+<div id="vmware-workstation-14" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> VMware Workstation 14</h1>
+<p>当然使用最新版（15），但是一直安装失败，弹窗让我看 log 但又不给出文件路径。</p>
+<p>换成 14 ，能安装但启动失败，不过列出了 log 文件路径。<code>vmmon</code> 和 <code>vmnet</code> 编译错误，看了一下，是源代码的问题，我无能为力。</p>
+<p>后来发现在 GitHub 上有人提供了 patch：首先在 <a href="https://github.com/mkubecek/vmware-host-modules/releases">这里</a> 找到对应版本，然后，</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> make install</span></code></pre></div>
+<div id="vmware-workstation-15" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> VMware Workstation 15</h2>
+<p>14 可以用之后，我还是想装 15。把前者卸了之后，后者突然就能装了。</p>
+<p>启动依然会失败，不过我们有 patch。创建好一个虚拟机，开机又报错，</p>
+<pre><code>Please make sure that the kernel module `vmmon&#39; is loaded</code></pre>
+<p>还好解决并不难</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl restart vmware</span></code></pre></div>
+</div>
+</div>

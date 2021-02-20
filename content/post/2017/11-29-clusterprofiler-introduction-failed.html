@@ -1,0 +1,106 @@
+---
+title: clusterProfiler introduction failed, 发布之日即是死亡之日
+author: Zhuoer Dong
+date: '2017-11-29'
+slug: clusterprofiler-introduction-failed
+categories: 2017
+tags: []
+authors: []
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+</style>
+
+
+<p>这篇旧博客写的本是一篇介绍 clusterProfiler 的文章失效的事，但我后来整理时回想起来我以前说过的一句话：</p>
+<blockquote>
+<p>The day a research project is published shouldn’t be the day it’s dead.</p>
+</blockquote>
+<hr />
+<p>Original post: <a href="https://guangchuangyu.github.io/2015/05/use-clusterprofiler-as-an-universal-enrichment-analysis-tool/">use clusterProfiler as an universal enrichment analysis tool</a></p>
+<p>But things allways change</p>
+<ol style="list-style-type: decimal">
+<li><p>data link broke</p>
+<p><a href="http://www.disgenet.org/ds/DisGeNET/results/all_gene_disease_associations.tar.gz" class="uri">http://www.disgenet.org/ds/DisGeNET/results/all_gene_disease_associations.tar.gz</a> should be replaced by <a href="http://www.disgenet.org/ds/DisGeNET/results/all_gene_disease_associations.tsv.gz" class="uri">http://www.disgenet.org/ds/DisGeNET/results/all_gene_disease_associations.tsv.gz</a></p></li>
+<li><p>use <code>tibble::as_tibble()</code> instead of <code>DOSE::summary()</code></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>Warning message<span class="sc">:</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>In DOSE<span class="sc">::</span><span class="fu">summary</span>(edn) <span class="sc">:</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  summary method to convert the object to data.frame is deprecated, please use as.data.frame instead.</span></code></pre></div></li>
+<li><p><code>clusterProfiler::GSEA()</code> failed</p></li>
+</ol>
+<p>Following is updated code:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;geneList&quot;</span>, <span class="at">package =</span> <span class="st">&#39;DOSE&#39;</span>);</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>deg <span class="ot">&lt;-</span> geneList <span class="sc">%&gt;%</span> {<span class="fu">names</span>(.)[<span class="fu">abs</span>(.) <span class="sc">&gt;</span> <span class="dv">2</span>]};</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>agda <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_tsv</span>(<span class="st">&#39;all_gene_disease_associations.tsv.gz&#39;</span>);</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>disease2gene <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">select</span>(agda, <span class="st">&#39;diseaseId&#39;</span>, <span class="st">&#39;geneId&#39;</span>);</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>disease2name <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">select</span>(agda, <span class="st">&#39;diseaseId&#39;</span>, <span class="st">&#39;diseaseName&#39;</span>);</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> clusterProfiler<span class="sc">::</span><span class="fu">enricher</span>(deg, <span class="at">TERM2GENE =</span> disease2gene, <span class="at">TERM2NAME =</span> disease2name);</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>tibble<span class="sc">::</span><span class="fu">as_tibble</span>(e);</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>DOSE<span class="sc">:::</span><span class="fu">barplot.enrichResult</span>(e);</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>DOSE<span class="sc">::</span><span class="fu">dotplot</span>(e);</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>DOSE<span class="sc">::</span><span class="fu">enrichMap</span>(e);</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> clusterProfiler<span class="sc">::</span><span class="fu">GSEA</span>(geneList, <span class="at">TERM2GENE =</span> disease2gene, <span class="at">TERM2NAME =</span> disease2name);</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>tibble<span class="sc">::</span><span class="fu">as_tibble</span>(g)</span></code></pre></div>

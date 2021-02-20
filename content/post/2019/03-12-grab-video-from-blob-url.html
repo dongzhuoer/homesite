@@ -1,0 +1,28 @@
+---
+title: grab video from blob url
+author: Zhuoer Dong
+date: '2019-03-12'
+slug: grab-video-from-blob-url
+categories: 2019
+tags: []
+authors: []
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<p>自从 iGEM 时自学了网页编程，我觉得 HTML5 的 <code>&lt;video&gt;</code> 标签最大的好处就是可以很方便地 download 视频 <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>。</p>
+<p>可惜后来有了 <code>src="blob:http://***"</code>，就很难找到视频的真实 url 了。</p>
+<p>后来在鲁志老师实验室轮转时，JC 的一篇文献做了一个 <a href="https://www.nejm.org/doi/full/10.1056/NEJMra1704286">video abstract</a>。鲁老师想把它下载下来，于是我就试了一下，没想到还真成了 <a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>。</p>
+<p>当时没时间写下具体步骤，故这里只能列一下两个很有用的答案：</p>
+<ul>
+<li><a href="https://stackoverflow.com/questions/42901942/how-do-we-download-a-blob-url-video#answer-49835269" class="uri">https://stackoverflow.com/questions/42901942/how-do-we-download-a-blob-url-video#answer-49835269</a></li>
+<li><a href="https://superuser.com/questions/1260846/downloading-m3u8-videos" class="uri">https://superuser.com/questions/1260846/downloading-m3u8-videos</a></li>
+</ul>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>一脸坏笑，我当时还写脚本来批量 download 某付费网站的视频。<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>我觉得该案例有特殊性，应该不是所有的 <code>blob</code> 都能这么下载<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>

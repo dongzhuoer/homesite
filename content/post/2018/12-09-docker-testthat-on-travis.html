@@ -1,0 +1,58 @@
+---
+title: Use Docker to test R packages on Travis
+author: Zhuoer Dong
+date: '2018-12-09'
+slug: docker-testthat-on-travis
+categories: 2018
+tags: []
+authors: []
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+<div id="TOC">
+<ul>
+<li><a href="#preface"><span class="toc-section-number">1</span> Preface</a></li>
+<li><a href="#beginning"><span class="toc-section-number">2</span> Beginning</a></li>
+<li><a href="#development"><span class="toc-section-number">3</span> Development</a></li>
+<li><a href="#climax"><span class="toc-section-number">4</span> Climax</a></li>
+<li><a href="#afterword"><span class="toc-section-number">5</span> Afterword</a></li>
+</ul>
+</div>
+
+<div id="preface" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Preface</h1>
+<p>Back to 11/30, I reach a conclusion: even using Docker to test R package can figures out <em>excatly</em> what the package needs <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>, it doesn’t worths the time needed to develop such an approach <a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>, unless Travis broken <em>again</em>.</p>
+</div>
+<div id="beginning" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Beginning</h1>
+<p>Since yesterday, I began to organize my R package template.</p>
+</div>
+<div id="development" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Development</h1>
+<p>I add <code>devtools</code> to <code>Suggests</code>, then Travis CI failed. After debug, it says some packages are not available for R 3.5.1. That was very strange, since I use that version on my own computer.</p>
+<p>After several trail, I got tried and decided to give up. I realized that debugging R on Travis is so annoying and time-consuming, so I’d better switch to Docker. <a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
+</div>
+<div id="climax" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Climax</h1>
+<ul>
+<li><p>The biggest advantage is that it’s easier to have the same environment on remote &amp; local. Good news are that I have already established how to use R Docker on Travis. <a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></p></li>
+<li><p>I can also separate install &amp; test now, previously packages like <code>testthat</code> would interfere the install setp (unless cache has been clean). Although a single R version needs two jobs now.</p></li>
+<li><p>Even more, I find using Docker is considerable faster: previous ~4m * 3, now ~2m * 3.</p></li>
+</ul>
+<p>As for investiging excat dependency, forget about it. I learn it’s better to install all common system dependency <a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>, from the experience of from building bookdown in last week,</p>
+</div>
+<div id="afterword" class="section level1" number="5">
+<h1><span class="header-section-number">5</span> Afterword</h1>
+<p>Next morning, I tried using build stage, but find it not appropriate. Since the two jobs contain common <code>install</code> step, switch to build stage would need to <em>repeat</em> those 4 lines of code.</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>even including system softwares, like <code>libssl-dev</code>.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>太耗精力了，Travis 现成的 R 环境多好啊，还支持 OS X 和多个 R 版本。<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>真香<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>The biggest challenge is to cache R packages<a href="#fnref4" class="footnote-back">↩︎</a></p></li>
+<li id="fn5"><p>rather than debug tons of times for each package<a href="#fnref5" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>

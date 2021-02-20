@@ -1,0 +1,34 @@
+---
+title: switch working directory on Windows command line
+author: Zhuoer Dong
+date: '2019-03-12'
+slug: switch-wd-on-win-cmd
+categories: 2019
+tags: []
+authors: []
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<p>以前 Windows 和 Ubuntu 两条腿走路的时候，觉得 <code>cmd</code> 比起 <code>bash</code> 最大的缺点就是不能设置 working directory，只能通过以下两种方式迂回：</p>
+<ul>
+<li>文件浏览器浏览到指定目录再打开 cmd 或者</li>
+<li>用 VSCode 打开指定目录再用 integrated terminal</li>
+</ul>
+<p>后来找到了一篇 <a href="https://blogs.msdn.microsoft.com/oldnewthing/20101011-00/?p=12563/">博客</a>，原来是一个历史遗留问题 <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> 。 简单来说，解决方案如下：</p>
+<pre><code>C:\Users\Allan&gt;cd /D W:\work
+
+W:\work&gt;</code></pre>
+<p>or</p>
+<pre><code>C:\Users\Allan&gt;W:
+
+W:\&gt;cd work
+
+W:\work&gt;</code></pre>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>真是辛苦当时的程序员了。<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>

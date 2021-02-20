@@ -1,0 +1,214 @@
+---
+title: understanding .bashrc, 七窍终于通了六窍
+author: Zhuoer Dong
+date: '2018-01-07'
+slug: bashrc
+categories: 2018
+tags: []
+authors: []
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+</style>
+
+<div id="TOC">
+<ul>
+<li><a href="#preface"><span class="toc-section-number">1</span> Preface</a></li>
+<li><a href="#two-files"><span class="toc-section-number">2</span> two files</a></li>
+<li><a href="#three-classificaion"><span class="toc-section-number">3</span> three classificaion</a>
+<ul>
+<li><a href="#login-and-nologin-shell"><span class="toc-section-number">3.1</span> login and nologin shell</a></li>
+<li><a href="#bash-or-not"><span class="toc-section-number">3.2</span> Bash or not</a></li>
+<li><a href="#interactive-or-non-interative"><span class="toc-section-number">3.3</span> interactive or non-interative</a></li>
+</ul></li>
+<li><a href="#two-most-command-cases"><span class="toc-section-number">4</span> two most command cases</a></li>
+<li><a href="#一窍不通"><span class="toc-section-number">5</span> 一窍不通</a></li>
+<li><a href="#finally-solution"><span class="toc-section-number">6</span> finally solution</a></li>
+<li><a href="#afterword"><span class="toc-section-number">7</span> Afterword</a></li>
+</ul>
+</div>
+
+<p>2019-11-24 feel too complicated, I just need to make link in <code>~/.local/bin</code> (<code>~/.profile</code> already add it to <code>PATH</code>).</p>
+<p>relogin 是真××烦，本身浪费时间不说，打开的应用全部都得关闭，尤其是我打开了倒计时的时候真想砸键盘，有什么资格笑话 Windows</p>
+<p>The most common case where I need custom settting is Bash Terminal</p>
+<p>If you really need a unified interface is every place (R <code>system()</code>, Python subprocess, MATE top bar add application, …)</p>
+<ul>
+<li><code>~/.bashrc</code> beginning</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.local/bash/shell/profilerc.sh<span class="kw">;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># user defined alias</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.local/bash/shell/alias.sh</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># auxiliary function</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.local/bash/shell/function.sh</span></code></pre></div>
+<ul>
+<li><code>~/.profile</code> end</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.local/bash/shell/profilerc.sh</span></code></pre></div>
+<p>模仿 C++ micro to avoid source twice</p>
+<div id="preface" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Preface</h1>
+<p>For everyone using Linux (maybe someone using Windows as well), though he may not feel for environment variables, he is possibly very familiar with <code>PATH</code>, and usually struggle with it for a hard time.</p>
+<p>Indeed, <code>PATH</code> is very important, but its meaning is very sophisticated. This contributes a lot to the steep learining curve of Linux, since you have to understand a very obscure concept at the very beginning <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
+<p>It is very common to spend a long time in thoroughly understanding <code>PATH</code>. I spent about a year (since I first used it) or more than a year and a half (since I first contacted it).</p>
+<p>Let’s cut the cackle. On Ubuntu, there are two files, three classificaions. So the situation is far more complicated than <a href="http://feihu.me/blog/2014/env-problem-when-ssh-executing-command-on-remote/#bash%E7%9A%84%E5%9B%9B%E7%A7%8D%E6%A8%A1%E5%BC%8F">bash的四种模式</a>, and I simplify it to two most command cases.</p>
+</div>
+<div id="two-files" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> two files</h1>
+<p><code>~/.profile</code></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">code</span> block A</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># if running bash</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="ot">-n</span> <span class="st">&quot;</span><span class="va">$BASH_VERSION</span><span class="st">&quot;</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># include .bashrc if it exists</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">[</span> <span class="ot">-f</span> <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">/.bashrc&quot;</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">.</span> <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">/.bashrc&quot;</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">fi</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="ex">code</span> block B</span></code></pre></div>
+<p><code>~/.bashrc</code></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">code</span> block C</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># If not running interactively, don&#39;t do anything</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="cf">case</span> <span class="va">$-</span> <span class="kw">in</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="pp">*</span>i<span class="pp">*</span><span class="kw">)</span> <span class="cf">;;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>      <span class="pp">*</span><span class="kw">)</span> <span class="cf">return;;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="cf">esac</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="ex">code</span> block D</span></code></pre></div>
+</div>
+<div id="three-classificaion" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> three classificaion</h1>
+<div id="login-and-nologin-shell" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> login and nologin shell</h2>
+<ul>
+<li><p>login shell uses <code>~/.profile</code></p>
+<p>ssh, tty, desktop itself (including application from MATE panel, such as RStudio’s rsession)</p></li>
+<li><p>nologin shell uses <code>~/.bashrc</code></p>
+<p>ssh command, terminal (emulator)</p></li>
+</ul>
+</div>
+<div id="bash-or-not" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Bash or not</h2>
+<p>If <code>~/.profile</code> is sourced,</p>
+<ul>
+<li>Bash shell: A, <code>~/.bashrc</code>, B</li>
+<li>other shell <a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>: A, B</li>
+</ul>
+</div>
+<div id="interactive-or-non-interative" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> interactive or non-interative</h2>
+<p>If <code>~/.bashrc</code> is sourced,</p>
+<ul>
+<li>interactive shell: C, D</li>
+<li>non-interactive shell: C</li>
+</ul>
+</div>
+</div>
+<div id="two-most-command-cases" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> two most command cases</h1>
+<p>The two most common cases are (1) terminal from desktop and (2) login via ssh or tty. It seems that they both include all the <code>PATH</code> specification in both files, but the underlying mechanisms are quite different.</p>
+<ul>
+<li><p>terminal from desktop</p>
+<p>First, the desktop is a login, non-Bash shell; then terminal is a non-login, interactive shell, the result is A, B, C, D</p></li>
+<li><p>login via ssh or tty</p>
+<p>Instead, ssh or tty is a login, interactive, Bash shell, the result is A, C, D, B.</p></li>
+</ul>
+</div>
+<div id="一窍不通" class="section level1" number="5">
+<h1><span class="header-section-number">5</span> 一窍不通</h1>
+<p>What I can’t imagine is the result of ssh command on remote machine and local machine is different. In theory, it should be C. But on local machine, the result is actually, A, B, C. It seems the path in desktop (via <code>~/.profile</code>) is mixed into the ssh command in a unknown way <a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>.</p>
+</div>
+<div id="finally-solution" class="section level1" number="6">
+<h1><span class="header-section-number">6</span> finally solution</h1>
+<blockquote>
+<p>Don’t use this method if you don’t understand what I talked above, or you would easily run into trouble and don’t know how to solve it.</p>
+</blockquote>
+<p>I make a file <a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># set the environment variable path</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># only run following block once</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="ot">-z</span> <span class="st">&quot;</span><span class="va">$path</span><span class="st">&quot;</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">export</span> <span class="va">path=</span>yes</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># PATH specification here</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">export</span> <span class="va">PATH=</span><span class="st">&quot;</span><span class="va">$HOME</span><span class="st">/.local/bin:</span><span class="va">$HOME</span><span class="st">/.local/exec:</span><span class="va">$PATH</span><span class="st">&quot;</span> </span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code></pre></div>
+<p>and source it in both B part of <code>~/.profile</code> and C part of <code>~/.bashrc</code>.</p>
+</div>
+<div id="afterword" class="section level1" number="7">
+<h1><span class="header-section-number">7</span> Afterword</h1>
+<p>I’m still not successful with alias, <a href="https://stackoverflow.com/questions/30305973" class="uri">https://stackoverflow.com/questions/30305973</a> may help.</p>
+<p>Maybe I now know, unlike environment virables, function can’t be nested sourced. But I don’t want to maintain two file lists for now.</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>If you don’t settle <code>PATH</code> properly, you would meet endless trouble.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p><code>/bin/sh</code>, etc, such as desktop<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>209-03-25: 现在没精力考证，也许是要用 <code>''</code> 把 command 括起来。<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>Thank for the knowledge of Macro in C/C++ header file.<a href="#fnref4" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>

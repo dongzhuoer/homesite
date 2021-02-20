@@ -1,0 +1,39 @@
+---
+title: 特殊字符若干则
+author: Zhuoer Dong
+date: '2018-01-25'
+slug: 特殊字符若干则
+categories: 2018
+tags: []
+authors: []
+---
+
+<script src="01-25-特殊字符若干则_files/header-attrs/header-attrs.js"></script>
+
+<div id="TOC">
+<ul>
+<li><a href="#sequence-file"><span class="toc-section-number">1</span> 2018-01-05 sequence file</a></li>
+<li><a href="#bash"><span class="toc-section-number">2</span> 2018-01-24 Bash</a></li>
+<li><a href="#d-in-sed"><span class="toc-section-number">3</span> 2018-01-25 <code>\d</code> in <code>sed</code></a></li>
+</ul>
+</div>
+
+<p>学过编程的人肯定都体验过特殊字符的痛，这里列一下以前写的几篇 post。</p>
+<div id="sequence-file" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> 2018-01-05 sequence file</h1>
+<ul>
+<li><code>U</code> will ruin <code>mafft</code> unless you add the <a href="https://mafft.cbrc.jp/alignment/software/anysymbol.html"><code>--anysymbol</code> option</a></li>
+<li><code>*</code> (stop codon) will corrupt <code>muscle</code> and PAUP*, you might consider replacing it with <code>X</code></li>
+</ul>
+</div>
+<div id="bash" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> 2018-01-24 Bash</h1>
+<p><code>R -e "rzhuoer::gitbook$css"</code> should be <code>R -e "rzhuoer::gitbook\$css"</code></p>
+</div>
+<div id="d-in-sed" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> 2018-01-25 <code>\d</code> in <code>sed</code></h1>
+<blockquote>
+<p>In GNU <code>sed</code>, <code>\d</code> introduces a decimal character code of one to three digits in the range 0-255. For example, to remove a tab you could do: sed <code>'s/\d9//'</code> (or <code>09</code> or <code>009</code>) or replace some unprintable characters with spaces: <code>sed 's/[\d1-\d31]/ /g'</code></p>
+<p>— <a href="https://stackoverflow.com/questions/3421095" class="uri">https://stackoverflow.com/questions/3421095</a></p>
+</blockquote>
+</div>
