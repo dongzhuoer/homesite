@@ -1,0 +1,53 @@
+---
+title: ggplot in Python, looks good, unfortunately doesn't work
+author: Zhuoer Dong
+date: '2019-01-25'
+slug: ggplot-in-python-looks-good-but-not-work
+categories: 2019
+tags: []
+authors: []
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+<div id="TOC">
+<ul>
+<li><a href="#beginning"><span class="toc-section-number">1</span> Beginning</a></li>
+<li><a href="#pip3"><span class="toc-section-number">2</span> pip3</a></li>
+<li><a href="#pip2"><span class="toc-section-number">3</span> pip2</a></li>
+<li><a href="#both-failed"><span class="toc-section-number">4</span> both failed</a></li>
+<li><a href="#afterword"><span class="toc-section-number">5</span> Afterword</a></li>
+</ul>
+</div>
+
+<div id="beginning" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Beginning</h1>
+<p>今天翻了 hadley 大人的主页，发现了个好东西：<a href="https://github.com/hadley/ggplot" class="uri">https://github.com/hadley/ggplot</a></p>
+<p>正好要开始好好学 Python，赶紧试一下</p>
+</div>
+<div id="pip3" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> pip3</h1>
+<p>problem</p>
+<pre><code>type object &#39;numpy.ndarray&#39; has no attribute &#39;__array_function__&#39;</code></pre>
+<p>solution</p>
+<pre><code>pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple numpy==1.15.4</code></pre>
+</div>
+<div id="pip2" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> pip2</h1>
+<p>problem</p>
+<pre><code>ImportError: No module named _tkinter, please install the python-tk package</code></pre>
+<p>solution</p>
+<pre><code>sudo apt -y install python-tk</code></pre>
+</div>
+<div id="both-failed" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> both failed</h1>
+<p>Then both result in</p>
+<pre><code>You can access Timestamp as pandas.Timestamp
+  pd.tslib.Timestamp,
+...
+ImportError: cannot import name Timestamp</code></pre>
+</div>
+<div id="afterword" class="section level1" number="5">
+<h1><span class="header-section-number">5</span> Afterword</h1>
+<p>R 可能真的快被我翻得差不多了，也该去 Python 里找有意思的东西了</p>
+</div>

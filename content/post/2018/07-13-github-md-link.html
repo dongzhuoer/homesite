@@ -1,0 +1,112 @@
+---
+title: link to .md file on GitHub
+author: Zhuoer Dong
+date: '2018-07-13'
+slug: github-md-link
+categories: 2018
+tags: []
+authors: []
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+</style>
+
+<div id="TOC">
+<ul>
+<li><a href="#beginning"><span class="toc-section-number">1</span> Beginning</a></li>
+<li><a href="#development"><span class="toc-section-number">2</span> Development</a></li>
+<li><a href="#climax"><span class="toc-section-number">3</span> Climax</a></li>
+<li><a href="#epilogue"><span class="toc-section-number">4</span> Epilogue</a></li>
+</ul>
+</div>
+
+<div id="beginning" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Beginning</h1>
+<p>Yesterday, when writing documentation for undergraduate thesis R packages, I wanted to utilize cross-link to improve readability.</p>
+<p>In some place <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>, I wanted to add a link which can jump a specific text in <a href="https://github.com/dongzhuoer/rGEO.data/blob/master/R-raw/data.Rmd" class="uri">https://github.com/dongzhuoer/rGEO.data/blob/master/R-raw/data.Rmd</a> :</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">`gds_result.txt`</span>: click <span class="co">[</span><span class="ot">here</span><span class="co">]</span>(https://www.ncbi.nlm.nih.gov/gds?term=(%22expression%20profiling%20by%20array%22%5BDataSet%20Type%5D)%20AND%20%22homo%20sapiens%22%5BOrganism%5D).</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    Or query <span class="in">`(&quot;expression profiling by array&quot;[DataSet Type]) AND &quot;homo sapiens&quot;[Organism]`</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    in <span class="co">[</span><span class="ot">GEO DataSets</span><span class="co">](https://www.ncbi.nlm.nih.gov/gds)</span>. </span></code></pre></div>
+<p>I tried for a while, found it’s not easy and endwd up with <code>search gds_result.txt in here</code>.</p>
+</div>
+<div id="development" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Development</h1>
+<p>Today, I realize user won’t bother to select, copy, click, paste search, so I ’d better provide a link which user can just click.</p>
+<p>Thanks to this <a href="https://help.github.com/articles/searching-code/">doc</a>, I wrote a url perfoming advanced search on GitHub: <a href="https://github.com/search?q=gds_result.txt+repo%3Adongzhuoer%2FrGEO.data+filename%3Adata.Rmd+path%3A%2FR-raw" class="uri">https://github.com/search?q=gds_result.txt+repo%3Adongzhuoer%2FrGEO.data+filename%3Adata.Rmd+path%3A%2FR-raw</a> . It would query <code>gds_result.txt repo:dongzhuoer/rGEO.data filename:data.Rmd path:/R-raw</code>. As you can see, by specifying repo and path, the url can precisely locate to the expected position. However, the display is just not what I desired. The lines following the displayed paragraph is collapsed in <code>...</code> and you can’t expand it by click. After you click the file, you will just get a normal webpage (only display the head of the file), with no means to highlight the part I desired.</p>
+<p>Then I try to link to specific line (range) <a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>, but that doesn’t work either. On one hand, if I only specify line number, the file content may change in future and link to the wrong place; On the other hand, If I use permanent link, although the link is always valid, user can’t see the latest description of <code>gds_result.txt</code>.</p>
+</div>
+<div id="climax" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Climax</h1>
+<p>In the final solution, I have to use the ugly syntax of <code>&lt;code id=gds_result.txt&gt;gds_result.txt&lt;/code&gt;</code> and use <code>#user-content-gds_result.txt</code> to refer that anchor.</p>
+<p>Desperately, it still doesn’t work, the page still not jump to that location after refreshing. When I am going to give up, I find it actually <em>works</em> if I open a new tab. The problem lies in refreshing: the page would retain the same position before.</p>
+</div>
+<div id="epilogue" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Epilogue</h1>
+<p>Anyway, HTML tag isn’t elegant. I plan to tidy the structure of the file and add appropriate heading.</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Unfortunately I forget where it is when I revise this post on 2019-03-05.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p><a href="https://help.github.com/articles/creating-a-permanent-link-to-a-code-snippet/" class="uri">https://help.github.com/articles/creating-a-permanent-link-to-a-code-snippet/</a> helps a lot.<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>

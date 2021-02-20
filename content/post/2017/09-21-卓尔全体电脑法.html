@@ -1,0 +1,99 @@
+---
+title: 卓尔全体电脑法
+author: Zhuoer Dong
+date: '2017-09-21'
+slug: 卓尔全体电脑法
+categories: 2017
+tags: []
+authors: []
+---
+
+<script src="09-21-卓尔全体电脑法_files/header-attrs/header-attrs.js"></script>
+
+<div id="TOC">
+<ul>
+<li><a href="#前言"><span class="toc-section-number">1</span> 前言</a></li>
+<li><a href="#还我纯净windows"><span class="toc-section-number">2</span> 还我纯净Windows</a></li>
+<li><a href="#分区问题"><span class="toc-section-number">3</span> 分区问题</a></li>
+<li><a href="#rufus-make-bootable-usb-driver-using-iso-image"><span class="toc-section-number">4</span> Rufus: Make bootable USB driver using ISO image</a></li>
+<li><a href="#grub"><span class="toc-section-number">5</span> <code>grub</code></a></li>
+<li><a href="#virtual-box"><span class="toc-section-number">6</span> Virtual Box</a></li>
+<li><a href="#vmware-uefi"><span class="toc-section-number">7</span> Vmware UEFI</a></li>
+</ul>
+</div>
+
+<blockquote>
+<p>此法一切解释权归董卓尔所有, 所属全体电脑必须遵守，任何反对均无效。</p>
+</blockquote>
+<div id="前言" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> 前言</h1>
+<p>从最开始沉迷360安全卫士，到现在连 Windows Denfender 也想卸载；从 Dell 自带的单一 Windows，到自己装的 Windows + Ubuntu MATE 双系统，使用电脑的方式一直在发生变化。特此记录一下现行规范，有类似感受想定制自己的操作系统的人可以参考。</p>
+<p>其实类似于 Error Log 啦。写作动机来自某一天为了省空间想删除 portable 软件的 <code>.exe</code>，刚要点击红色的叉叉时。突然想起来，这些文件之所以存在，正是因为之前转移到百度云后，觉得不靠谱，就又都下载下来保留了一份。突然脊背一阵发凉啊，这才意识到花了好久的思辨做出的正确决定，在过了一段时间之后也许就会被遗忘，然后又得走一遍弯路。身为 GitHuber 怎能允许这种事情发生，于是开辟此文，以法律形式保障千辛万苦做出的明智决定不会被遗忘之神玷污，捍卫宝贵的时间。</p>
+</div>
+<div id="还我纯净windows" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> 还我纯净Windows</h1>
+<p>想要一个主要用于学习工作、不被广告打扰、摆脱流氓软件的 Windows ，其实很简单：</p>
+<ol style="list-style-type: decimal">
+<li>保证你的系统随时可以<strong>重装</strong>，目前尚未发现此招对付不了的流氓软件。</li>
+<li>防病毒用 Windows Defender，清理垃圾用<strong>磁盘清理</strong>，防止开机自启用<strong>任务管理器</strong>，卸载软件用<strong>控制面板</strong>，当然最好的维护方法是不要装那些国产流氓软件。</li>
+</ol>
+</div>
+<div id="分区问题" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> 分区问题</h1>
+<ul>
+<li><del>给 <code>/boot</code> 独立分区</del>：不管是装一个系统还是多个系统，目前我没发现这样做有任何优点，担心弄坏的话可以勤用 <code>tar</code> 之类备份。缺点倒是有，比如其他 Linux 的<code>grub</code> 无法正常生成 <code>os_probe</code> 文件。</li>
+<li><code>/home</code> 倒是可以独立分区，系统坏掉时很方便，重装就好了。不过我用不上，对我而言 <code>/home</code> 的寿命和所属的系统一样长。</li>
+<li>swap 2G 就够了，担心不够的话去看看 Windows 的 <code>pagefile.sys</code> 的大小。</li>
+</ul>
+</div>
+<div id="rufus-make-bootable-usb-driver-using-iso-image" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Rufus: Make bootable USB driver using ISO image</h1>
+<ul>
+<li><p>Rufus 中的不同分区方案指的是U盘的分区方案:</p>
+<table>
+<thead>
+<tr class="header">
+<th>options</th>
+<th>partition &amp; boot theme</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>MBR for BIOS &amp; UEFI</td>
+<td>msdos partition, Legacy+UEFI</td>
+</tr>
+<tr class="even">
+<td>UFEI using MBR</td>
+<td>msdos partition, Legacy(fail) + UEFI</td>
+</tr>
+<tr class="odd">
+<td>UEFI using GPT</td>
+<td>UEFI partition, Legacy(fail) + UEFI</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>Boot scheme for installed OS is consistent with that of installing USB driver, so you should choosing aporpriate boot scheme for the USB driver to let you OS boot in the way you desired.</p></li>
+<li><p>Partition scheme should always manually set by <code>gparted</code> (shipped with Ubuntu MATE)</p></li>
+</ul>
+</div>
+<div id="grub" class="section level1" number="5">
+<h1><span class="header-section-number">5</span> <code>grub</code></h1>
+<ul>
+<li><code>vim</code> <code>/etc/default/grub</code> or <code>/etc/grub.d/*</code></li>
+<li><code>update-grub</code>(only available on Ubuntu) is better than <code>grub-mkconfig -o grub_cfg_file</code>, since you needn’t distinguish <code>/boot/grub/grub.cfg</code> and <code>boot/efi/EFI/[ubuntu/grub|centos/grub2]/grub.cfg</code></li>
+</ul>
+</div>
+<div id="virtual-box" class="section level1" number="6">
+<h1><span class="header-section-number">6</span> Virtual Box</h1>
+<ul>
+<li>Fedora 无法安装扩展光盘</li>
+<li>Windows 10 支持共享文件和剪切板，主机向虚拟机拖拽文件（但反向不行），但不支持U盘。</li>
+</ul>
+</div>
+<div id="vmware-uefi" class="section level1" number="7">
+<h1><span class="header-section-number">7</span> Vmware UEFI</h1>
+<ul>
+<li>先自动安装 Windows 10，得到 450M 恢复 + 104M UEFI + 10M 保留 + 63G ntfs。然后安装 Ubuntu MATE，先用 <code>gparted</code> 分区，压缩 ntfs 得 32G free space，在此之上建立 ext4 partition 来 mount <code>/</code>, remember to set boot at <code>/dev/sda</code>. 最终 <code>/EFI</code> 会变成，24M Microsoft + 1.2M Boot + 3.6M ubuntu. And you have two UFEI boot options, of which “ubuntu” is the default, though you can set by F12 easily (add, delete, change order).</li>
+<li><code>efibootmgr</code></li>
+</ul>
+</div>

@@ -1,0 +1,54 @@
+---
+title: everlasting battle with GFW
+author: Zhuoer Dong
+date: '2018-05-09'
+slug: everlasting-battle-with-gfw
+categories: 2018
+tags: []
+authors: []
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+<div id="TOC">
+<ul>
+<li><a href="#meet-long-lost-google-scholar"><span class="toc-section-number">1</span> 2017-12-06 meet long-lost google scholar</a></li>
+<li><a href="#google-resources-reverse-proxy"><span class="toc-section-number">2</span> 2018-05-01 Google resources reverse proxy</a></li>
+</ul>
+</div>
+
+<blockquote>
+<p>与 GFW 的战斗永不停息，下面是以前写的几篇 post。</p>
+</blockquote>
+<div id="meet-long-lost-google-scholar" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> 2017-12-06 meet long-lost google scholar</h1>
+<p>A few days ago, I found I can’t access Google Scholar, but I was to busy to deal with it.</p>
+<p>Now, I need to search papers about de novo RNA-seq assembly. So I feel urgent to use it. I search Google, and find many people talks about host, ipv6, etc. Not believed what they say, I decided to have a try:</p>
+<p><code>vim /etc/hosts</code> <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<pre><code># Google Scholar 
+2607:f8b0:4005:801::200e scholar.google.cn
+2607:f8b0:4005:801::200e scholar.google.com.hk
+2607:f8b0:4005:801::200e scholar.google.com
+2607:f8b0:4005:801::200e scholar.l.google.com</code></pre>
+<p>It turns out the method works! Now I can happily use Google Scholar again, although changing host periodically may be cumbersome.</p>
+<p>Thank Google, as long as I can access you, there is still a help.</p>
+</div>
+<div id="google-resources-reverse-proxy" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> 2018-05-01 Google resources reverse proxy</h1>
+<p>copied from <a href="https://fengmk2.com/blog/2016/google-fonts-mirror">here</a></p>
+<ul>
+<li><a href="https://ajax.googleapis.com" class="uri">https://ajax.googleapis.com</a> =&gt; <a href="https://ajax.googleapis.cnpmjs.org" class="uri">https://ajax.googleapis.cnpmjs.org</a></li>
+<li><a href="https://fonts.googleapis.com" class="uri">https://fonts.googleapis.com</a> =&gt; <a href="https://fonts.googleapis.cnpmjs.org" class="uri">https://fonts.googleapis.cnpmjs.org</a></li>
+<li><a href="https://fonts.gstatic.com" class="uri">https://fonts.gstatic.com</a> =&gt; <a href="https://fonts.gstatic.cnpmjs.org" class="uri">https://fonts.gstatic.cnpmjs.org</a></li>
+<li><a href="https://themes.googleusercontent.com" class="uri">https://themes.googleusercontent.com</a> =&gt; <a href="https://themes.googleusercontent.cnpmjs.org" class="uri">https://themes.googleusercontent.cnpmjs.org</a></li>
+</ul>
+<p>A few days later (2018-05-09), <a href="https://fonts.googleapis.cnpmjs.org" class="uri">https://fonts.googleapis.cnpmjs.org</a> caused a big trouble to me. A font didn’t exist on <a href="https://fonts.googleapis.cnpmjs.org/css?family=Merriweather:300,300i,400,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext">it</a>, but did on <a href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext">Google</a>.</p>
+<p>I realized that the biggest problem with GFW is that it’s very hard, or better, impossible to find a universal solution. Shadowsocks may fail at times, reverse proxy may lag in synchronize, block may impair things I really need.</p>
+<p>At least for now, Google Fonts has been completely blocked in my heart, following Google Analytics and Tag Manager.</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>execute <code>host google.com</code> on VPS to get the ipv6 address<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>

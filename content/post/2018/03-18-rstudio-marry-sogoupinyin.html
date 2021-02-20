@@ -1,0 +1,58 @@
+---
+title: RStudio marry 搜狗拼音输入法
+author: Zhuoer Dong
+date: '2018-03-18'
+slug: rstudio-marry-sogoupinyin
+categories: 2018
+tags: []
+authors: []
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+<div id="TOC">
+<ul>
+<li><a href="#begining"><span class="toc-section-number">1</span> Begining</a></li>
+<li><a href="#development"><span class="toc-section-number">2</span> Development</a></li>
+<li><a href="#climax"><span class="toc-section-number">3</span> Climax</a></li>
+<li><a href="#epilogue"><span class="toc-section-number">4</span> Epilogue</a></li>
+</ul>
+</div>
+
+<blockquote>
+<p>From above 1.2.5001, one can just try the first method in <a href="#Development">Development</a>, the only flaw is the square when you type Pinyin.</p>
+</blockquote>
+<div id="begining" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Begining</h1>
+<p>Ubuntu 不愧是 Linux 的亲儿子 <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>，连搜狗拼音输入法都有得用。</p>
+<p>但一件很尴尬的事情是，我最喜欢的 IDE，RStudio，不支持搜狗拼音输入法。我曾在爆栈网 <a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> 搜过一次，结果最好的结局方法貌似是 用 RStudio Server 来代替 <a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>，真让人无语。</p>
+<p>But today, I manage to use 搜狗拼音输入法 in RStudio, after exploring for half a day.</p>
+</div>
+<div id="development" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Development</h1>
+<p>Thanks to this <a href="https://support.rstudio.com/hc/en-us/articles/205605748-Using-RStudio-0-99-with-Fctix-on-Linux">post</a>, I know the reason is that <code>libfcitxplatforminputcontextplugin.so</code> is missing. I use <code>apt-file find</code> and find <code>fcitx-frontend-qt5</code> provides that <code>.so</code>. But 搜狗拼音输入法 still doesn’t work.</p>
+<p>Then I found another <a href="https://my.oschina.net/lieefu/blog/505363?p=2">post</a>, which helped me build <a href="https://github.com/fcitx/fcitx-qt5">fcitx-qt5</a> from source:</p>
+<pre><code>sudo apt install cmake extra-cmake-modules fcitx-libs-dev
+# the critical step, you have to install Qt
+export PATH=&quot;/path/to/Qt/5.10.1/gcc_64/bin:$PATH&quot;</code></pre>
+<p>After that, I get a <code>libfcitxplatforminputcontextplugin.so</code>, and this <code>.so</code> did help enabled 搜狗拼音输入法 in Qt Creator.</p>
+</div>
+<div id="climax" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Climax</h1>
+<p>Motivated by aboving result, I figured out that RStudio 1.1.142 use Qt 5.4.2.</p>
+<p>Finally, I built <code>libfcitxplatforminputcontextplugin.so</code> using Qt 5.4.2 and fixed the problem <a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>.</p>
+<p>By the way, the Qt Maintenance Tool is really clumsy, you’d better uninstall &amp; install if you want to add modules.</p>
+</div>
+<div id="epilogue" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Epilogue</h1>
+<p>写于 2019-02-28：可惜我没有把详细过程记下来，后来我一直用着编译好的 <code>.so</code>，到目前为止都没什么问题。等到以后版本不兼容的时候，重新 build 估计又要花一些时间。</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>我瞎说的<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Stack Overflow<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>毕竟浏览器可以正常使用搜狗拼音输入法<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>put it inside <code>/usr/lib/x86_64-linux-gnu/qt5/plugins/platforminputcontexts/</code><a href="#fnref4" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>

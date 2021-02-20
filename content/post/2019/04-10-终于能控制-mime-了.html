@@ -1,0 +1,18 @@
+---
+title: 终于能控制 MIME 了
+author: Zhuoer Dong
+date: '2019-04-10'
+slug: 终于能控制-mime-了
+categories: 2019
+tags: []
+authors: []
+---
+
+<script src="04-10-终于能控制-mime-了_files/header-attrs/header-attrs.js"></script>
+
+
+<p>上午打算看文献，突然想要 Mendeley 的 <code>open file externally</code> 能使用 Okular（黄底黑字更护眼）。</p>
+<p>以前各种装系统的时候，我就特别想要通过配置文件来控制默认应用，Windows 都被我用 <code>.reg</code>（注册表文件）治的服服帖帖了，何况 Ubuntu 呼。然而我失败了，虽然找到了 <code>/usr/share/applications/defaults.list</code>, <code>~/.config/mimeapps.list</code> 等文件，但没有一个教程能告诉我整个系统到底是怎么工作的。结论是我决定用 GUI 的方式，右键 =&gt; <code>Open with Other Application...</code>。</p>
+<p>这回我下决心再挑战一次的另一个原因就是，应用列表中有一堆 Okular，感觉像是重装软件时遗留的，很烦人。<code>ls /usr/share/applications/ok*</code> 一下，原来是为了打开不同类型的文件（<code>.pdf</code>, <code>.mobi</code> 等）。</p>
+<p>意外的是，这次非常顺利，试了一下 <code>~/.config/mimeapps.list</code>, 就可以设置默认应用了。</p>
+<p>还是把多余的 <code>okularApplication_*.desktop</code> 都删了，看着烦，只保留 <code>okularApplication_pdf.desktop</code>。</p>

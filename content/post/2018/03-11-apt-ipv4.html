@@ -1,0 +1,54 @@
+---
+title: finally, apt doesn't waste my time
+author: Zhuoer Dong
+date: '2018-03-11'
+slug: apt-ipv4
+categories: 2018
+tags: []
+authors: []
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+<div id="TOC">
+<ul>
+<li><a href="#preface"><span class="toc-section-number">1</span> Preface</a></li>
+<li><a href="#beginning"><span class="toc-section-number">2</span> Beginning</a></li>
+<li><a href="#development"><span class="toc-section-number">3</span> Development</a></li>
+<li><a href="#climax"><span class="toc-section-number">4</span> Climax</a></li>
+<li><a href="#epilogue"><span class="toc-section-number">5</span> Epilogue</a></li>
+</ul>
+</div>
+
+<div id="preface" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Preface</h1>
+<p>人在天朝，身不由己。何以解忧，唯有镜像。</p>
+</div>
+<div id="beginning" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Beginning</h1>
+<p>The problem of apt has trouble me for a long time. 我曾为此换到阿里云的镜像，但是不如清华的快。</p>
+</div>
+<div id="development" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Development</h1>
+<p>Several weeks earlier, I found the problem root from ipv6：<code>mirrors.tuna.tsinghua.edu.cn</code> 是自动解析，可能清华的镜像发现我是校园网，就以为我有 ipv6, 然而我并没有（此处鄙视南开校园网），所以就等、等、等 <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>，直到超时。</p>
+<p>So the solution is to use <code>mirrors4.tuna.tsinghua.edu.cn</code> instead of <code>mirrors.tuna.tsinghua.edu.cn</code> when you can not connect to IPv6 (Especially inside NKU_WLAN):</p>
+<p><code>sudo sed --in-place=.bak 's/mirrors\.tuna/mirrors4.tuna/' /etc/apt/sources.list</code></p>
+</div>
+<div id="climax" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Climax</h1>
+<p>Then I get into trouble when I handle docker mirror. That lead me to find a <a href="https://www.vultr.com/docs/force-apt-get-to-ipv4-or-ipv6-on-ubuntu-or-debian">better solution</a>:</p>
+<p><code>sudo apt -o Acquire::ForceIPv4=true ...</code></p>
+<p>By the way, I successfully add deb repository for VSCode, slack, chrome, skype, sogoupinyin. Though it took me 2 hours and more, I thought update software automatically would benefit me a lot.</p>
+</div>
+<div id="epilogue" class="section level1" number="5">
+<h1><span class="header-section-number">5</span> Epilogue</h1>
+<p>I think now I should have sloved the problem completely.</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><pre><code>0% [Connecting to mirrors.tuna.tsinghua.edu.cn (2402:f000:1:416:101:6:6:178)] </code></pre>
+<pre><code>Ign:6 https://mirrors.tuna.tsinghua.edu.cn/CRAN/bin/linux/ubuntu artful/ InRelease</code></pre>
+<a href="#fnref1" class="footnote-back">↩︎</a></li>
+</ol>
+</div>

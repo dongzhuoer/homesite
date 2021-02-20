@@ -1,0 +1,131 @@
+---
+title: VPS SSH 公钥之巨坑
+author: Zhuoer Dong
+date: '2017-10-23'
+slug: vps-ssh-pub-key-bug
+categories: 2017
+tags: []
+authors: []
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+</style>
+
+<div id="TOC">
+<ul>
+<li><a href="#beginning"><span class="toc-section-number">1</span> Beginning</a></li>
+<li><a href="#development"><span class="toc-section-number">2</span> Development</a></li>
+<li><a href="#climax"><span class="toc-section-number">3</span> Climax</a></li>
+<li><a href="#epilogue"><span class="toc-section-number">4</span> Epilogue</a></li>
+<li><a href="#afterword"><span class="toc-section-number">5</span> Afterword</a></li>
+</ul>
+</div>
+
+<blockquote>
+<p>当时在用 Digtal Ocean’s VPS 翻墙。不记得这次具体发生什么了，应该是在创建 VPS 时添加了 SSH 公钥。本以为这样就可以直接登陆，不用费心改密码、<code>ssh-copy-id</code>之类的；结果倒好，压根登录不了，简直是完全无法控制。</p>
+</blockquote>
+<p>Epilogue
+# Preface</p>
+<p>以后还是手动输密码的好，好歹能从 terminal 登进去， 不然出了错就只能查必应（对，连 Google 都没有）</p>
+<div id="beginning" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Beginning</h1>
+<p>这次的问题是</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ssh root@165.227.<span class="pp">**</span>.<span class="pp">***</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Connection</span> closed by 165.227.<span class="pp">**</span>.<span class="pp">***</span> port 22</span></code></pre></div>
+</div>
+<div id="development" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Development</h1>
+<p>On Digtal Ocean, <code>Reset root password</code>, then <code>Launch Console</code>.</p>
+<p><code>systemctl status sshd</code></p>
+<pre><code>Oct 16 08:59:45 openstack sshd[1214]: error: Could not load host key: /etc/ssh/ss
+Oct 16 08:59:45 openstack sshd[1214]: error: Could not load host key: /etc/ssh/ss
+Oct 16 08:59:45 openstack sshd[1214]: error: Could not load host key: /etc/ssh/ss</code></pre>
+<p>Although ssh doesn’t fail <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>, you can’t log in.</p>
+</div>
+<div id="climax" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Climax</h1>
+<p>T hanks for <a href="https://linux.cn/article-4226-1.html" class="uri">https://linux.cn/article-4226-1.html</a></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dpkg-reconfigure openssh-server </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># choose &#39;install the package maintainer&#39;s version&#39; </span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl restart sshd</span></code></pre></div>
+</div>
+<div id="epilogue" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Epilogue</h1>
+<p>Wa, VPS is really a fantastic tool to waste time!</p>
+</div>
+<div id="afterword" class="section level1" number="5">
+<h1><span class="header-section-number">5</span> Afterword</h1>
+<p>Then <code>vda1</code> only has 2G, you must be kidding!</p>
+<p>Fortunately, it isn’t a really hard problem, although the solution isn’t easy anyway.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> parted /dev/vda</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># resizepart</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 20G</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> partprobe</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> resize2fs /dev/vda1</span></code></pre></div>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>How can it not fails, it should fail and very, very, very <em>loudly</em>!<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>

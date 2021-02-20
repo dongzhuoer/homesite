@@ -1,0 +1,168 @@
+---
+title: GitHub API limit pushs me to learn how to use docker multi-stage build to hide
+  secret
+author: Zhuoer Dong
+date: '2018-11-20'
+slug: github-api-limit-teach-new-docker-tip
+categories: 2018
+tags: []
+authors: []
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+</style>
+
+<div id="TOC">
+<ul>
+<li><a href="#cause"><span class="toc-section-number">1</span> cause</a></li>
+<li><a href="#strugle"><span class="toc-section-number">2</span> strugle</a></li>
+<li><a href="#seemingly-promissing-dead-end"><span class="toc-section-number">3</span> seemingly promissing dead end</a></li>
+<li><a href="#success-yet-to-improve"><span class="toc-section-number">4</span> success, yet to improve</a></li>
+<li><a href="#merging-together-comes-perfect-way"><span class="toc-section-number">5</span> merging together comes perfect way</a></li>
+<li><a href="#final-solution"><span class="toc-section-number">6</span> Final solution</a></li>
+<li><a href="#epilogue"><span class="toc-section-number">7</span> Epilogue</a></li>
+</ul>
+</div>
+
+<div id="cause" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> cause</h1>
+<p>GitHub API limit (when installing R packages from GitHub) on Travis CI has bothered me for a while, using personal token seems to be a nice solution.</p>
+<p>But for Docker, that’s a problem.</p>
+</div>
+<div id="strugle" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> strugle</h1>
+<p>At first, I spend some time to realize that it’s impossible to ask Dockerfile to use environment variables on host machine <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
+</div>
+<div id="seemingly-promissing-dead-end" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> seemingly promissing dead end</h1>
+<p>Then I found a seemingly nice approch:</p>
+<ul>
+<li>add <code>ARG GITHUB_PAT</code> to <code>Dockerfile</code>,</li>
+<li>use <code>docker build --build-arg GITHUB_PAT=${GITHUB_PAT} ...</code></li>
+</ul>
+<p>But the official documentation warns me:</p>
+<blockquote>
+<p>It is not recommended to use build-time variables for passing secrets like github keys, user credentials etc. Build-time variable values are visible to any user of the image with the <code>docker history</code> command.</p>
+</blockquote>
+</div>
+<div id="success-yet-to-improve" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> success, yet to improve</h1>
+<p>Later, I decide to use build stages:</p>
+<ul>
+<li>one stage to install the packages</li>
+<li>another stage to copy the <code>site-library/</code> folder.</li>
+</ul>
+<p>In this way, I can write the <code>GITHUB_PAT</code> value in <code>Dockerfile</code> <a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>, and <code>docker history</code> can’t see it since the second stage doesn’t use it.</p>
+</div>
+<div id="merging-together-comes-perfect-way" class="section level1" number="5">
+<h1><span class="header-section-number">5</span> merging together comes perfect way</h1>
+<p>After many experiments, I find that there are two conditions to meet for exposing an <code>ARG</code></p>
+<ul>
+<li>the final stage contains <code>ARG TEST</code></li>
+<li>the final stage contains at least one <code>RUN</code> command <a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></li>
+</ul>
+<p>As you can see from <code>docker history</code>, even I just not use <code>TEST</code> at all), the value is still disclosed.</p>
+<pre><code>sha256:38e29efa3a95b241be1ad285a534e9353c2a13f2a0c5abac69ac76c5511131e9   44 minutes ago      |1 TEST=test /bin/sh -c echo haha</code></pre>
+<p>Finally, I figured out that after splitting into two stages, now I can pass <code>GITHUB_PAT</code> through <code>--build-arg</code>.</p>
+</div>
+<div id="final-solution" class="section level1" number="6">
+<h1><span class="header-section-number">6</span> Final solution</h1>
+<ul>
+<li><code>Dockerfile</code></li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode dockerfile"><code class="sourceCode dockerfile"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> dongzhuoer/rlang:devtools as site-library</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">ARG</span> GITHUB_PAT</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> mkdir /usr/local/lib/R/site-library/</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> R -e <span class="st">&quot;remotes::install_github(c(&#39;tidyverse/tidyverse&#39;), lib = &#39;/usr/local/lib/R/site-library/&#39;)&quot;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> dongzhuoer/rlang:devtools</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="kw">LABEL</span> maintainer=<span class="st">&quot;Zhuoer Dong &lt;dongzhuoer@mail.nankai.edu.cn&gt;&quot;</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> --from=site-library /usr/local/lib/R/site-library/ /usr/lib/R/site-library/</span></code></pre></div>
+<ul>
+<li>Build command</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> build <span class="at">--build-arg</span> GITHUB_PAT=<span class="va">${GITHUB_PAT}</span> ...</span></code></pre></div>
+<p>The best parts of this method are:</p>
+<ol style="list-style-type: decimal">
+<li>the <code>Dockerfile</code> is <em>absolutely portable</em>: anyone can still build the image <a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></li>
+<li>if you set the environment variable, <code>GITHUB_PAT</code>, you can take advantage of higher API rate limit.</li>
+</ol>
+</div>
+<div id="epilogue" class="section level1" number="7">
+<h1><span class="header-section-number">7</span> Epilogue</h1>
+<p>By the way, you need <code>RUN apt update &amp;&amp; apt -y install git &amp;&amp; rm -r /var/lib/apt/lists/</code> if the R package repository is private.</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p><code>Dockerfile</code> is portable, only <code>docker build</code> can interact with specific host machine<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Of course the repository containing the <code>Dockerfile</code> has to be private then<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>Maybe other command also works, but <code>COPY</code> definitely not<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>as long as the package repository is public<a href="#fnref4" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>

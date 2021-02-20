@@ -1,0 +1,24 @@
+---
+title: Ubuntu 的 Docker 终于跟上官方的脚步了
+author: Zhuoer Dong
+date: '2019-03-27'
+slug: ubuntu-docker-keepup
+categories: 2019
+tags: []
+authors: []
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<p>第一次装 Docker 真是噩梦，后来我就一直都去清华镜像站下载 <code>.deb</code>。直到今天我整理 VPS 的安装脚本时，觉得用 <code>.deb</code> 装 Docker 不够自动化，因为还得手动维护最新版的 URL，就想看看 Ubuntu 软件仓库的 Docker 更新到哪一版本了。不看不知道，一看吓一跳，虽然找软件名花了点时间（改成 <code>docker.io</code> 了），但居然更新到了 <code>18.09.2</code>，镜像站也才 <code>18.09.3</code> 啊。看来又有一个软件可以方便地维护了。</p>
+<hr />
+<p>附我以前写的安装说明：</p>
+<p>DONOT follow the official guide <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>, rather, directly download <code>.deb</code> <a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> from <a href="https://mirrors4.tuna.tsinghua.edu.cn/docker-ce/linux/ubuntu/dists/bionic/pool/stable/amd64/" class="uri">https://mirrors4.tuna.tsinghua.edu.cn/docker-ce/linux/ubuntu/dists/bionic/pool/stable/amd64/</a></p>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>the network is awfully terrible<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>recently Docker has been splitted into three <code>.deb</code>, you needn’t care the order, just use <code>gdebi</code> and install missing dependency<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>

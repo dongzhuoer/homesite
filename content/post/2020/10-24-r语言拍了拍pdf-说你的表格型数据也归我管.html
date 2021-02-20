@@ -1,0 +1,116 @@
+---
+title: R语言拍了拍PDF，说你的表格型数据也归我管
+author: Zhuoer Dong
+date: '2020-10-24'
+slug: r语言拍了拍pdf-说你的表格型数据也归我管
+categories: 2020
+tags: []
+authors: []
+---
+
+<script src="10-24-r语言拍了拍pdf-说你的表格型数据也归我管_files/header-attrs/header-attrs.js"></script>
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+</style>
+
+
+<p>上午遇到一个可爱的妹子被实习老板差遣去做苦力，从 PDF 中提取表格转化为 excel。这我当然不能忍，抄起键盘就抡了过去，啊不，是召唤出了 R 语言。</p>
+<p>数据来源是 <a href="https://www.chinacoal-safety.gov.cn/xw/zt/2018zt/mkscnlgl/index.shtml" class="uri">https://www.chinacoal-safety.gov.cn/xw/zt/2018zt/mkscnlgl/index.shtml</a>。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">&quot;tabulizer&quot;</span>, <span class="st">&quot;magrittr&quot;</span>, <span class="st">&quot;tibble&quot;</span>, <span class="st">&quot;stringr&quot;</span>, <span class="st">&quot;dplyr&quot;</span>, <span class="st">&quot;openxlsx&quot;</span>))</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://www.chinacoal-safety.gov.cn/xw/zt/2018zt/mkscnlgl/gsfmkscnlgg/201803/P020200310587872852488.pdf&quot;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>mat <span class="ot">&lt;-</span> tabulizer<span class="sc">::</span><span class="fu">extract_tables</span>(url) <span class="sc">%&gt;%</span> <span class="fu">do.call</span>(rbind, .)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>tibble<span class="sc">::</span><span class="fu">as_tibble</span>(mat[<span class="sc">-</span><span class="dv">1</span>,]) <span class="sc">%T&gt;%</span> {<span class="fu">colnames</span>(.) <span class="ot">&lt;-</span> stringr<span class="sc">::</span><span class="fu">str_remove</span>(mat[<span class="dv">1</span>,], <span class="st">&quot;</span><span class="sc">\\</span><span class="st">r&quot;</span>)} <span class="sc">%&gt;%</span> </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(dplyr<span class="sc">::</span><span class="fu">across</span>(dplyr<span class="sc">::</span><span class="fu">everything</span>(), <span class="sc">~</span>stringr<span class="sc">::</span><span class="fu">str_remove</span>(., <span class="st">&quot;</span><span class="sc">\\</span><span class="st">r&quot;</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  openxlsx<span class="sc">::</span><span class="fu">write.xlsx</span>(<span class="st">&quot;~/Downloads/广西.xlsx&quot;</span>)</span></code></pre></div>
+<p>效果大概是这样:</p>
+<pre><code># A tibble: 19 x 5
+   序号  煤矿名称                                     `生产能力(万吨/年)` 安全生产许可证编号                   所在地址                
+   &lt;chr&gt; &lt;chr&gt;                                        &lt;chr&gt;               &lt;chr&gt;                                &lt;chr&gt;                   
+ 1 &quot;1&quot;   南宁市白马矿业投资有限责任公司白马露天煤矿   10                  &quot;(桂)MK安许证字〔2008〕001号Y3&quot;      &quot;南宁市隆安县&quot;          
+ 2 &quot;2&quot;   上林县祥龙矿业实业有限公司那良斜井           9                   &quot;(桂)MK安许证字〔2006〕020号Y1&quot;      &quot;南宁市上林县&quot;          
+ 3 &quot;3&quot;   广西东怀矿业有限责任公司东怀煤矿一号井       150                 &quot;(桂)MK安许证字〔2006〕005号Y4B1&quot;    &quot;百色市右江区&quot;          
+ 4 &quot;4&quot;   广西壮族自治区右江矿务局有限公司保群煤矿     90                  &quot;(桂)MK安许证字〔2016〕009号Y1B4&quot;    &quot;百色市田东县&quot;          
+ 5 &quot;5&quot;   广西壮族自治区右江矿务局塘内矿               60                  &quot;(桂)MK安许证字〔2016〕001号Y3B1&quot;    &quot;百色市田东县&quot;          
+ 6 &quot;6&quot;   广西壮族自治区右江矿务局有限公司水埠矿       45                  &quot;(桂)MK安许证字〔2017〕001号&quot;        &quot;百色市右江区&quot;          
+ 7 &quot;7&quot;   广西壮族自治区右江矿务局有限公司州景矿       33                  &quot;(桂)MK安许证字〔2005〕020Y4B2&quot;      &quot;百色市田东县&quot;          
+ 8 &quot;8&quot;   广西百色那荷矿业有限责任公司那荷煤矿         30                  &quot;(桂)MK安许证字[2014]004号Y1B2&quot;      &quot;百色市右江区&quot;          
+ 9 &quot;9&quot;   广西壮族自治区右江矿务局有限公司公篓矿跃进矿 15                  &quot;(桂)MK安许证字〔2005〕023号Y4B2&quot;    &quot;百色市右江区&quot;          
+10 &quot;10&quot;  广西壮族自治区右江矿务局有限公司林场煤矿     15                  &quot;(桂)Mk安许证字〔2008〕003号Y3B2&quot;    &quot;百色市田阳县&quot;          
+11 &quot;11&quot;  广西百色福禄矿业有限责任公司福禄煤矿         45                  &quot;(桂)Mk安许证字[2019]001号&quot;          &quot;百色市右江区&quot;          
+12 &quot;12&quot;  广西环江下金煤业有限责任公司下金矿           21                  &quot;(桂)MK安许证字[2015]002号Y1&quot;        &quot;河池市环江毛南族自治县&quot;
+13 &quot;13&quot;  广西环江红山朝阳煤业有限公司朝阳矿           15                  &quot;(桂)MK安许证字[2005]013号Y4B7&quot;      &quot;河池市环江毛南族自治县&quot;
+14 &quot;14&quot;  广西罗城伟隆煤业有限公司北陵山煤矿一号井     9                   &quot;(桂)MK安许证字[2012]002号Y2B2&quot;      &quot;河池市罗城仫佬族自治县&quot;
+15 &quot;15&quot;  广西罗城伟隆煤业有限公司北崖煤矿             9                   &quot;(桂)MK安许证字[2014]002号Y1B3&quot;      &quot;河池市罗城仫佬族自治县&quot;
+16 &quot;16&quot;  广西合山煤业有限责任公司三矿(石村二号井)     90                  &quot;(桂)MK安许证字[2005]030号Y5&quot;        &quot;来宾市合山市&quot;          
+17 &quot;17&quot;  广西合山煤业有限责任公司河里洛山井           30                  &quot;(桂)MK安许证字[2016]007号Y1B2&quot;      &quot;来宾市合山市&quot;          
+18 &quot;18&quot;  宁明县大明矿业有限责任公司大闸露天煤矿       10                  &quot;(桂)MK安许可证字 〔2016〕019号Y1B2&quot; &quot;崇左市宁明县&quot;          
+19 &quot;&quot;    合计(18处)                                   686                 &quot;&quot;                                   &quot;&quot;                      </code></pre>
+<p>上面是广西省的例子，批量处理其它省份也不难，从网页中提取出 url 和省份名称的对应关系就好了。不过剩下的事还是交给这位同学自己吧，毕竟这是她的实习<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>。</p>
+<blockquote>
+<p>由衷地感受到当年能遇到 R 语言真是太幸运了。</p>
+</blockquote>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>我当然不会告诉你其实是我懒得弄了。<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>

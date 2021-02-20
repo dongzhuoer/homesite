@@ -1,0 +1,55 @@
+---
+title: remotes, a small step of devtools suite, a big step for my Travis carrer
+author: Zhuoer Dong
+date: '2018-11-29'
+slug: remotes-greatly-relieve-my-travis-carrer
+categories: 2018
+tags: []
+authors: []
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+<div id="TOC">
+<ul>
+<li><a href="#beginning"><span class="toc-section-number">1</span> Beginning</a></li>
+<li><a href="#development"><span class="toc-section-number">2</span> Development</a></li>
+<li><a href="#climax"><span class="toc-section-number">3</span> Climax</a></li>
+<li><a href="#afterword"><span class="toc-section-number">4</span> Afterword</a></li>
+</ul>
+</div>
+
+<div id="beginning" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Beginning</h1>
+<p>Back to my graduate year, I set up Travis to automatically test my R packages.</p>
+</div>
+<div id="development" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Development</h1>
+<p><strong>devtools</strong> is a good tools, but there are a few issues:</p>
+<ol style="list-style-type: decimal">
+<li><code>install_bioc()</code> only works well in development version</li>
+<li>even that, <code>install_bioc()</code> would promote you to <em>type</em> <code>y</code> to install <strong>BiocInstaller</strong>. But it’s hard to response to that, since Travis CI is automatic. So I have to manually install BiocInstaller before calling it.</li>
+<li>Due to a misunderstanding <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>, only in development version can <code>install_github()</code> &amp; <code>install_local()</code> install dependencies on GitHub</li>
+</ol>
+</div>
+<div id="climax" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Climax</h1>
+<p>The newly release version of <strong>remotes</strong> works very nice. (<strong>devtools</strong> is splited, <code>install_*()</code> is moved to <strong>remotes</strong> and exported back)</p>
+<p>It just needs Git on your system (no <strong>BiocInstaller</strong> at all), and it’s very lightweight, only needs severval seconds to install.</p>
+</div>
+<div id="afterword" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Afterword</h1>
+<p>By the way, the new <strong>BiocManager</strong> is also very nice. You can install it as a normal CRAN package, no more <code>source("https://bioconductor.org/biocLite.R")</code> <a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>.</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>It’s a misconception started before the first I use R on Travis, the exact point should be the first time that I write <code>Remotes</code> in <code>DESCRIPTION</code>. At that time, I think I just need to specify GitHub packages in <code>Remotes</code>. But devtools doesn’t install these packages, I even switch to Github version of devtools.</p>
+<p>Thanks to this <a href="https://stackoverflow.com/questions/44267268#answer-44269045">SO answer</a>, I know that I have to both specify package location in <code>Imports</code> and add package name in <code>Depends</code>. Acutally, all I need to avoid the caveat is to read the <a href="https://mirrors.tuna.tsinghua.edu.cn/CRAN/web/packages/devtools/vignettes/dependencies.html">official documentation</a>:</p>
+<blockquote>
+<p>You can mark any regular dependency defined in the Depends, Imports, Suggests or Enhances fields as being installed from a remote location by adding the remote location to Remotes in your DESCRIPTION file.</p>
+</blockquote>
+<p>注：原文来自 2018-06-03 的 post：It’s me rather than devtools who is wrong | 错的并不是devtools，而是我<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>The damn network speed never troubles me any more, 何以解忧，唯有镜像<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>

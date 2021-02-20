@@ -1,0 +1,49 @@
+---
+title: 复制粘贴怎么就这么难
+author: Zhuoer Dong
+date: '2017-11-27'
+slug: clipboard
+categories: 2017
+tags: []
+authors: []
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+<div id="TOC">
+<ul>
+<li><a href="#preface"><span class="toc-section-number">1</span> Preface</a></li>
+<li><a href="#two-selection"><span class="toc-section-number">2</span> Two selection</a></li>
+<li><a href="#vim-setting"><span class="toc-section-number">3</span> Vim setting</a></li>
+<li><a href="#one-step-forward-vps"><span class="toc-section-number">4</span> One step forward, VPS</a></li>
+</ul>
+</div>
+
+<div id="preface" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Preface</h1>
+<p>Vim 虽好，但有一个问题，就是与其它程序之间的复制粘贴。当时很多程序的设置都是用 <code>.md</code> 保存，然后用 Vim 编辑配置文件。所以这个问题给我的早期编程生涯造成了不小的麻烦，尤其是那时候我经常重装系统。</p>
+</div>
+<div id="two-selection" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Two selection</h1>
+<p>下面两段话忘记是从哪抄过来的了（看这文体肯定不是我写的）：</p>
+<ul>
+<li>The <strong>clipboard</strong> selection is accessed using keyboard shortcuts, while application specific, these are most commonly <code>ctrl+c</code> for copying, <code>ctrl+v</code> for pasting and <code>ctlr+x</code> for cutting.</li>
+<li>The <strong>primary</strong> selection speeds up the copying task by copying the text to the clipboard as soon as it was selected with the mouse, without the need for entering a keyboard shortcut. Pasting is triggered by pressing the middle mouse button (or some emulation of it).</li>
+</ul>
+</div>
+<div id="vim-setting" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Vim setting</h1>
+<p>There are two possible values for <code>set clipboard=</code>, <code>unnamed</code> and <code>unnamedplus</code>.</p>
+<p>According to <a href="https://stackoverflow.com/questions/30691466" class="uri">https://stackoverflow.com/questions/30691466</a></p>
+<ul>
+<li>On Mac OS X and Windows, they have the same effect, they both point to the system <strong>clipboard</strong> selection.</li>
+<li>On Linux, <code>unnamedplus</code> is pretty much the same as above, while <code>unnamed</code> points to <strong>primary</strong> selection.</li>
+</ul>
+<p>So, <code>set clipboard=unnamedplus</code> allows you to (1) <code>ctrl+c</code> in other programs and paste into Vim with <code>p</code> and (2) yank in Vim with <code>y</code> and <code>ctrl+v</code> into other programs on all three platforms.</p>
+<p>You can also use <code>set clipboard^=unnamed,unnamedplus</code> to utilize both selection.</p>
+</div>
+<div id="one-step-forward-vps" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> One step forward, VPS</h1>
+<p>Furthermore, I desire to access system clipboard via SSH.</p>
+<p>Please refer to <a href="https://stackoverflow.com/questions/36107927">this answer</a>.</p>
+</div>

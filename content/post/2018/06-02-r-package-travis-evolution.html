@@ -1,0 +1,168 @@
+---
+title: evolution of R package on travis
+author: Zhuoer Dong
+date: '2018-06-02'
+slug: r-package-travis-evolution
+categories: 2018
+tags: []
+authors: []
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+</style>
+
+<div id="TOC">
+<ul>
+<li><a href="#preface"><span class="toc-section-number">1</span> Preface</a></li>
+<li><a href="#introduction"><span class="toc-section-number">2</span> Introduction</a></li>
+<li><a href="#purpose"><span class="toc-section-number">3</span> purpose</a></li>
+<li><a href="#workflow"><span class="toc-section-number">4</span> workflow</a></li>
+<li><a href="#version-and-platform"><span class="toc-section-number">5</span> version and platform</a></li>
+<li><a href="#clean-cache"><span class="toc-section-number">6</span> clean cache</a></li>
+</ul>
+</div>
+
+<div id="preface" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Preface</h1>
+<p>This post was written before <a href="/post/docker-testthat-on-travis/">the introduce of Docker</a> on 2018-12-09.</p>
+</div>
+<div id="introduction" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Introduction</h1>
+<p>For me, the most benefit of mastering Travis CI is to test R packages.</p>
+<p>This post aims to provide some explanation for my <code>.travis.yml</code>, focusing on how the code evolves.</p>
+<p>I will arrange things according to different parts, though a time order may present the relationship between them better.</p>
+</div>
+<div id="purpose" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> purpose</h1>
+<p>The core rational is that ensure user can successful install my package rather than that I can successfully build it.</p>
+<p>Although the general purpose of a CI is to test the program can be built and works as aspect, I want to go further and make sure there won’t be any additional problems when user install my package.</p>
+</div>
+<div id="workflow" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> workflow</h1>
+<p>The first version is adopted from <a href="https://docs.travis-ci.com/user/languages/r/#Customizing-the-Travis-build-steps">official workflow</a>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">before_install</span><span class="kw">:</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> R -e &quot;r_package &lt;- c(&#39;devtools&#39;, &#39;roxygen2&#39;, &#39;testthat&#39;); lapply(r_package, function(x) {if (!(x %in% .packages(T))) install.packages(x)})&quot;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install</span><span class="kw">:</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> R -e &#39;devtools::install_deps(dep = T, upgrade = T)&#39;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">script</span><span class="kw">:</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> R -e &#39;devtools::document()&#39;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> R CMD build .</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> R -e &quot;if (dir.exists(&#39;tests/testthat&#39;)) devtools::test()&quot;</span></span></code></pre></div>
+<p>Then I use <code>devtools::install_local()</code> to make it more similar to <code>devtools::install_github()</code> which user would use:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">before_install</span><span class="kw">:</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> R -e &quot;r_package &lt;- c(&#39;devtools&#39;, &#39;roxygen2&#39;, &#39;testthat&#39;); lapply(r_package, function(x) {if (!(x %in% .packages(T))) install.packages(x)})&quot;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">script</span><span class="kw">:</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> R -e &quot;devtools::install_local(getwd())&quot;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> R -e &quot;devtools::update_packages(&#39;testthat&#39;); if (dir.exists(&#39;tests/testthat&#39;)) devtools::test()&quot;</span></span></code></pre></div>
+</div>
+<div id="version-and-platform" class="section level1" number="5">
+<h1><span class="header-section-number">5</span> version and platform</h1>
+<p>One advantage of R language by Travis community is multiple versions on multiple platforms:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">language</span><span class="kw">:</span><span class="at"> r</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">os</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">linux</span><span class="kw">,</span><span class="at"> osx</span><span class="kw">]</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">r</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">release</span><span class="kw">,</span><span class="at"> devel</span><span class="kw">,</span><span class="at"> oldrel</span><span class="kw">]</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span><span class="kw">:</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">fast_finish</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">allow_failures</span><span class="kw">:</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">r</span><span class="kw">:</span><span class="at"> devel</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">r</span><span class="kw">:</span><span class="at"> oldrel</span></span></code></pre></div>
+<p>For OS X, only build <code>release</code> version to save time <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">language</span><span class="kw">:</span><span class="at"> r</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">os</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">linux</span><span class="kw">,</span><span class="at"> osx</span><span class="kw">]</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">r</span><span class="kw">:</span><span class="at"> release</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span><span class="kw">:</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">include</span><span class="kw">:</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">r</span><span class="kw">:</span><span class="at"> devel</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">r</span><span class="kw">:</span><span class="at"> oldrel</span></span></code></pre></div>
+</div>
+<div id="clean-cache" class="section level1" number="6">
+<h1><span class="header-section-number">6</span> clean cache</h1>
+<blockquote>
+<p>If tests run for more than 10 minutes, developers will often start a new task rather than wait for the tests to finish. If the tests then fail, the developer now has to switch back to the original task. Constantly switching between tasks dramatically reduces productivity.</p>
+<p>— <a href="https://eng.localytics.com/best-practices-and-common-mistakes-with-travis-ci/" class="uri">https://eng.localytics.com/best-practices-and-common-mistakes-with-travis-ci/</a></p>
+</blockquote>
+<p>Caching installed package saves a lot of time, but brings the need to clean it periodically.</p>
+<p>In the beginning, I clean cache via (monthly) cron build:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">before_install</span><span class="kw">:</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> R -e &quot;if (Sys.getenv(&#39;TRAVIS_EVENT_TYPE&#39;) == &#39;cron&#39;) unlink(dir(.libPaths()[1], full.names = T), recursive = T)&quot;</span></span></code></pre></div>
+<p>Later I use cron job to continuously build my package weekly, so I check if the date is the first week to clean cache monthly:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">before_install</span><span class="kw">:</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">  # combined with a weekly cron job, package cache would be updated monthly</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> R -e &quot;if (as.integer(substr(Sys.Date(), 9, 10)) &lt; 8 &amp;&amp; Sys.getenv(&#39;TRAVIS_EVENT_TYPE&#39;) == &#39;cron&#39;) unlink(dir(.libPaths()[1], full.names = T), recursive = T)&quot;</span></span></code></pre></div>
+<p>As the R packages become more and more, I decide to clean cache quarterly <a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> (first week of first month of each quarter)</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">before_install</span><span class="kw">:</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> if [ &quot;$TRAVIS_EVENT_TYPE&quot; == &quot;cron&quot; ]; then R --slave -e &quot;date &lt;- Sys.Date(); day &lt;- as.integer(substr(date, 9, 10)); month &lt;- as.integer(substr(date, 6, 7)); clean &lt;- month %% 3L == 1L &amp;&amp; day &lt;= 7L; if (clean) unlink(dir(.libPaths()[1], full.names = T), recursive = T)&quot;; fi;</span></span></code></pre></div>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p><code>include</code> would use first value as default, that means <code>devel</code> and <code>oldrel</code> are added for <code>linux</code><a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>The R code during development is:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">&#39;2018-04-06&#39;</span>) <span class="co">#Sys.Date()</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>day <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(<span class="fu">substr</span>(date, <span class="dv">9</span>, <span class="dv">10</span>))</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>month <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(<span class="fu">substr</span>(date, <span class="dv">6</span>, <span class="dv">7</span>))               </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>clean <span class="ot">&lt;-</span> month <span class="sc">%%</span> 3L <span class="sc">==</span> 1L <span class="sc">&amp;&amp;</span> day <span class="sc">&lt;=</span> 7L</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>clean</span></code></pre></div>
+<a href="#fnref2" class="footnote-back">↩︎</a></li>
+</ol>
+</div>

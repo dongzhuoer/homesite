@@ -1,0 +1,37 @@
+---
+title: How to write easily understandable R package documentation
+author: Zhuoer Dong
+date: '2018-07-15'
+slug: how-to-write-easily-understandable-r-package-documentation
+categories: 2018
+tags: []
+authors: []
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<blockquote>
+<p>2020-08-19 注：忘记什么时候写完的，一直扔在 draft，今天给它放上来。</p>
+</blockquote>
+<p>As the first step torwards open Sci, when I perfect the documentation of four R packages — rGEO, rGEO.data, qGSEA, hgnc, I come to establish the framework of R package documentation.</p>
+<p>In the documentation, the core question is “What the package does”. And it should be addressed in three aspects:</p>
+<ol style="list-style-type: decimal">
+<li>quick start: for impatient people who don’t want to read the full documentation.<br />
+</li>
+<li>why this package: given everything already existed, why do you bother to develop this package.<br />
+</li>
+<li>summarize full functionality: for those who want to exert the full potential of your package.</li>
+</ol>
+<p>Another key point is to let user easily find what he needs without learn anything about the structure of the documentation. So I put the most important thing a freshman needs in the homepage. Even there is a “Get started” tab, I still place a “Usage” section which contains links the answer of aspects 1 &amp; 2. In fact, as in rGEO.data and hgnc, this section is merely a link to the “Get started” page. <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<p>The aboving three aspects can be arranged in various ways, depending on the nature of the specific package.</p>
+<p>For <a href="https://pkgdown.dongzhuoer.com/dongzhuoer/rgeo.data/">rGEO.data</a>, aspect 1 is explained in “Data” section of “Get started”, aspect 2 in “Overview” section of homepage, aspect 3 in “Get started” (aspect 1 + a link to function reference).</p>
+<p>For <a href="https://pkgdown.dongzhuoer.com/dongzhuoer/hgnc/">hgnc</a>, though aspect 3 is easily addressed in function reference if one has a little knowledge about that page. <a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> As I said before, you can never assume that. So I add a separate vignette <a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> to talk about aspect 3. Aspect 1 &amp; 2 are addressed in two sections of “Get started” page separately.</p>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>However, that doesn’t means the homepage should contains explanation of every tab. First, User can explore them by themselves. Second, for a freshman, it not a big problem to not know “Reference”tab contains function reference, etc.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>In fact, one just need to stare the page for ten seconds, then he should know “reshape map” and “as symbol” are section header, explained by the paragraph under. Great, that two paragraph is the answer.<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>merged into “Get started” later<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>

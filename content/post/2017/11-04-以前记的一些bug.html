@@ -1,0 +1,95 @@
+---
+title: 以前记的一些bug
+author: Zhuoer Dong
+date: '2017-11-04'
+slug: 以前记的一些bug
+categories: 2017
+tags: []
+authors: []
+---
+
+<script src="11-04-以前记的一些bug_files/header-attrs/header-attrs.js"></script>
+
+<div id="TOC">
+<ul>
+<li><a href="#r-source-cant-access-system-env-variable-1104"><span class="toc-section-number">1</span> R <code>source()</code> can’t access system env variable (11/04)</a></li>
+<li><a href="#windows-ignores-.rprofile"><span class="toc-section-number">2</span> Windows ignores <code>~/.Rprofile</code></a></li>
+<li><a href="#bookdown-path-for-html_dependency-not-found"><span class="toc-section-number">3</span> bookdown <code>path for html_dependency not found</code></a></li>
+<li><a href="#bookdown-build-pdf"><span class="toc-section-number">4</span> bookdown build pdf</a></li>
+<li><a href="#wps-from-ubuntu-kylin-doesnt-work-1031"><span class="toc-section-number">5</span> WPS from Ubuntu Kylin doesn’t work (10/31)</a></li>
+<li><a href="#http-proxy-1101"><span class="toc-section-number">6</span> http proxy (11/01)</a></li>
+<li><a href="#rstudio-indexing-and-diagnostics-disabled-1030"><span class="toc-section-number">7</span> RStudio indexing and diagnostics disabled (10/30)</a></li>
+<li><a href="#cant-change-default-terminal-1030"><span class="toc-section-number">8</span> can’t change default Terminal (10/30)</a></li>
+<li><a href="#others"><span class="toc-section-number">9</span> others</a></li>
+</ul>
+</div>
+
+<blockquote>
+<p>在 homesite 第二版的时候，建了 <code>misc.Rmd</code> 来记录遇到的 bug。一方面当时没时间写成 post，另一方面有些 bug 要过一天甚至好几天才有定论。</p>
+</blockquote>
+<div id="r-source-cant-access-system-env-variable-1104" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> R <code>source()</code> can’t access system env variable (11/04)</h1>
+<p>In this situation, only the env virables in <code>.profile</code> can be accessed</p>
+<p>Afterword: later I develop a way to set env variable both in <code>.bashrc</code> and <code>.profile</code>. This may alleivate the problem.</p>
+</div>
+<div id="windows-ignores-.rprofile" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Windows ignores <code>~/.Rprofile</code></h1>
+<blockquote>
+<p>Windows is really a terrific tool to waste time.</p>
+</blockquote>
+<p>For Git-bash, <code>R -e "dirname('~')"</code> gives “C:/Users”, so <code>~/.Rporfile</code> gets ignored <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
+</div>
+<div id="bookdown-path-for-html_dependency-not-found" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> bookdown <code>path for html_dependency not found</code></h1>
+<pre><code>Error: path for html_dependency not found: W:/program/lib/R/htmlwidgets/www</code></pre>
+<p>It may occur when you first build the book under Windows and then build the book under Ubuntu. Thus the R packages directory is changed.</p>
+<p>The solution is to delete <code>_bookdown_files/</code>.</p>
+</div>
+<div id="bookdown-build-pdf" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> bookdown build pdf</h1>
+<pre class="batchfile"><code>tlmgr install lm fancyvrb framed titling ec xltxtra fontspec booktabs
+tlmgr install collection-xetex</code></pre>
+</div>
+<div id="wps-from-ubuntu-kylin-doesnt-work-1031" class="section level1" number="5">
+<h1><span class="header-section-number">5</span> WPS from Ubuntu Kylin doesn’t work (10/31)</h1>
+<p>use WPS community version instead.</p>
+</div>
+<div id="http-proxy-1101" class="section level1" number="6">
+<h1><span class="header-section-number">6</span> http proxy (11/01)</h1>
+<blockquote>
+<p>那时候从 GitHub 装 R 包巨慢，还经常把 RStudio 给卡住，就想利用我的翻墙代理。最后的方案是一律使用 Terminal （而不是 RStudio）。</p>
+</blockquote>
+<pre class="bashrc"><code>http_proxy=&#39;http://127.0.0.1:1081&#39;
+https_proxy=&#39;http://127.0.0.1:1081&#39;</code></pre>
+<p>But I don’t know why it doesn’t work in RStudido’s terminal.</p>
+</div>
+<div id="rstudio-indexing-and-diagnostics-disabled-1030" class="section level1" number="7">
+<h1><span class="header-section-number">7</span> RStudio indexing and diagnostics disabled (10/30)</h1>
+<pre><code>Warning message:
+File monitoring failed for project at &quot;/path/to/work/RStudio/widget&quot;
+Error 28 (No space left on device)
+Features disabled: R source file indexing, Diagnostics</code></pre>
+<p>Maybe you have too many files.</p>
+</div>
+<div id="cant-change-default-terminal-1030" class="section level1" number="8">
+<h1><span class="header-section-number">8</span> can’t change default Terminal (10/30)</h1>
+<blockquote>
+<p>When I open a application from Ubuntu MATE top panel, such as <strong>Vim</strong>, it uses <code>xterm</code> and looks really ugly. So I try to set the default ternimal and finally give up.</p>
+</blockquote>
+<p><code>export TERM="gnome-terminal"</code> doesn’t work</p>
+<p>refer to <code>man terminfo</code>, <code>ls /lib/terminfo</code> and <a href="https://askubuntu.com/questions/388945/" class="uri">https://askubuntu.com/questions/388945/</a></p>
+</div>
+<div id="others" class="section level1" number="9">
+<h1><span class="header-section-number">9</span> others</h1>
+<ul>
+<li><p><code>.Rprofile</code> 一定要以新行结尾</p></li>
+<li><p>干活前先看看你想的是不是对的 <a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p></li>
+</ul>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>it seems that I have already found the latter point several weeks ago.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>有些二级域名的网站也可以不用 <code>/</code> 的，比如 pkgdown 的包们，为我修改十多个 apache <code>.conf</code> 的半小时默哀。<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>

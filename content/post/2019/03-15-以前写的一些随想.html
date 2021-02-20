@@ -1,0 +1,278 @@
+---
+title: 以前写的一些随想
+author: Zhuoer Dong
+date: '2019-03-15'
+slug: 以前写的一些随想
+categories: 2019
+tags: []
+authors: []
+---
+
+<script src="03-15-以前写的一些随想_files/header-attrs/header-attrs.js"></script>
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+</style>
+
+<div id="TOC">
+<ul>
+<li><a href="#section"><span class="toc-section-number">1</span> 2017-07-04</a></li>
+<li><a href="#一天是开发者一辈子都是维护者"><span class="toc-section-number">2</span> 2017-07-05 一天是开发者，一辈子都是维护者</a></li>
+<li><a href="#windows-的-utf-8-是没得救了"><span class="toc-section-number">3</span> 2017-07-11 Windows 的 UTF-8 是没得救了</a></li>
+<li><a href="#解决-yaml-包载入文件时编码错误的-bug"><span class="toc-section-number">4</span> 2017-07-14 解决 yaml 包载入文件时编码错误的 bug</a></li>
+<li><a href="#no-optionsencoding-utf8"><span class="toc-section-number">5</span> 2017-07-15 No <code>options(encoding = "UTF8")</code></a></li>
+<li><a href="#重装是最好的清理"><span class="toc-section-number">6</span> 2017-07-16 重装是最好的清理</a></li>
+<li><a href="#r-语言中的废话"><span class="toc-section-number">7</span> 2017-07-18 R 语言中的废话</a></li>
+<li><a href="#space"><span class="toc-section-number">8</span> 2017-07-19 space</a></li>
+<li><a href="#give-up-tab-return-to-space"><span class="toc-section-number">9</span> 2017-07-20 give up tab, return to space</a></li>
+<li><a href="#第一个有意义的-github-pull-request-被成功采纳"><span class="toc-section-number">10</span> 2017-07-22 第一个有意义的 GitHub Pull request 被成功采纳</a></li>
+<li><a href="#告别-stack-overflow-菜鸟阶段"><span class="toc-section-number">11</span> 2017-07-23 告别 Stack Overflow 菜鸟阶段</a></li>
+<li><a href="#不要被-markdown-绑架"><span class="toc-section-number">12</span> 2017-08-01 不要被 Markdown 绑架</a></li>
+<li><a href="#跨平台软件之共用配置文件"><span class="toc-section-number">13</span> 2017-09-24 跨平台软件之共用配置文件</a></li>
+<li><a href="#sha1sum-还真是连一个-n-都不放过"><span class="toc-section-number">14</span> 2017-09-25 <code>sha1sum</code> 还真是连一个 <code>\n</code> 都不放过</a></li>
+<li><a href="#notepad-可以不用担心被裁掉了"><span class="toc-section-number">15</span> 2017-09-26 Notepad++ 可以不用担心被裁掉了</a></li>
+<li><a href="#恼人的-mount"><span class="toc-section-number">16</span> 2017-10-01 恼人的 <code>mount</code></a></li>
+<li><a href="#wndows-的-python-果然不行"><span class="toc-section-number">17</span> 2017-10-03 Wndows 的 python 果然不行</a></li>
+<li><a href="#r-integrated-terminal"><span class="toc-section-number">18</span> 2017-10-05 R integrated terminal</a></li>
+<li><a href="#放弃-design-expert"><span class="toc-section-number">19</span> 2017-10-10 放弃 Design Expert</a></li>
+<li><a href="#section-1"><span class="toc-section-number">20</span> 2017-10-13</a></li>
+<li><a href="#r-包被重名了"><span class="toc-section-number">21</span> 2017-10-19 R 包被重名了</a></li>
+<li><a href="#乐视手机已被广告占领"><span class="toc-section-number">22</span> 2017-10-20 乐视手机已被广告占领</a></li>
+<li><a href="#give-up-oracle-jdk"><span class="toc-section-number">23</span> 2017-10-23 give up Oracle JDK</a></li>
+<li><a href="#整治丧心病狂的乐视广告手机"><span class="toc-section-number">24</span> 2017-10-27 整治丧心病狂的乐视广告手机</a></li>
+<li><a href="#section-2"><span class="toc-section-number">25</span> 2017-10-29</a></li>
+<li><a href="#不要用强迫各种奇葩方式代表空格"><span class="toc-section-number">26</span> 2017-11-02 不要用强迫各种奇葩方式代表空格</a></li>
+</ul>
+</div>
+
+<div id="section" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> 2017-07-04</h1>
+<p>编程塑造了我的思维。</p>
+<p>我不喜欢湿实验的主要原因是，失败了之后不可能知道究竟是为什么而失败；相对的，干实验是一定能彻底查出原因的，只要你愿意投入足够的时间。</p>
+<p>回想起大伯送我第一台联想电脑的时候，我还真心把360当做“管家”一样。但以我现在的知识和心态，360 这玩意还是卸掉得了。</p>
+<p>统计之都推荐的推荐图片上传网站（1）<a href="http://imgur.com和（2）http://photobucket.com" class="uri">http://imgur.com和（2）http://photobucket.com</a> 好像都不能注册账号了。imgur 貌似满了；photobucket 好像屏蔽代理，然而又用到了Google的人机验证，无语，强行封杀大陆用户啊😭。刚才试了一下，发现 photobucket 还会降低清晰度，还好 GitHub 的issue 支持上传文件。</p>
+</div>
+<div id="一天是开发者一辈子都是维护者" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> 2017-07-05 一天是开发者，一辈子都是维护者</h1>
+<p>今天深刻的体会到了，软件开发者一定要为用户负责。</p>
+<p>给师姐远程写代码，让她用我刚开发的 <strong>bioinfor</strong> 来读写 FASTA 文件，结果报错了。我开始以为是师姐没有把输入文件放好，后来发现是我的包中 DESCRIPTION 没把 dependencies 写好。在师姐眼中事情可能是我成功地逐步排错，最后帮她解决了问题，但事实上却是我把师姐给坑了。</p>
+<p>就算这个包可能没有一个人使用（估计也没有，不然早就过来找我麻烦了），也要保证它是可以正常工作的。之前在说明中加上了“正在开发中”的字样就大意了，这样做的坏处就是以后给别人用这个包时很可能忘了这一点，无论你把“正在开发中”写得多大。</p>
+<p>最后再向师姐道个歉吧。</p>
+</div>
+<div id="windows-的-utf-8-是没得救了" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> 2017-07-11 Windows 的 UTF-8 是没得救了</h1>
+<p>地球人都知道，在编程的世界里，只要你敢用英语之外的语言（ASCII 之外的字符），就总会遇到永无止尽的麻烦。随着UTF-8一统天下，情况有了很大的好转（个别软件出问题的话只能怪它不符合标准）。但在Windows的世界里，UTF-8只能是一种奢望。我之前试着狠心装了英文版的系统，然后方块字就开始显示不正常了（主要是大小不一致，文件名看着十分别扭），吓得我赶紧换回到中文版系统。</p>
+<p>经过长期实践，我制订了如下关于软件语言的规范：英文软件添加了中文翻译的（我用到的大部分软件），一律设置成英文；中文软件走向国际化的（福昕PDF、WPS），保留中文。</p>
+<p>但是R语言却是我的一块心病，这玩意安装时就不让你选语言，而是傲娇地根据你的系统自动设置语言。对于使用中文版Windows（CP936）的我而言，简直是如坐针毡。平时使用还没有大问题，但是每次显示错误消息时，总能想方设法（安装、载入包的错误信息，还有 Knit 按钮和 Build 面板的输出）给你冒几句中文。你发中文也没问题，即使翻译得不好 <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>，好歹我能猜出是什么，但拜托不要出乱码好不好。告诉我有错误或警告却不告诉我错在哪儿这是要闹哪番？</p>
+<p>好在不久前从谢益辉的忍者秘籍中学到<code>Rconsole</code>设置<code>language = en</code>， 终于解决了这个困扰了我多年的问题。R语言的世界从此清静了，我们终于可以好好交流了。虽然我英语不是太好，但是去必应词典查词也总比看那几个乱码强啊。</p>
+</div>
+<div id="解决-yaml-包载入文件时编码错误的-bug" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> 2017-07-14 解决 yaml 包载入文件时编码错误的 bug</h1>
+<p>自从之前从闲逛 GitHub 的醉梦中清醒后，这是我提交的第一个 <a href="https://github.com/viking/r-yaml/issues/38">fix</a>。</p>
+<p>也是花了好多的时间，不过我希望不会是白费。这一过程锻炼了我调试 bug 的能力，使我进一步深入理解了字符编码的底层机制以及 R 中的接口，还能帮到许多后来人。但愿我提交的 fix 不会再出什么幺蛾子。</p>
+<p>不过用去的时间还太多了，希望以后能贯彻好80/20法则：花80%的时间来深入掌握那些最重要的、派得上用场的核心工具；花20%的时间到处闲逛、浅尝辄止，拓宽知识面，储备以后可能用到的知识。</p>
+</div>
+<div id="no-optionsencoding-utf8" class="section level1" number="5">
+<h1><span class="header-section-number">5</span> 2017-07-15 No <code>options(encoding = "UTF8")</code></h1>
+<p>受到上次成功把 R 的消息设置成英文的鼓舞之后，我很开心地在 R 中设置了 <code>options(encoding = "UTF8")</code>，然后 R 的世界就崩溃了 (主要是 <code>yaml::yaml.load_file()</code> 挂了)。</p>
+<p>然而，花了好久把 <strong>yaml</strong> 的问题解决之后，我果断去掉了 <code>options(encoding = "UTF8")</code> 这一行。因为我在调试途中发现 <strong>knitr</strong> 也坏了，真是东屋不漏西屋漏啊。</p>
+<p>我估计要想彻底解决这问题，得修补所有读写文件的 R 包，估计有上千个吧。找到包的源代码、修改、测试、提交 pull request 或者给作者发邮件、回复确认后再重装，最后重复以上动作上千次。这真是一项浩大的工程啊，还是交给真的勇士来做吧。</p>
+<p>附 <a href="http://shiny.rstudio.com/articles/unicode.html">谢益辉文章</a> 的节选</p>
+<blockquote>
+<p>If you read a file into R as a character vector, and the file is not encoded with your system’s native encoding, you are recommended to convert the encoding of the character vector to your system’s native encoding before you process the text data. Some character string processing functions such as <code>gsub(..., fixed = TRUE)</code> may not work if the string does not have the native encoding.</p>
+</blockquote>
+<blockquote>
+<p>When dealing with encoding problems, you are not recommended to set the encoding option to a specific encoding name, e.g. <code>options(encoding = 'UTF-8')</code>. This may have very bad consequences, since it makes a strong assumption that all file connections and character manipulations should use this encoding by default.</p>
+</blockquote>
+</div>
+<div id="重装是最好的清理" class="section level1" number="6">
+<h1><span class="header-section-number">6</span> 2017-07-16 重装是最好的清理</h1>
+<p>之前把电脑设置成了可以随时重装的状态，彻底摆脱了对管家卫士之类的清理功能的依赖。其实那玩意儿根本清不干净，倒不是诋毁那些软件，可能确实有一些良心的功能。但是作为稍微懂一点开发的人（虽然我还没有实际开发过），很容易想象到应用会把一些文件标明为必需的，且不谈权限的问题，即使能够删那些管家也不敢妄动。所以除了应用本身之外估计没有其他人会知道到底哪些文件才是真正必需的，这时候就只有使用者亲自出马，直接卸载，完全清空（现在很多Windows流氓软件都有卸载残留，所以我一般直接重装系统）。</p>
+<p>但是我的手机却迟迟没有解脱，剩余空间总是那么小，然而悲伤却那么大。</p>
+<p>我狠下心卸载了一些应用之后，发现真能腾出不少空间。于是继续卸载了很多其他应用，那些打算留着以后用的，就等到以后真的要用时再装吧。</p>
+<p>然后就到了改革的深水区，剩下应用的都难以取舍，那就只有靠清理了。先拿微信开刀，明明占了数百MB空间，扫描垃圾文件却告诉我只能清理几MB，还推荐我下载腾讯手机管家清理更多空间，哦，用你的公司开发的应用来清理你自己，这世界还真是和谐啊。鬼才信你的废话呢。直接卸掉重装。就这样按照使用空间由大到小，挨个卸掉重装，虽然之后需要登陆有点麻烦，但还是卓有成效的。</p>
+<p>说到这里就要换位思考一下了，我还是没有狠下心一键还原手机，太麻烦了。以后让别人重装电脑也应该想到这一点，毕竟对于普通用户而言这是一个很大的工程。像我这种特例中的特例估计在程序员圈子里也颇为罕见：不怕麻烦，而且把 poratble 做到了极致，还研究使用注册表。</p>
+<p>补充一下，后来发现淘宝马上回到了之前的大小，使用空间稳居第一。明明安装包只有几十 MB ，不用说了肯定都是广告，暂时不与你计较了，毕竟得靠你买东西。</p>
+</div>
+<div id="r-语言中的废话" class="section level1" number="7">
+<h1><span class="header-section-number">7</span> 2017-07-18 R 语言中的废话</h1>
+<p>专心考驾照，就随便写一写吧。</p>
+<p>标题看起来很大，但我只是举一个很简单的例子，还是从<a href="https://yihui.name/en/2014/07/library-vs-require/">谢益辉的博客</a>看来的。不过我以前就有类似的感觉，只是看到他写出来之后，若合一契，直到现在想起来都会觉得好笑。</p>
+<p>先举一个栗子：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">require</span>(<span class="st">&#39;nnet&#39;</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>Loading required package<span class="sc">:</span> nnet</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">require</span>(<span class="st">&#39;MASS&#39;</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>哦，我叫你给我载入一个包，你说你正在载入这个包，你当你是 Cortana 啊。哇，世界真是太和谐了。</p>
+</div>
+<div id="space" class="section level1" number="8">
+<h1><span class="header-section-number">8</span> 2017-07-19 space</h1>
+<blockquote>
+<p>Never use spaces (or other odd characters) in directory or file names. They make your teeth and hair fall out, start nuclear wars, and stop the trains running on time. Stick to A-Z, a-z, 0-9, “.”, “-”, and “_” for best results.
+— <a href="https://yihui.name/cn/2011/06/spaces-in-latex-path-names/" class="uri">https://yihui.name/cn/2011/06/spaces-in-latex-path-names/</a></p>
+</blockquote>
+</div>
+<div id="give-up-tab-return-to-space" class="section level1" number="9">
+<h1><span class="header-section-number">9</span> 2017-07-20 give up tab, return to space</h1>
+<p>当你发现你在 VSCode 中好不容易 Tab 整齐的 markdown 生成网页之后飘逸的飞了起来，就问你香不香菇（虽然有方块字的因素）。</p>
+<p>总之我是坚定地为 VSCode 和 RStudio 都设置了按 Tab 键时插入 4 个空格，大不了就 bang bang bang bang 呗。而且 VSCode 的替换还蛮好用的，只要你能打开正则的脑洞。</p>
+</div>
+<div id="第一个有意义的-github-pull-request-被成功采纳" class="section level1" number="10">
+<h1><span class="header-section-number">10</span> 2017-07-22 第一个有意义的 GitHub Pull request 被成功采纳</h1>
+<p><a href="https://github.com/viking/r-yaml/pull/40" class="uri">https://github.com/viking/r-yaml/pull/40</a></p>
+<p>漫长的等待终于有了结果，一度还想自己另建一个基于 devtools 的包呢。还好没有实施，不然又要浪费时间。毕竟作者有时候忙别的事也是可以理解的。</p>
+<p>就说这么多吧，希望以后再接再厉。</p>
+</div>
+<div id="告别-stack-overflow-菜鸟阶段" class="section level1" number="11">
+<h1><span class="header-section-number">11</span> 2017-07-23 告别 Stack Overflow 菜鸟阶段</h1>
+<p>Stack Overflow 的积分终于达到 50 以上了。</p>
+<p>想起来第一次回答还被踩了，幸好1分保底，不然我都要负分了。</p>
+<p>虽然攒分比较痛苦（只能回答，答不好就没分），但是我觉得 Stack Overflow 的积分机制还是很好的。整个网站的广告情况暂且不谈，积分不能买真是良心啊，这样就能真正营造一个很好的氛围，集中社区力量打造一流帮助。希望以后能越办越好吧。</p>
+<p>能达到这个分还真得感谢之前做的觉悟，把时间用在刀刃上，聚焦自己最擅长的领域，不要到不熟悉的地方浪费精力（反而倒扣分，现在想起来都是泪）。</p>
+<p>现在就可以自由评论了，不用费尽功夫照顾新手了。一定要教你们好好做人，不能 reproduce 的问题坚决不解答。</p>
+</div>
+<div id="不要被-markdown-绑架" class="section level1" number="12">
+<h1><span class="header-section-number">12</span> 2017-08-01 不要被 Markdown 绑架</h1>
+<p>我发现我还是离不开 Office，不得不承认有些时候它就是好用。</p>
+<p>事情是这样的，我想做一个记录每日成果的流水账表格，然后就开始用 bookdown 鼓捣了一整天，Pandoc 提供的各种表格都被我试过了，最后还是不满意。直到我发现在 Excel 中只需要调一下列宽，合并一些单元格，设置一下局中就好了。我的青春年华啊！</p>
+<p>现在我觉得因为 Markdown 把我从 Office 解放出来的感觉太好了，以至于不知不觉反而被 Markdown 给囚禁了。Markdown 的纯文本格式确实在保存内容方面有独一无二的优势，只要是台电脑就能打开（至少得有记事本或 <code>cat</code> 吧）, 而且从不用担心10年后你的文件会成为一摊 <em>乱码</em> 。但是在目前的大环境下，至少与其他用户交流时，还是 Office方便一点。总之这些工具都是为程序员所用的，应该根据自己的需要自由选择，而不能被某一个限制住。</p>
+</div>
+<div id="跨平台软件之共用配置文件" class="section level1" number="13">
+<h1><span class="header-section-number">13</span> 2017-09-24 跨平台软件之共用配置文件</h1>
+<p>那时还是 Windows 和 Ubuntu 两条腿走路。有些软件（如 VSCode）在两种系统都要用到，于是我就在 Ubuntu 下 <code>cp -s</code> 到 Windows 的配置文件，这样就只用维护一个配置文件了。目前看来没有太大的不兼容。</p>
+</div>
+<div id="sha1sum-还真是连一个-n-都不放过" class="section level1" number="14">
+<h1><span class="header-section-number">14</span> 2017-09-25 <code>sha1sum</code> 还真是连一个 <code>\n</code> 都不放过</h1>
+<p>用 <code>head</code> 时要注意一个 10 行文件的前 9 行和 9 行文件是不一样的，前者最后还有一个换行符。</p>
+</div>
+<div id="notepad-可以不用担心被裁掉了" class="section level1" number="15">
+<h1><span class="header-section-number">15</span> 2017-09-26 Notepad++ 可以不用担心被裁掉了</h1>
+<p>三天前我曾认为 Notepad++ 没用了，但今天又想到 VSCode 有一个缺点就是矫情，不打开不认识的编码。而 Notepad++ 却可以强行打开一个 Word 文档 （虽然都是乱码），这么说 Vim 也有同样的作用啊。</p>
+<p>正如如8月1号说的那样，VSCode 虽好，但是不要被绑架哦。</p>
+</div>
+<div id="恼人的-mount" class="section level1" number="16">
+<h1><span class="header-section-number">16</span> 2017-10-01 恼人的 <code>mount</code></h1>
+<p>如果你改完 <code>/etc/fstab</code> 之后，不用 <code>sudo mount -a</code> 检查的话，就等着重装系统吧。尤其是 VPS，开机都不成，更别提 ssh 远程控制了。</p>
+<ul>
+<li>UUID 的话改完磁盘（尤其是 <code>mkswap</code>）之后，记得 <code>partprobe</code> 否则可能不准。</li>
+<li>设置好 swap 之后，记得用 <code>sudo swapon -a</code>。它好歹会给个错误消息，不像逗比的 <code>mount</code> 一样一声不吭。</li>
+</ul>
+</div>
+<div id="wndows-的-python-果然不行" class="section level1" number="17">
+<h1><span class="header-section-number">17</span> 2017-10-03 Wndows 的 python 果然不行</h1>
+<p>Miniconda 看起来很美好，但真到要用的时候还是不行啊（也可能是我的打开方式不对），连个 PartionFinder 都运行不了，还是 Ubuntu 好使。</p>
+<p>不过也怪 PartionFinder， <strong>pytables</strong> 不能 <code>pip install pytables</code> 而必须 <code>pip install tables</code> 还真是有意思啊。当时可把我吓得够呛，差点以为要从源代码 make 了。害得我放狗搜到奇怪的指令，看来是要重装了。干脆下次直接装上 VS 2015 C++ build tool 得了，自力更生 <a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>。</p>
+</div>
+<div id="r-integrated-terminal" class="section level1" number="18">
+<h1><span class="header-section-number">18</span> 2017-10-05 R integrated terminal</h1>
+<p>自从把 Windows VSCode 的 integrated terminal 设置成了 Git bash，打开 R session 时就死活不管 <code>.Rprofile</code> 了。这是不可以的，里面写的 <code>library(magrittr)</code> 必须有啊。我差点都想改回 cmd 了，但这样的话每次调用 Git 都得 bang bang bang。</p>
+<p>还好， VSCode 的 R 扩展有这一功能，果断把 <code>ctrl+shift+r</code> 的快捷键让给它了（赶走了 format selected code）。配置了一下之后，<code>.Rprofile</code> 和 <code>--no-save</code> 都能完美生效。</p>
+<p>以后就可以舒服地 Git 和 R 两不误了。</p>
+</div>
+<div id="放弃-design-expert" class="section level1" number="19">
+<h1><span class="header-section-number">19</span> 2017-10-10 放弃 Design Expert</h1>
+<p>明明坐拥 R 语言，却非要用 Design Expert。探索多个自变量时，要构建好多次模型，时间全浪费在了 ctrl+c， ctrl+v， click 和 double click 上了。用 R 语言就会方便很多，至少方差分析还是很容易实现的。</p>
+</div>
+<div id="section-1" class="section level1" number="20">
+<h1><span class="header-section-number">20</span> 2017-10-13</h1>
+<p>把 Git repository 上传到 GitHub 真是一个好主意。直接在 GitHub 上对 user (<code>dongzhuoer</code>) 或对 repo 搜索文件真是太方便了。 虽然 Git 应该也有类似的功能，但是我懒得学了，而且对 user 搜索应该是 GitHub 独有的。以后即使每月交钱维持私有库也值啊。</p>
+</div>
+<div id="r-包被重名了" class="section level1" number="21">
+<h1><span class="header-section-number">21</span> 2017-10-19 R 包被重名了</h1>
+<p>随便写了一个 <strong>pgs</strong> 的包居然一下就更新到 0.4.0 了？看了一下我的源代码，不是才 0.1.0 嘛！后来才发现有人向 CRAN 提交了一个和我重名的包。也罢，改名为 <strong>pgmcs</strong>。</p>
+</div>
+<div id="乐视手机已被广告占领" class="section level1" number="22">
+<h1><span class="header-section-number">22</span> 2017-10-20 乐视手机已被广告占领</h1>
+<p>乐视手机已被我正式列入黑名单，系统自带的管家应用启动时居然还有广告，更无耻的是启动之后在界面中间还有一个苏宁易购App的广告。</p>
+<p>乐视浏览器也是个垃圾，不过 UC 启动时一样有广告，凑合着用吧。</p>
+<p>其实微信启动的时候没有广告还真是业界良心啊。</p>
+</div>
+<div id="give-up-oracle-jdk" class="section level1" number="23">
+<h1><span class="header-section-number">23</span> 2017-10-23 give up Oracle JDK</h1>
+<p>Finally I decided to gives up Oracle JDK, which means another <code>opt/</code> program dies. Mainly because I use default R. Maybe I will reuse it latter when I <em>really</em> have some problem with <code>openjdk</code>.</p>
+</div>
+<div id="整治丧心病狂的乐视广告手机" class="section level1" number="24">
+<h1><span class="header-section-number">24</span> 2017-10-27 整治丧心病狂的乐视广告手机</h1>
+<blockquote>
+<p>那时乐视手机据说是倒闭了，超级手机也沦为了AD手机。桌面上多个应用可以放在一个文件夹中，然后恶心的乐视就在你打开这个文件夹、选择应用的时候，在屏幕的最下面蹦出广告来。虽然不影响使用，但是可忍孰不可忍。我就研究出了以下的破解之道。</p>
+</blockquote>
+<p>乐视的广告简直是没得救了，我都想抄起键盘研究源代码了。</p>
+<p>哇哈哈哈，广告是联网更新的。虽然耗流量这一点更加可恶，但这也给了我一个关掉它的机会。不过在联网设置里点点点有些耗时间。</p>
+<blockquote>
+<p>后来更无耻，在锁屏界面都有广告，还很容易点开，还好也被我处理了。</p>
+</blockquote>
+<blockquote>
+<p>乐视手机这是在作死，我下定决心要把整个乐视品牌全部加入黑名单。后来我换手机时，果断选择了最干净的华为。</p>
+</blockquote>
+</div>
+<div id="section-2" class="section level1" number="25">
+<h1><span class="header-section-number">25</span> 2017-10-29</h1>
+<p>I wasted 20+ min on image width in <code>.docx</code> produced by <code>pandoc</code>, then gave up. I decided if I really need, I should toggle it in WPS.</p>
+</div>
+<div id="不要用强迫各种奇葩方式代表空格" class="section level1" number="26">
+<h1><span class="header-section-number">26</span> 2017-11-02 不要用强迫各种奇葩方式代表空格</h1>
+<p>驼峰式写法和 <code>_</code> 都是对 <code>Shift</code> 键和我左手无名指（也许我打字方式不规范）的极大摧残，<code>-</code>是我唯一能接受的替代方式。R里面用<code>.</code>倒是很有意思，可惜不通用。而且会有一些大牛堂而皇之地教导你只能在变量中这么干，函数还是得用<code>_</code>（只是发个牢骚，这也不能怪他们，毕竟R有个神奇的S3泛型）。</p>
+<p>程序也就算了，FASTA 文件和 Newick 文件不准在 sequence header 用空格是个什么鬼？？你开发程序时加上那么几行代码识别一下不就好了吗？等我有时间，看我一个一个收拾你们。只要是开源软件，我就把你的源代码抠下来，加上几行代码，然后在文档中超大标红注明：可以尽情在 sequence header 中使用空格，用100个都没事！）</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>View 成了看、getting started 成了获取开始<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>我就随口一说，先不提十几G 的磁盘空间，还不好意思用实验室的网，等不愁流量的时候再说吧<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
