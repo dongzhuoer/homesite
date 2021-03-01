@@ -27,6 +27,8 @@ This blog mainly consists of two parts:
 blogdown::build_site(local = TRUE, build_rmd = blogdown::filter_md5sum)
 ```
 
+- siderbar Taxonomy both tags and category [https://github.com/MunifTanjim/minimo/issues/305]
+
 
 
 ## Developers
