@@ -95,13 +95,12 @@ hideMainMenu = true
 rtl = false
 
 [params.social]
-email = "dongzhuoer@mail.nankai.edu.cn"
-facebook = "dongzhuoer"
 github = "dongzhuoer"
 gitlab = "dongzhuoer"
 linkedin = "zhuoer-dong-78106015a"
-twitter = "dongzhuoer"
 google_scholar = "y5JBhk0AAAAJ"
+facebook = "dongzhuoer"
+twitter = "dongzhuoer2"
 
 
 
