@@ -1,5 +1,5 @@
 "file" "checksum"
-"content/about.Rmd" "6d7cd6e350946f8b0cb3792ff2c1c622"
+"content/about.Rmd" "f648f2372128d617f6fa68fcaa8e7b62"
 "content/post/2017/04-30-折腾-205-台式机.Rmd" "054f4580e12692858552c367b99d7dc2"
 "content/post/2017/06-25-救援谢老师工作站.Rmd" "24bdc7fa014845a5c7a2cb09bba3b6d4"
 "content/post/2017/07-04-鼓捣-bookdown-小记.Rmd" "ab9357e2fa85f56ee4989e503c3ac5e8"
