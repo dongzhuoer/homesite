@@ -8,7 +8,6 @@ tags: []
 authors: []
 ---
 
-<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 <div id="TOC">
 <ul>
@@ -21,6 +20,7 @@ authors: []
 <li><a href="#ide"><span class="toc-section-number">3.3</span> IDE</a></li>
 <li><a href="#media"><span class="toc-section-number">3.4</span> media</a></li>
 </ul></li>
+<li><a href="#registry"><span class="toc-section-number">4</span> registry</a></li>
 </ul>
 </div>
 
@@ -177,7 +177,48 @@ authors: []
 </ul>
 </div>
 </div>
-<div class="footnotes">
+<div id="registry" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> registry</h1>
+<p>曾经崇尚“纯净”的操作系统，实现方式就是 <em>定期</em> 重装，但手动设置默认应用很麻烦，就希望用注册表来一键完成。</p>
+<p>倒腾了几个 repo 之后，终于把 <code>reg.reg</code> 弄丢了； 如今也就只剩一些文档（当时查得可费劲了，非常不系统）</p>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/windows/win32/shell/fa-file-types?redirectedfrom=MSDN">File Types</a></li>
+<li><a href="https://docs.microsoft.com/en-us/visualstudio/extensibility/registering-verbs-for-file-name-extensions?view=vs-2015">Registering Verbs for File Name Extensions</a></li>
+<li><a href="https://superuser.com/a/473602/764435">Special Variables</a></li>
+</ul>
+<p>，和一个例子</p>
+<p>excute <code>.cmd</code>, <code>.bat</code>, <code>.ps1</code> file when double click</p>
+<pre class="reg"><code>[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.bat\UserChoice]
+[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.cmd\UserChoice]
+[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.ps1\UserChoice]</code></pre>
+<p>最后是 <code>reg.reg</code> 的目录，看看曾经痴迷的 <em>绿色</em> 软件</p>
+<ol style="list-style-type: decimal">
+<li>Context menu (right click in explorer)
+<ol style="list-style-type: decimal">
+<li>cmd</li>
+<li>Git-GUI</li>
+<li>Git-bash</li>
+<li>Notepad++</li>
+</ol></li>
+<li>Software
+<ol style="list-style-type: decimal">
+<li>R</li>
+<li>Java Development Kit</li>
+</ol></li>
+<li>File Types
+<ol style="list-style-type: decimal">
+<li>others</li>
+<li>Rstudio</li>
+<li>FASTA Sequence</li>
+<li>image</li>
+<li>media</li>
+<li>text</li>
+<li>Office</li>
+</ol></li>
+<li>Programmatic Identifiers</li>
+</ol>
+</div>
+<div class="footnotes footnotes-end-of-document">
 <hr />
 <ol>
 <li id="fn1"><p>启动时偶尔会要求登陆，选择“暂不登陆”即可<a href="#fnref1" class="footnote-back">↩︎</a></p></li>

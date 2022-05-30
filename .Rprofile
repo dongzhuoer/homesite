@@ -1,4 +1,4 @@
-source("~/.Rprofile")
+if(file.exists('~/.Rprofile')) source("~/.Rprofile")
 
 # blogdown new post addin
 options(blogdown.author = 'Zhuoer Dong')
