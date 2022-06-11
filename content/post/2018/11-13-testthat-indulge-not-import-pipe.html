@@ -8,7 +8,6 @@ tags: []
 authors: []
 ---
 
-<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
@@ -71,8 +70,6 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 </style>
 
 
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install needed R packages</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">update_packages</span>(<span class="fu">c</span>(<span class="st">&#39;testthat&#39;</span>), <span class="at">upgrade =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p><strong>magrittr</strong> is a wonderful package, but the biggest drawback is that you can’t write <code>magrittr::%&gt;%</code>.</p>
 <p>That can cause <em>great</em> pain in package development, I spend a whole morning to debug.</p>
 <p>Basically, I summary the following rules:</p>
@@ -81,7 +78,7 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <li>In theory, every pipe operator used <em>must</em> be imported from magrittr</li>
 <li>except for <code>%&gt;%</code> (testthat import and export it)</li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>testthat<span class="sc">::</span><span class="st">`</span><span class="at">%&gt;%</span><span class="st">`</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>testthat<span class="sc">::</span><span class="st">`</span><span class="at">%&gt;%</span><span class="st">`</span></span></code></pre></div>
 <pre><code>function (lhs, rhs) 
 {
     lhs &lt;- substitute(lhs)
@@ -91,5 +88,5 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
     lazy &lt;- TRUE
     .External2(magrittr_pipe)
 }
-&lt;bytecode: 0x55e9957b7c90&gt;
+&lt;bytecode: 0x55f41f0b2c58&gt;
 &lt;environment: namespace:magrittr&gt;</code></pre>

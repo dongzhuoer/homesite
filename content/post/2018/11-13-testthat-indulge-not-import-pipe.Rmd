@@ -7,10 +7,7 @@ categories: 2018
 tags: []
 authors: []
 ---
-```{r install-pkg, message=FALSE, eval=Sys.getenv('CI') == 'true'}
-# install needed R packages
-remotes::update_packages(c('testthat'), upgrade = TRUE)
-```
+
 
 
 **magrittr** is a wonderful package, but the biggest drawback is that you can't write `magrittr::%>%`.
@@ -24,7 +21,19 @@ Basically, I summary the following rules:
 - except for `%>%` (testthat import and export it)
 
 
-```{r comment=''}
+```r
 testthat::`%>%`
 ```
-
+```
+function (lhs, rhs) 
+{
+    lhs <- substitute(lhs)
+    rhs <- substitute(rhs)
+    kind <- 1L
+    env <- parent.frame()
+    lazy <- TRUE
+    .External2(magrittr_pipe)
+}
+<bytecode: 0x55f41f0b2c58>
+<environment: namespace:magrittr>
+```

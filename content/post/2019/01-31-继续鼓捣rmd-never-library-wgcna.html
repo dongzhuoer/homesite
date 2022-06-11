@@ -2,13 +2,8 @@
 title: 继续鼓捣 .Rmd, 打死我也不会 library (WGCNA) 的
 author: Zhuoer Dong
 date: '2019-01-31'
-slug: 继续鼓捣rmd-never-library-wgcna
-categories: 2019
-tags: []
-authors: []
 ---
 
-<script src="01-31-继续鼓捣rmd-never-library-wgcna_files/header-attrs/header-attrs.js"></script>
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
@@ -72,10 +67,10 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 
 <div id="TOC">
 <ul>
-<li><a href="#beginning"><span class="toc-section-number">1</span> Beginning</a></li>
-<li><a href="#development"><span class="toc-section-number">2</span> Development</a></li>
-<li><a href="#climax"><span class="toc-section-number">3</span> Climax</a></li>
-<li><a href="#epilogue"><span class="toc-section-number">4</span> Epilogue</a></li>
+<li><a href="#beginning" id="toc-beginning"><span class="toc-section-number">1</span> Beginning</a></li>
+<li><a href="#development" id="toc-development"><span class="toc-section-number">2</span> Development</a></li>
+<li><a href="#climax" id="toc-climax"><span class="toc-section-number">3</span> Climax</a></li>
+<li><a href="#epilogue" id="toc-epilogue"><span class="toc-section-number">4</span> Epilogue</a></li>
 </ul>
 </div>
 
@@ -116,7 +111,7 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 </div>
 <div id="climax" class="section level1" number="3">
 <h1><span class="header-section-number">3</span> Climax</h1>
-<p>Addicted to quasiquotation, I want this helper function to print the executed code like <a href="{{% relref "01-28-rexseek-stand-up-abandon-scater.html#climax" %}}"><code>rexseek::norm_tmm()</code></a>. But this case is more difficult, since the parameter is <code>...</code>, and more importantly the code is evaluated by <code>callr::r()</code>.</p>
+<p>Addicted to quasiquotation, I want this helper function to print the executed code like [<code>rexseek::norm_tmm()</code>]({{% relref "01-28-rexseek-stand-up-abandon-scater.html#climax" %}}). But this case is more difficult, since the parameter is <code>...</code>, and more importantly the code is evaluated by <code>callr::r()</code>.</p>
 <p>Finally I come out with the following code:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>WGCNA_blockwiseModules <span class="ot">&lt;-</span> <span class="cf">function</span>(...) {</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    main_expr <span class="ot">&lt;-</span> rlang<span class="sc">::</span><span class="fu">expr</span>(<span class="fu">blockwiseModules</span>(<span class="sc">!!!</span>rlang<span class="sc">::</span><span class="fu">exprs</span>(...)))</span>
