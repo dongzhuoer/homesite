@@ -1,8 +1,7 @@
 baseURL = "https://dongzhuoer.com/"
-title = "Zhuoer Dong -|-  董卓尔"
+title = "悠米·才有团"
 theme = "minimo"
-paginate = 100
-ignoreFiles = ["\\.Rmd$","\\.Rmarkdown$", "_files$", "_cache$"]
+paginate = 1000
 hasCJKLanguage = true
 
 # Minimo default --------------
@@ -59,14 +58,14 @@ weight = 5
 url = "/about"
 
 [[menu.sidebar]]
-name = "GitHub"
+name = "Source"
 weight = 6
 url = "https://github.com/dongzhuoer/homesite"
 
 
 [params.info]
 description = "Zhuoer Dong's personal website"
-title404 = "Nothing's here!"
+title404 = "敌人消失"
 
 [params.assets]
 favicon = "/images/GitHub.jpg"

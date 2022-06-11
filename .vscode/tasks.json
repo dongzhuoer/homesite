@@ -9,30 +9,25 @@
     },
     "tasks": [
         {
-            "label": "arrange",
-            "command": "Rscript .vscode/arrange.R"
-        },
-        {
             "label": "build",
-            "dependsOn": [
-                "arrange"
-            ],
-            "command": "Rscript -e 'blogdown::build_site(local = TRUE, build_rmd = blogdown::filter_md5sum)'",
+            "command": "hugo -F",
             "group": {
                 "kind": "build",
                 "isDefault": true
             }
         },
         {
-            "label": "rebuild",
-            "dependsOn": [
-                "arrange"
-            ],
-            "command": "Rscript -e 'blogdown::build_site(local = TRUE, build_rmd = TRUE)'"
-        },
-        {
-            "label": "view GitHub",
-            "command": "google-chrome https://github.com/dongzhuoer/${workspaceFolderBasename} 2> /dev/null",
+            "label": "test",
+            "windows": {
+                "command": "hugo server -p 1024 -F"
+            },
+            "linux":{
+                "command": "hugo server -p 8686 -F",
+            },
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
         },
     ]
 }

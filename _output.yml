@@ -1,6 +1,0 @@
-blogdown::html_page:
-  toc: true
-  number_sections: true
-  dev: svglite
-  highlight: haddock
-  smart: true

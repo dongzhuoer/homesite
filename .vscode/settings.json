@@ -1,6 +1,0 @@
-{
-    "files.associations": {
-        "*.Rmd": "markdown"
-    },
-    //"git.postCommitCommand": "push"
-}
