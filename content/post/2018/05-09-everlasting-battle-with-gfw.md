@@ -1,12 +1,13 @@
 ---
 title: everlasting battle with GFW
-author: Zhuoer Dong
 date: '2018-05-09'
 slug: everlasting-battle-with-gfw
 categories: 2018
 tags: []
 authors: []
 ---
+
+
 
 > 与 GFW 的战斗永不停息，下面是以前写的几篇 post。
 
@@ -16,7 +17,7 @@ A few days ago, I found I can't access Google Scholar, but I was to busy to deal
 
 Now, I need to search papers about de novo RNA-seq assembly. So I feel urgent to use it. I search Google, and find many people talks about host, ipv6, etc. Not believed what they say, I decided to have a try:
 
-`vim /etc/hosts` ^[execute `host google.com` on VPS to get the ipv6 address]
+`vim /etc/hosts` (execute `host google.com` on VPS to get the ipv6 address)
 ```
 # Google Scholar 
 2607:f8b0:4005:801::200e scholar.google.cn
@@ -45,5 +46,3 @@ A few days later (2018-05-09), https://fonts.googleapis.cnpmjs.org caused a big 
 I realized that the biggest problem with GFW is that it's very hard, or better, impossible to find a universal solution. Shadowsocks may fail at times, reverse proxy may lag in synchronize, block may impair things I really need.
 
 At least for now, Google Fonts has been completely blocked in my heart, following Google Analytics and Tag Manager.
-
-

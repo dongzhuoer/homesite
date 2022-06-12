@@ -1,12 +1,13 @@
 ---
 title: aria2c backend + MySQL driver 就花了一小时，整理果然好耗功夫
-author: Zhuoer Dong
 date: '2019-02-23'
 slug: aria2-backend-mysql-driver-take-1h
 categories: 2019
 tags: []
 authors: []
 ---
+
+
 
 # Beginning
 
@@ -47,6 +48,3 @@ driver 要下载文件（正好先在 terminal 测试一下 aria2c），但 x86 
 # Afterword
 
 之后不想看书，索性继续解决 to do。下一个是写 pkgdown 的 vignette 不能支持 Rcpp 的 issue。然而在准备 repexp 的时候突然发现没有任何问题，倒是转移到 Rd 里面的 C++ chunk 有个地方写错了，当时可能真是我的 Rcpp 代码有问题把。然后就把 Rcppzhuoer 的文档全部变成 vignette 中的 Rcpp chunk 了。
-
-
-

@@ -1,6 +1,5 @@
 ---
 title: lobstr segfault leads me to develop a way to debug `rmarkdown::render()`
-author: Zhuoer Dong
 date: '2018-12-20'
 slug: debug-rmarkdown-render
 categories: 2018
@@ -8,11 +7,13 @@ tags: []
 authors: []
 ---
 
+
+
 # cause
 
 My copy of _adv-r_ seems to have some problem in chapter cross-reference, so I decide to build the source code to figure out the cause.
 
-Then the build failed ^[A very serious error, corrupt R session and force you exit.]. 
+Then the build failed —— a very serious error which corrupts R session and forces me exit.
 
 
 # Development
@@ -24,7 +25,7 @@ As I expected, **knitr** doesn't provide the API to get nth chunk (I should have
 
 # Climax
 
-Then I start to think about set something in knitr, so that every chunk's code would be printed in the console output. I read the knitr book, tried many times, and finally find a way ^[get up-to-data version [here](/post/r/rmarkdown/#debug-rmarkdownrender) ] when I am going to give up: 
+Then I start to think about set something in knitr, so that every chunk's code would be printed in the console output. I read the knitr book, tried many times, and finally find a way when I am going to give up: 
 
     `r ''````{r}
     old_chunk_hook <- knitr::knit_hooks$get('chunk')
@@ -36,7 +37,7 @@ Then I start to think about set something in knitr, so that every chunk's code w
     knitr::opts_chunk$set(mutable_var = Sys.time()) # disable cache
     ```
 
-Now I can search the code causing error, which seems really wired: calling `lobstr::obj_size()` with function (such as `mean`) would cause segfault. ^[As usual, I run it yestreday!]
+Now I can search the code causing error, which seems really wired: calling `lobstr::obj_size()` with function, such as `mean`, would cause segfault. (As usual, I run it yesterday!)
 
 
 # Epilogue
@@ -47,5 +48,3 @@ Finally, `eval = F` that chunk, build the book, and find the reason: the cross-r
 # Afterword
 
 Recall that I happily discard **microbenchmark** after I find **bench** is awesome to use in the mooning, now I should say it's so fortunate that we have **pryr** in hand when lobstr fails oddly.
-
-

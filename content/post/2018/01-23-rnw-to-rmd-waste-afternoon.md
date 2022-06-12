@@ -1,12 +1,13 @@
 ---
 title: Rnw to Rmd waste another afternoon
-author: Zhuoer Dong
 date: '2018-01-23'
 slug: rnw-to-rmd-waste-afternoon
 categories: 2018
 tags: []
 authors: []
 ---
+
+
 
 # Beginning
 
@@ -54,19 +55,4 @@ To make things worse, all chunk options were dropped, and it's very hard to reco
 
 I started the work at about 14:30pm and wrote the post at about 17:12pm. In the interval, I almost rewrote the whole document.
 
-In the process, I realized that parsing output ^[like using Foxit PDF Editor to convert to `.pdf` to `.docx`] is really wasting time. That might be the reason why the author of **knitr** hasn't write a `Rnw2Rmd()` function.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+In the process, I realized that parsing output is really wasting time, such as converting `.pdf` to `.docx` by Foxit PDF Editor. That might be the reason why the author of **knitr** hasn't write a `Rnw2Rmd()` function.

@@ -1,12 +1,12 @@
 ---
 title: Git bug 四则，SSL, help, force push, file size
-author: Zhuoer Dong
 date: '2019-03-24'
 slug: git-4-bug
 categories: 2019
 tags: []
 authors: []
 ---
+
 
 
 以前折磨 Git 时遇到的四件事
@@ -74,18 +74,3 @@ export -f du-commit
 
 git tree | grep -Po '\w+\d+\w+' | xargs -n1 -I '{}' bash -c 'du-commit {}'
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

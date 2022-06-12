@@ -1,6 +1,5 @@
 ---
 title: Reproducible Research
-author: Zhuoer Dong
 date: '2019-12-27'
 slug: reproducible-research
 categories: book
@@ -33,9 +32,3 @@ Another way is to automatically install dependencies when user run the software.
 Convenient as it seems, someone heats changing their runtime environment. 
 
 Currently, I assume user would run my workflow step by step, so I just put the installation code on the top. The code is configured to _only_ run in CI environment such as Travis (`CONTINUOUS_INTEGRATION=true`), as I don't want to waste time on my computer (`install_github()` still runs even if the packages is already installed).
-
-
-
-
-
-

@@ -1,12 +1,13 @@
 ---
 title: temporarily live in New York when install Ubuntu
-author: Zhuoer Dong
 date: '2018-07-02'
 slug: temporarily-live-in-new-york-when-install-ubuntu
 categories: 2018
 tags: []
 authors: []
 ---
+
+
 
 When installing Ubuntu, timezone and locale is something you need to take care of. Like language, English is _always_ better than Chinese in the programming world.
 

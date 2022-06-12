@@ -1,12 +1,13 @@
 ---
 title: bundle CSS corrupt my bookdown site on Netlify 
-author: Zhuoer Dong
 date: '2018-01-24'
 slug: not-bundle-css-on-Netlify
 categories: 2018
 tags: []
 authors: []
 ---
+
+
 
 > Premature optimization is the root of all evil
 >
@@ -22,7 +23,3 @@ CSS
 ```
 
 To conclude, don't set `Bundle CSS` on Netlify, at least for `index.html` of bookdown site (I use a relative link for css there).
-
-
-
-

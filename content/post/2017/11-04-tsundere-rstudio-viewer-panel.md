@@ -1,12 +1,13 @@
 ---
 title: 傲娇的 RStudio Viewer Panel
-author: Zhuoer Dong
 date: '2017-11-04'
 slug: tsundere-rstudio-viewer-panel
 categories: 2017
 tags: []
 authors: []
 ---
+
+
 
 当时在鼓捣 bookdown，尤其是 build others' book。
 

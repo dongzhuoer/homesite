@@ -1,6 +1,5 @@
 ---
 title: testthat mask potential bug of not import %>% from magrittr
-author: Zhuoer Dong
 date: '2018-11-13'
 slug: testthat-indulge-not-import-pipe
 categories: 2018

@@ -1,12 +1,13 @@
 ---
 title: 用 VMware 折腾虚拟机
-author: Zhuoer Dong
 date: '2018-01-25'
 slug: vmware-虚拟机
 categories: 2018
 tags: []
 authors: []
 ---
+
+
 
 以前还热衷于虚拟机，那会倒腾 VMware 得爱不释手。
 
@@ -34,5 +35,3 @@ sudo ./vmware-install.pl -d
 ```
 
 Don't `yum check-update`, otherwise vmware-tools would suggest you to use `open-vm-tools`, and the worst thing is that the default option is ture. Since you use `-d`, the installion would abort, so you can't use `-d`, and need to type no for first option, then thousands of Enter for chosing default options.
-
-

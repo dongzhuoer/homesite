@@ -1,6 +1,5 @@
 ---
 title: Docker 疑案之草民也敢在太岁头上动土
-author: Zhuoer Dong
 date: '2019-12-14'
 slug: docker-疑案之草民也敢在太岁头上动土
 categories: 2019

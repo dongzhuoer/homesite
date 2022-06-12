@@ -1,6 +1,5 @@
 ---
 title: 折腾 Ubuntu 杂记
-author: Zhuoer Dong
 date: '2018-01-25'
 slug: play-ubuntu-misc
 categories: 2018
@@ -92,14 +91,3 @@ sudo /usr/lib/dracut/skipcpio initramfs.img | zcat | cpio -ivd
 - Synapse configuration file 
 
   `~/.config/synapse/config.json`
-
-
-
-
-
-
-
-
-
-
-

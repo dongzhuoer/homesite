@@ -1,12 +1,13 @@
 ---
 title: Goodbye, local cppreference.com
-author: Zhuoer Dong
 date: '2018-11-30'
 slug: goodbye-local-cppreference-com
 categories: 2018
 tags: []
 authors: []
 ---
+
+
 
 # Beginning
 
@@ -50,7 +51,3 @@ curl http://en.cppreference.com/w/c > en.cppreference.com/w/c.html
 curl http://en.cppreference.com/w/cpp > en.cppreference.com/w/cpp.html
 curl http://en.cppreference.com/w/Main_Page > en.cppreference.com/w/Main_Page.html
 ```
-
-
-
-

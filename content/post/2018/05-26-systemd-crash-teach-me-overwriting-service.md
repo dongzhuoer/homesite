@@ -1,12 +1,13 @@
 ---
 title: a lucky systemd crash teach me how to overwrite systemd service in a elegant way
-author: Zhuoer Dong
 date: '2018-05-26'
 slug: systemd-crash-teach-me-overwriting-service
 categories: 2018
 tags: []
 authors: []
 ---
+
+
 
 Suddenly, systemd broken, even `systemctl-status` reports error. So I restart Ubuntu, and the situation become even worse: I can't see the desktop. Luckily, after another restart, everything becomes fine.
 
@@ -24,9 +25,3 @@ ExecStart=/usr/bin/dockerd -H fd:// --registry-mirror=https://registry.docker-cn
 非常感谢金步国。从这次经历中我体会到有些中文教程也是很好的，一味强调英文可能在无形中成了装逼。
 
 2019-03-01 后记：后来清华的校园网比较给力，官方的 registry 网速也还可以，也就用不着修改 `docker.service` 了。
-
-
-
-
-
-

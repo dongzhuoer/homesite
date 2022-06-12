@@ -1,13 +1,14 @@
 ---
 title: GitHub API limit pushs me to learn how to use docker multi-stage build to hide
   secret
-author: Zhuoer Dong
 date: '2018-11-20'
 slug: github-api-limit-teach-new-docker-tip
 categories: 2018
 tags: []
 authors: []
 ---
+
+
 
 # cause
 
@@ -19,7 +20,7 @@ But for Docker, that's a problem.
 
 # strugle
 
-At first, I spend some time to realize that it's impossible to ask Dockerfile to use environment variables on host machine ^[`Dockerfile` is portable, only `docker build` can interact with specific host machine]. 
+At first, I spend some time to realize that it's impossible to ask Dockerfile to use environment variables on host machine. (Considered that Dockerfile is portable, it's reasonable to only allow `docker build` to interact with specific host machine.) 
 
 
 
@@ -43,7 +44,7 @@ Later, I decide to use build stages:
   - one stage to install the packages
   - another stage to copy the `site-library/` folder. 
 
-In this way, I can write the `GITHUB_PAT` value in `Dockerfile` ^[Of course the repository containing the `Dockerfile` has to be private then], and `docker history` can't see it since the second stage doesn't use it.
+In this way, I can write the `GITHUB_PAT` value in `Dockerfile`, and `docker history` can't see it since the second stage doesn't use it. (Of course the repository containing the `Dockerfile` has to be private then.)
 
 
 
@@ -52,7 +53,7 @@ In this way, I can write the `GITHUB_PAT` value in `Dockerfile` ^[Of course the 
 After many experiments, I find that there are two conditions to meet for exposing an `ARG`
 
 - the final stage contains `ARG TEST`
-- the final stage contains at least one `RUN` command ^[Maybe other command also works, but `COPY` definitely not]
+- the final stage contains at least one `RUN` (among others except `COPY`) command 
 
 As you can see from `docker history`, even I just not use `TEST` at all), the value is still disclosed.
 
@@ -60,9 +61,8 @@ As you can see from `docker history`, even I just not use `TEST` at all), the va
 sha256:38e29efa3a95b241be1ad285a534e9353c2a13f2a0c5abac69ac76c5511131e9   44 minutes ago      |1 TEST=test /bin/sh -c echo haha
 ```
 
-
-
 Finally, I figured out that after splitting into two stages, now I can pass `GITHUB_PAT` through `--build-arg`.
+
 
 
 # Final solution
@@ -94,7 +94,7 @@ docker build --build-arg GITHUB_PAT=${GITHUB_PAT} ...
 
 The best parts of this method are:
 
-  1. the `Dockerfile` is _absolutely portable_: anyone can still build the image ^[as long as the package repository is public]
+  1. the `Dockerfile` is _absolutely portable_ (and public): anyone can still build the image
   1. if you set the environment variable, `GITHUB_PAT`, you can take advantage of higher API rate limit.
 
 
@@ -102,4 +102,3 @@ The best parts of this method are:
 # Epilogue
 
 By the way, you need `RUN apt update && apt -y install git && rm -r /var/lib/apt/lists/` if the R package repository is private.
-

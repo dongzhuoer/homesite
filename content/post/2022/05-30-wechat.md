@@ -1,6 +1,5 @@
 ---
 title: 该死的微信
-author: Zhuoer Dong
 date: '2022-05-30'
 slug: wechat
 categories:
@@ -8,6 +7,8 @@ categories:
 tags: []
 authors: []
 ---
+
+
 
 本想让手机访问 <http://192.168.1.128:1026>，但电脑端（在Windows模式）render太麻烦。就当做新post的demo吧。
 

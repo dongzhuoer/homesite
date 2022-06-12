@@ -1,6 +1,5 @@
 ---
 title: 再也不用担心build新的bookdown书了
-author: Zhuoer Dong
 date: '2018-12-03'
 slug: 再也不用担心build新的bookdown书了
 categories: 2018
@@ -8,9 +7,13 @@ tags: []
 authors: []
 ---
 
+
+
 今天花了一整天建好了 build-bookdown 的模板，以后 build 新的书就只需要把最前面的参数改一下，再也不用像以前那样加一本书就要数小时。
 
-除了 bookdown，这次的工作还积累了(1) Travis 自动做任务和(2) Docker 中使用 R ^[这一点确实不轻松，12/06 还发现并修复了一个漏洞] 的经验，为后面开展 Docker testthat ^[12/08 - 12/10 完成] 和 Travis .Rmd pipeline ^[2019/01/27 完成] 打下了基础。
+除了 bookdown，这次的工作还积累了(1) Travis 自动做任务和(2) Docker 中使用 R [^1] 的经验，为后面开展 Docker testthat (12-08 ~ 12-10) 和 Travis .Rmd pipeline (01-27) 打下了基础。
+
+[^1]: 这一点确实不轻松，12/06 还发现并修复了一个漏洞
 
 以下是一些感悟：
 

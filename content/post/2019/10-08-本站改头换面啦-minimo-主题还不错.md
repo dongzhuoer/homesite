@@ -1,12 +1,12 @@
 ---
 title: 本站改头换面啦，Minimo 主题还不错
-author: Zhuoer Dong
 date: '2019-10-08'
 slug: 本站改头换面啦-minimo-主题还不错
 categories: 2019
 tags: []
 authors: []
 ---
+
 
 
 当时 [Tranquilpeak](https://github.com/kakawait/hugo-tranquilpeak-theme/blob/master/docs/user.md) theme 最吸引我的是 category 页面，但随着 nutshell 和 memoir 的独立，也该换个好看的 theme了。
@@ -77,5 +77,3 @@ authors: []
     ```
 
     可以使 post 的链接固定为 `baseURL/sub_folder/slug.html`，这样在其它 post 中就可以用简单的 `[]()` 来引用。
-
-

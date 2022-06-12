@@ -1,12 +1,12 @@
 ---
 title: dput() reveal the secret behind S3 class
-author: Zhuoer Dong
 date: '2018-12-21'
 slug: dput-disclose-s3-class-secret
 categories: 2018
 tags: []
 authors: []
 ---
+
 
 
 > The rotation project in Zhang Lab gives me reason and time to master Rcpp
@@ -84,6 +84,3 @@ My God, `df.attr("row.names")` should be `IntegerVector::create(NA_INTEGER, -2)`
 # Afterword
 
 The point of this story is no matter how complicated an object is, you can always inspect the secret by `dput()` .
-
-
-

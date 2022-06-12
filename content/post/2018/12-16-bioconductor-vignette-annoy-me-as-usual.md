@@ -1,12 +1,13 @@
 ---
 title: bioconductor 包的教程还是一如既往的烦
-author: Zhuoer Dong
 date: '2018-12-16'
 slug: bioconductor-vignette-annoy-me-as-usual
 categories: 2018
 tags: []
 authors: []
 ---
+
+
 
 今天下午在看一个 Bioconductor 包的 [vignette](https://www.bioconductor.org/packages/release/workflows/vignettes/simpleSingleCell/inst/doc/work-1-reads.html)，做 single cell 分析的。
 
@@ -100,7 +101,3 @@ SummarizedExperiment::rowData(sce)$SYMBOL <- AnnotationDbi::mapIds(
 ```
 
 ````
-
-
-
-

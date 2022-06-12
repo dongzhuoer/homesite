@@ -1,6 +1,5 @@
 ---
 title: 续 final piece，Jupyter 终于支持 script 的 run selected 了
-author: Zhuoer Dong
 date: '2020-09-21'
 slug: 续-final-piece-jupyter-终于支持-script-的-run-selected-了
 categories: 2020

@@ -1,6 +1,5 @@
 ---
 title: UTF 大战和 Google、wikipedia 迷信反思
-author: Zhuoer Dong
 date: '2017-07-17'
 slug: utf-大战和-google-wikipedia-迷信反思
 categories: 2017
@@ -8,9 +7,11 @@ tags: []
 authors: []
 ---
 
+
+
 # 写在前面的话
 
-今天看了好多 Unicode 和 UTF-8 等的知识，稍微整理一下。标题实在不好取，UTF-8 不能概括所有内容，都写上又太长了，就用 UTF 来模糊处理了 ^[受到 Unicode FAQ page 中 [UTF-8, UTF-16, UTF-32 & BOM](http://unicode.org/faq/utf_bom.html) 这个页面的的文件名 `utf_bom` 的启发。]。
+今天看了好多 Unicode 和 UTF-8 等的知识，稍微整理一下。标题实在不好取，UTF-8 不能概括所有内容，都写上又太长了，就用 UTF 来模糊处理。（受到 Unicode FAQ page 中 [UTF-8, UTF-16, UTF-32 & BOM](http://unicode.org/faq/utf_bom.html) 这个页面的的文件名 `utf_bom` 的启发。）
 
 首先说一下感悟，要走出对 wikipedia 的迷信。确实它比百度百科好很多，之前用它也得到了很多有用的知识。但是这种多人编辑的页面毕竟没有规范的审阅，就会缺乏统一性和权威性，导致前后矛盾和存在纰漏。
 
@@ -22,7 +23,7 @@ authors: []
 
 # Unicode
 
-开始讨论正事。以 [FAQ page](#FAQ) 为权威依据，同时参考 wikipedia。
+开始讨论正事。以 [FAQ page](http://unicode.org/faq/) 为权威依据，同时参考 wikipedia。
 
 Unicode 其实很简单，就是给每个字符指定唯一的代码。
 
@@ -40,7 +41,9 @@ Unicode 是用来编码字符的，而不是字形。比如不同人写的“你
 
 # UTF-8
 
-UTF-8 绝对没有 BOM，有 BOM 的是 UTF-8 with BOM ^[Windows 就是喜欢做这些无聊的事情, 还有那个该死的 Codepage。到现在我的 R语言中的汉字都是 GB 码，各种出问题，想用 UTF-8 我还得 `enc2utf8()`。]。BOM 是给多字节数据类型使用的，比如 UTF-16。我觉得这也是 UTF-8 的一大优点。
+UTF-8 绝对没有 BOM，有 BOM 的是 UTF-8 with BOM[^bom]。BOM 是给多字节数据类型使用的，比如 UTF-16。我觉得这也是 UTF-8 的一大优点。
+
+[^bom]: Windows 就是喜欢做这些无聊的事情, 还有那个该死的 Codepage。到现在我的 R语言中的汉字都是 GB 码，各种出问题，想用 UTF-8 我还得 `enc2utf8()`。
 
 Unicode (hex)   | UTF-8 (bin)
 --------------- | ----------
@@ -65,5 +68,3 @@ UTF-16 也是变长编码，但实现方式与 UTF-8 不同。
 值得一提的是编码中日韩文时只需二个字节，比 UTF-8 的三个字节要少；相反，对于英文字符，则是 UTF-16需2字节而 UTF-8只需1字节。
 
 估计就是由于这个原因，Windows 才会把文件名的内部存储方式设置为 UTF-16，然后再通过一大堆垃圾 API 给应用程序不同的编码。弄得我整天提心吊胆，做梦都担心哪天从 Ubuntu 启动后文件名就都变成乱码了，还不能恢复。
-
-

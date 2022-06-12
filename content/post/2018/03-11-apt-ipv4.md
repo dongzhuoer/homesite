@@ -1,12 +1,13 @@
 ---
 title: finally, apt doesn't waste my time
-author: Zhuoer Dong
 date: '2018-03-11'
 slug: apt-ipv4
 categories: 2018
 tags: []
 authors: []
 ---
+
+
 
 # Preface
 
@@ -55,5 +56,3 @@ I think now I should have sloved the problem completely.
     ```
     Ign:6 https://mirrors.tuna.tsinghua.edu.cn/CRAN/bin/linux/ubuntu artful/ InRelease
     ```
-
-

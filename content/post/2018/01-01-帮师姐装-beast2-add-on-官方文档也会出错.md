@@ -1,12 +1,13 @@
 ---
 title: 帮师姐装 BEAST2 add-on，官方文档也会出错
-author: Zhuoer Dong
 date: '2018-01-01'
 slug: 帮师姐装-beast2-add-on-官方文档也会出错
 categories: 2018
 tags: []
 authors: []
 ---
+
+
 
 由于系统原因，我给谢老师的工作站装了新的 CentOS。虽然原来的文件都还能访问，但有些在 `/home` 的软件就得重新装，比如燕卓师姐的 BEAST2 add-on。
 
@@ -30,5 +31,3 @@ for Linux /home/<YourName>/.beast/2.X
   - BEAST 2.4.4
   - BEASTLabs 1.5.2
   - MODEL_SELECTION 1.3.1
-
-

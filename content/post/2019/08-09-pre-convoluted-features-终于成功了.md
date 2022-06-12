@@ -1,6 +1,5 @@
 ---
 title: pre-convoluted features 终于成功了
-author: Zhuoer Dong
 date: '2019-08-09'
 slug: pre-convoluted-features-终于成功了
 categories: 2019

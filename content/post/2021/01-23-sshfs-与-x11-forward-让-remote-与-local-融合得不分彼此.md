@@ -1,6 +1,5 @@
 ---
 title: sshfs 与 X11 forward 让 remote 与 local 融合得不分彼此
-author: Zhuoer Dong
 date: '2021-01-23'
 slug: sshfs-与-x11-forward-让-remote-与-local-融合得不分彼此
 categories:
@@ -8,6 +7,8 @@ categories:
 tags: []
 authors: []
 ---
+
+
 
 之前配置的 sshfs 真是好东西，尤其是 `/home/dongzhuoer` 的小 trick，两者用到的 path 一模一样。GPU10 上 cryoSPARC 中数据的path 复制到 Dell Ubuntu 后直接就可以用，简直不要太爽。
 

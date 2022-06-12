@@ -1,6 +1,5 @@
 ---
 title: 气煞人的 .ssh 权限 以及 ssh-add
-author: Zhuoer Dong
 date: '2017-11-27'
 slug: file-permission-ruin-ssh
 categories: 2017
@@ -37,9 +36,11 @@ drwxr-xr-x 38 user user 4096 Nov 27 22:22 ..
 
 # 傲娇的 `ssh-add`
 
-千万不要用 `ssh-add`，除了 `ssh-add -l -E md5` ^[顺便发现了一条用于比较 GitHub fingerprint 的命令，比 `ssh-keygen -l -E md5` 略微方便一点，省去指定文件名的麻烦。]。但是你得非常小心，万一漏了 `-l`,就得赶紧 `ssh-add -D` （偷偷告诉你 Bash 有个功能叫 **alias**)。
+千万不要用 `ssh-add`，除了 `ssh-add -l -E md5` [^1]。但是你得非常小心，万一漏了 `-l`,就得赶紧 `ssh-add -D` （偷偷告诉你 Bash 有个功能叫 **alias**)。
 
 因为这玩意加的公钥的注释是文件名 (`/home/user/.ssh/id_rsa`)，而不是 `user@host`。这无疑会给 `ssh-copy-id` 造成很大的麻烦，因为在服务器上你都分不清哪个公钥是谁的。
+
+[^1]: 顺便发现了一条用于比较 GitHub fingerprint 的命令，比 `ssh-keygen -l -E md5` 略微方便一点，省去指定文件名的麻烦。
 
 
 

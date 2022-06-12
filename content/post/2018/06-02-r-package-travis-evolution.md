@@ -1,12 +1,12 @@
 ---
 title: evolution of R package on travis
-author: Zhuoer Dong
 date: '2018-06-02'
 slug: r-package-travis-evolution
 categories: 2018
 tags: []
 authors: []
 ---
+
 
 
 # Preface 
@@ -71,7 +71,7 @@ matrix:
   - r: oldrel
 ```
 
-For OS X, only build `release` version to save time ^[`include` would use first value as default, that means `devel` and `oldrel` are added for `linux`]:
+We can skip  `devel` and `oldrel` on OS X to save time (`include` would use first value as default, that means `devel` and `oldrel` are only added for `linux`):
 
 ```yaml
 language: r

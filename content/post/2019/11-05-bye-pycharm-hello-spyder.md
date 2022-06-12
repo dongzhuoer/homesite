@@ -1,6 +1,5 @@
 ---
 title: Bye PyCharm, Hello Spyder
-author: Zhuoer Dong
 date: '2019-11-05'
 slug: bye-pycharm-hello-spyder
 categories: 2019
@@ -20,7 +19,9 @@ Python 最麻烦的是用换行和缩进来划分层次，这意味着不能方�
 
 # Begining
 
-昨天 `df -h` 时觉得 Snap 的 `dev/sloop` 很烦人，PyCharm 也不常用（被 VSCode 碾压），就不死心的再筛了一遍 Python 的 IDE。看来我的看法被 VSCode 影响了不少 ^[ 2019 年 11 月 06 号注：换用 Dell Micro 之后发现 VSCode 其实并不轻量，尤其是 Python 支持，占用很多内存，把我的  Ubuntu 卡得不行。]，以前看着丑陋不堪的，现在觉得很简洁轻量 。一番比较之后，Spyder 脱颖而出，以后~~就跟你混了~~你就是我的小弟了。
+昨天 `df -h` 时觉得 Snap 的 `dev/sloop` 很烦人，PyCharm 也不常用（被 VSCode 碾压），就不死心的再筛了一遍 Python 的 IDE。看来我的看法被 VSCode[^1] 影响了不少 ，以前看着丑陋不堪的，现在觉得很简洁轻量 。一番比较之后，Spyder 脱颖而出，以后~~就跟你混了~~你就是我的小弟了。
+
+[^1]:  2019-11-06：换用 Dell Micro 之后发现 VSCode 其实并不轻量，尤其是 Python 支持，占用很多内存，把我的  Ubuntu 卡得不行。
 
 
 
@@ -36,7 +37,9 @@ Python 最麻烦的是用换行和缩进来划分层次，这意味着不能方�
 
 这里主要谈谈搜狗输入法的问题。
 
-`apt` 安装的 Spyder 还是好好的，在 venv 中 `pip` 安装 ^[我为科研项目创建了一个 venv，在里面安装 Spyder 的好处是不需要设置 Python 路径，默认的 same as Spyder's 就够用了。] 的就不能用搜狗输入法了。本质上是不支持 fcitx，放狗一搜，果还是 Qt 的锅（和 RStudio 一样），但只能找到 Conda 的解决方案。我翻遍了 venv 中 `lib/python3.7/site-packages/spyder/` 都没有找到 `platforminputcontexts/`。
+`apt` 安装的 Spyder 还是好好的，在 venv[^2] 中 `pip` 安装 的就不能用搜狗输入法了。本质上是不支持 fcitx，放狗一搜，果还是 Qt 的锅（和 RStudio 一样），但只能找到 Conda 的解决方案。我翻遍了 venv 中 `lib/python3.7/site-packages/spyder/` 都没有找到 `platforminputcontexts/`。
+
+[^2]: 我为科研项目创建了一个 venv，在里面安装 Spyder 的好处是不需要设置 Python 路径，默认的 same as Spyder's 就够用了。
 
 这时就该请出控制变量法了，先看看系统的 `pip` 会怎样，但 site library 已经有了 `spyder` package，只能先（用 `apt`）卸载掉, 再装到 user library 。居然可以用搜狗输入法，那么差别在哪呢？
 

@@ -1,12 +1,13 @@
 ---
 title: 用虚拟机编译 aria2c —— （Linux上）虚拟机软件哪家强？
-author: Zhuoer Dong
 date: '2019-04-23'
 slug: 用虚拟机编译-aria2c-linux上-虚拟机软件哪家强
 categories: 2019
 tags: []
 authors: []
 ---
+
+
 
 > 这是我刚进实验室的事了，那时 single-cell 已经有人了，于是我就去做 isSHAPE database 。那么大的 `.fasta.gz` 文件，当然是用 aria2c 来下载才爽啊，可惜集群安装不了，binary 也不行（缺 `**ssl**.so`）。我就琢磨着 `build` 一个 standalone 的（`--static-link`）
 
@@ -51,4 +52,3 @@ Please make sure that the kernel module `vmmon' is loaded
 ```bash
 sudo systemctl restart vmware
 ```
-

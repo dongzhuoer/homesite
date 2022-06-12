@@ -1,6 +1,5 @@
 ---
 title: final piece of Jupyter--run selected in console--for production usage
-author: Zhuoer Dong
 date: '2020-07-24'
 slug: final-piece-of-jupyter-run-selected-in-console-for-production-usage
 categories: 2020

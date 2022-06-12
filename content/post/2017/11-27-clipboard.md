@@ -1,12 +1,13 @@
 ---
 title: 复制粘贴怎么就这么难
-author: Zhuoer Dong
 date: '2017-11-27'
 slug: clipboard
 categories: 2017
 tags: []
 authors: []
 ---
+
+
 
 # Preface
 
@@ -42,4 +43,3 @@ You can also use `set clipboard^=unnamed,unnamedplus` to utilize both selection.
 Furthermore, I desire to access system clipboard via SSH. 
 
 Please refer to [this answer](https://stackoverflow.com/questions/36107927).
-

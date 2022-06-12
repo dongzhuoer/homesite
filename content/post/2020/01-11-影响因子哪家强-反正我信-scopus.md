@@ -1,6 +1,5 @@
 ---
 title: 影响因子哪家强，反正我信 Scopus
-author: Zhuoer Dong
 date: '2020-01-11'
 slug: 影响因子哪家强-反正我信-scopus
 categories: 2020

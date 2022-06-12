@@ -1,12 +1,13 @@
 ---
 title: VPS SSH 公钥之巨坑
-author: Zhuoer Dong
 date: '2017-10-23'
 slug: vps-ssh-pub-key-bug
 categories: 2017
 tags: []
 authors: []
 ---
+
+
 
 > 当时在用 Digtal Ocean's VPS 翻墙。不记得这次具体发生什么了，应该是在创建 VPS 时添加了 SSH 公钥。本以为这样就可以直接登陆，不用费心改密码、`ssh-copy-id`之类的；结果倒好，压根登录不了，简直是完全无法控制。
 
@@ -40,13 +41,13 @@ Oct 16 08:59:45 openstack sshd[1214]: error: Could not load host key: /etc/ssh/s
 Oct 16 08:59:45 openstack sshd[1214]: error: Could not load host key: /etc/ssh/ss
 ```
 
-Although ssh doesn't fail ^[How can it not fails, it should fail and very, very, very _loudly_!], you can't log in. 
+Although ssh doesn't fail (it should fail and very, very, very _loudly_), you can't log in. 
 
 
 
 # Climax
 
-T   hanks for https://linux.cn/article-4226-1.html
+Thanks for https://linux.cn/article-4226-1.html
 
 ```bash
 sudo dpkg-reconfigure openssh-server 
@@ -76,5 +77,3 @@ sudo parted /dev/vda
 sudo partprobe
 sudo resize2fs /dev/vda1
 ```
-
-

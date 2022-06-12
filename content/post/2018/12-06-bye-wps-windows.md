@@ -1,12 +1,12 @@
 ---
 title: WPS（on Windows）, 我再也不破解你了
-author: Zhuoer Dong
 date: '2018-12-06'
 slug: bye-wps-windows
 categories: 2018
 tags: []
 authors: []
 ---
+
 
 
 以前我在南开时，曾喜欢定期重装系统，Windows 的 Office 比较难搞，就算我买了破解版，装起来也要好久（联网下载，Nankai LAN 你懂的）。再加上磁盘空间问题，于是对 WPS 情有独钟。可是 WPS 会自动更新，最可恶的是打开时默认有个什么模板首页，浪费时间还耗流量。
@@ -38,5 +38,3 @@ set /p dummy="Press any key to exit"
 ```
 
 后来逐渐抛弃 Windows，新买的 matebook 也自带 Office，就用不上了。
-
-

@@ -1,12 +1,13 @@
 ---
 title: 在谢老师工作站装 BEAGLE
-author: Zhuoer Dong
 date: '2017-12-31'
 slug: install-beagle
 categories: 2017
 tags: []
 authors: []
 ---
+
+
 
 具体安装时间不记得了。BEAGLE 是用 GPU 来加速分歧时间推断软件 BEAST 的，好像是谢老师和计算机系的人一起开发的。貌似当时的人弄好之后就一直没动过，还有一次跑程序时吴昊阳师兄说当时的人写程序时把随机数写死了，列出这些无非就是想吐槽可重复性之难。
 

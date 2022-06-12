@@ -1,6 +1,5 @@
 ---
 title: 估计 rexseek 包也没人用，我就任性地放一次鸽子吧，去你的 `scater::normaliseExprs()`
-author: Zhuoer Dong
 date: '2019-01-28'
 slug: rexseek-stand-up-abandon-scater
 categories: 2019

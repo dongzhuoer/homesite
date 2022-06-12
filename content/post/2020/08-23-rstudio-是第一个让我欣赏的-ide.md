@@ -1,6 +1,5 @@
 ---
 title: RStudio 是第一个让我欣赏的 IDE
-author: Zhuoer Dong
 date: '2020-08-23'
 slug: rstudio-是第一个让我欣赏的-ide
 categories: 2020

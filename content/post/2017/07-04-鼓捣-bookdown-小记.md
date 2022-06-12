@@ -1,12 +1,13 @@
 ---
 title: 鼓捣 bookdown 小记
-author: Zhuoer Dong
 date: '2017-07-04'
 slug: 鼓捣-bookdown-小记
 categories: 2017
 tags: []
 authors: []
 ---
+
+
 
 > 刚接触 **bookdown** 时，鼓捣了好久，这里记一下。
 
@@ -17,4 +18,3 @@ authors: []
 - `bookdown::gitbook()` storage configurations in `$post_processor()`, only this function can assess the `gh_config` object.
 
 - When your `.Rmd` contains Chinese, you need to call `rmarkdown::render(encoding = 'UTF-8')`, but you mustn't set `options(encoding = 'UTF-8')`.
-

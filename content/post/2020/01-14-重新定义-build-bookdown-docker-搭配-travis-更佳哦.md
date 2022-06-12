@@ -1,6 +1,5 @@
 ---
 title: 重新定义 build bookdown，Docker 搭配 Travis 更佳哦
-author: Zhuoer Dong
 date: '2020-01-14'
 slug: 重新定义-build-bookdown-docker-搭配-travis-更佳哦
 categories: 2020

@@ -1,6 +1,5 @@
 ---
 title: nutshell 重生——不断否定、修改才能让知识真正成为技能
-author: Zhuoer Dong
 date: '2020-05-05'
 slug: nutshell-重生-不断否定-修改才能让知识真正成为技能
 categories: 2020
@@ -22,7 +21,7 @@ authors: []
 
 ---------------------------------------
 
-privoxy 太长了，就放到最后吧。感谢V2Ray，不需要专门 ^[后来发现 haproxy 切换 proxy 的功能也可以实现，但有时要重新加载网页，还是不如只用一个 proxy 来得方便。] 写程序来 turn socks proxy into http proxy。
+privoxy 太长了，就放到最后吧。感谢V2Ray，不需要专门写程序来 turn socks proxy into http proxy。（后来发现 haproxy 切换 proxy 的功能也可以实现，但有时要重新加载网页，还是不如只用一个 proxy 来得方便。）
 
 `privoxy` is pretty useful when some program can't use socks proxy, but still need to bypass GFW.
 

@@ -1,6 +1,5 @@
 ---
 title: 同是 Windows 强迫症，相逢何必曾相识
-author: Zhuoer Dong
 date: '2019-12-17'
 slug: 同是-windows-强迫症-相逢何必曾相识
 categories: 2019

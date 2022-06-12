@@ -1,11 +1,12 @@
 ---
 title: About
 date: '2016-05-05'
-author: Zhuoer Dong
 slug: "about"
-tags: 
-  - to revise
+categories: []
+tags: []
+authors: []
 ---
+
 
 
 算上 bookdown 的时候，homesite 是第4次了：
@@ -22,6 +23,8 @@ tags:
 # 装修推荐
 
 - [客厅双叠画](https://detail.tmall.com/item.htm?id=612732531425&price=468-998&sourceType=item&sourceType=item&suid=c717e3c3-b4f8-4f66-a721-e2df21a498c8&shareUniqueId=2056289275&ut_sk=1.Xp/8ZEhzX%200DACjEtqtLAUYg_21646297_1595655325034.Copy.1&un=7bcc57f9cfa9b4377e9fbf4444ed5bfe&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=Y1U5ZTFBemhFQk8=&cpp=1&shareurl=true&short_name=h.VHzKnin&bxsign=scd1595662807587ef1a522b6cd94bb2754c43ccf095429f&sm=516c3b&app=firefox&sku_properties=21433:12202428;10142888:21968)
+
+
 
 # 临时简历
 
@@ -74,37 +77,27 @@ Email：dongzhuoer@mail.nankai.edu.cn；主页：暂无；现居住于中国天�
 
 ## 个人原则
 
-软件黑名单（我绝对不用的软件）：迅雷，各种管家卫士，各种视频客户端，国产浏览器，MS Office  
-软件灰名单（我尽量避免的软件）：QQ，  
-我的软件观：不让离线安装的一律毙掉，最好能portable，  
-我的科学观：我对自然科学的兴趣远高于社会科学（根本不懂啊）。  
-近期目标：希望以后能不需要WPS Office的编辑功能（告别Office）
-
+- 软件黑名单（我绝对不用的软件）：迅雷，各种管家卫士，各种视频客户端，国产浏览器，MS Office  
+- 软件灰名单（我尽量避免的软件）：QQ，  
+- 我的软件观：不让离线安装的一律毙掉，最好能portable，  
+- 我的科学观：我对自然科学的兴趣远高于社会科学（根本不懂啊）。  
+- 近期目标：希望以后能不需要WPS Office的编辑功能（告别Office）
 
 ## 英语水平
 
 听力略有不足（听讲座），口语更加糟糕（靠表情），阅读勉强还行（[BingDict](https://www.bing.com/dict/)），写作乐此不疲（没人看）。
 
-
 ## 软件成果
-
 
 ### R 包
 
-#### 作为主要作者：
-
-bioinfor：生物信息学小函数  
-phylobat：批量处理系统发育树
-
-
-#### 作为贡献者：
-
-
-
+- 作为主要作者：  
+  + bioinfor：生物信息学小函数  
+  + phylobat：批量处理系统发育树
+- 作为贡献者：  
+  暂无
 
 ### 其它
 
 添加文件关联的Windows 注册表文件  
 各种软件安装脚本，包括shell script和cmd
-
-

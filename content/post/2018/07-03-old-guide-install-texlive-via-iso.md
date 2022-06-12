@@ -1,12 +1,13 @@
 ---
 title: old guide of installing texlive via ISO
-author: Zhuoer Dong
 date: '2018-07-03'
 slug: old-guide-install-texlive-via-iso
 categories: 2018
 tags: []
 authors: []
 ---
+
+
 
 Back to the days in Nankai, I got fascinated with installing system, but the network traffic was expensive, thus Tex Live became a big problem.
 
@@ -24,4 +25,3 @@ So I move the installing guide here, use on your own risk:
 1. move files to here and remove unneeded files (`install-tl`, `install-tl.log`, `README`, `README.usergroups`)
 1. enjoy
 1. remember don't move `texlive2016/x86_64-linux/bin` to `texlive2016/bin`, otherwise `texlive2016/texmf-local` & `texlive2016/texmf-var` would move to `opt/` i.e. out of `texlive2016/`. Becasue tlmgr in `texlive2016/x86_64-linux/bin` use relative path.
-

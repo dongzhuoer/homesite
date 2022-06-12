@@ -1,12 +1,12 @@
 ---
 title: 为 Docker 启用 bash extended glob
-author: Zhuoer Dong
 date: '2019-04-27'
 slug: 为-docker-启用-bash-extended-glob
 categories: 2019
 tags: []
 authors: []
 ---
+
 
 
 相信很多第一次用 Docker 的人都会和我一样，忍不住 `docker run --rm ubuntu ls /lib/*/*so`，然后对错误提示感到莫名其妙和彻底失望。

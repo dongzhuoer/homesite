@@ -1,12 +1,13 @@
 ---
 title: why is reproducible research so so so hard?
-author: Zhuoer Dong
 date: '2017-10-22'
 slug: why-repro-research-so-hard
 categories: 2017
 tags: []
 authors: []
 ---
+
+
 
 这是跟着 Gao 老师远程实习，做 gene loss 的事了。我得到了两个表格，想比较一下是不是完全一样的。
 
@@ -46,5 +47,3 @@ I once thought `start` or `paste(start, end)` would be a good ID, but it turned 
 为什么有些行的 `start` 一模一样，另一些却正好差 1？
 
 这两个表格具体是什么已经不重要了，应该一个是师兄的结果，一个是我重复的结果。重要的是差异为何如此奇葩，可重复性科研为什么就如此如此如此之难？
-
-

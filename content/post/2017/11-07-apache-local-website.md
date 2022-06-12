@@ -1,6 +1,5 @@
 ---
 title: 用 apache 搭建本地网站
-author: Zhuoer Dong
 date: '2017-11-07'
 slug: apache-local-website
 categories: 2017
@@ -12,7 +11,9 @@ authors: []
 
 # Preface
 
-搭建本地 server 是 GNU 进阶用户的必备技能，当你支持本地 HTML 文件使用 `/` 之后，很多事就方便许多了。比如 Gitbook 的搜索功能 ^[后来我发现还是 Google site search 好用，支持模糊搜索，不然你就非得把完整的单词、甚至多个单词及其相对顺序背下来]，克隆大牛的网站 ^[参见我昨天发布的 [**rget**](https://github.com/dongzhuoer/rget)]。
+搭建本地 server 是 GNU 进阶用户的必备技能，当你支持本地 HTML 文件使用 `/` 之后，很多事就方便许多了。比如 Gitbook 的搜索功能 [^1]，克隆大牛的网站（参见我昨天发布的 **rget** 包）。
+
+[^1]: 后来我发现还是 Google site search 好用，支持模糊搜索，不然你就非得把完整的单词、甚至多个单词及其相对顺序背下来。
 
 下面是我记的笔记，详细描述请参考 Digital Ocean 的 [这篇文章](https://www.digitalocean.com/community/tutorials/how-to-set-up-apache-virtual-hosts-on-ubuntu-16-04)。
 
@@ -43,7 +44,7 @@ authors: []
    </VirtualHost>
    ```
 
-   `local` means denying access from LAN ^[之前用的是 `Require all granted`，有一天突然发现手机可以访问电脑上的本地网站，当时真是既兴奋又担心啊。后来才发现只有同在校园网才能访问，直接从公网是不行的，然而为了安全还是改成仅限本地电脑了。], refer to https://stackoverflow.com/questions/6264372/
+   `local` means denying access from LAN, refer to <https://stackoverflow.com/questions/6264372/>.之前用的是 `Require all granted`，有一天突然发现手机可以访问电脑上的本地网站，当时真是既兴奋又担心啊。后来才发现只有同在校园网才能访问，直接从公网是不行的，然而为了安全还是改成仅限本地电脑了。
 
 
 1. listen port
@@ -114,6 +115,6 @@ The solution is to manually set:
 
 # Afterword
 
-Except for `a2ensite`, you can also use `sudo vim /etc/apache2/sites-enabled/` to view and manage enabled `*.conf` files ^[现在想起来，好像是我无意间发掘了 vim 的编辑 _文件夹_ 功能，当时还以为是 apache 的一个特殊文件。].
+Except for `a2ensite`, you can also use `sudo vim /etc/apache2/sites-enabled/` to view and manage enabled `*.conf` files. 回想起来，好像是我无意间发掘了 vim 的编辑 _文件夹_ 功能，当时还以为是 apache 的一个特殊文件。
 
 2018-04-29: When applying to docker, it wasted me another a hour or two. I finally realized that from container's view, `localhost:1025` on my Chrome is actually **remote**. Thanks SO again, `Listen 172.0.0.1:80` is really a ingenious idea. Inspired by it, I came up with `-p 127.0.0.1:1025:80`. The best thing is that I no longer have to toggle the daunting apache configuration.

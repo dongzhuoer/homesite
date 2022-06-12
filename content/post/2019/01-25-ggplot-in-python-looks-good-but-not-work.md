@@ -1,12 +1,13 @@
 ---
 title: ggplot in Python, looks good, unfortunately doesn't work
-author: Zhuoer Dong
 date: '2019-01-25'
 slug: ggplot-in-python-looks-good-but-not-work
 categories: 2019
 tags: []
 authors: []
 ---
+
+
 
 # Beginning
 

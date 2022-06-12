@@ -1,6 +1,5 @@
 ---
 title: CentOS 7 就是娇气，防火墙都把 RStudio Server 屏蔽了
-author: Zhuoer Dong
 date: '2017-12-02'
 slug: centos-7-就是娇气-防火墙都把-rstudio-server-屏蔽了
 categories: 2017
@@ -8,7 +7,9 @@ tags: []
 authors: []
 ---
 
-RStudio Server 确实好用，就给谢老师的 CentOS 工作站也装了一个 ^[从 https://www.rstudio.com/products/rstudio/download-server/ 获取最新版下载地址]：
+
+
+RStudio Server 确实好用，就给谢老师的 CentOS 工作站也装了一个：
 
 ```bash
 sudo yum install -y R
@@ -25,4 +26,3 @@ sudo yum install -y --nogpgcheck rstudio-server-rhel-1.1.442-x86_64.rpm
 sudo firewall-cmd --permanent --zone=public --add-port=8787/tcp
 sudo firewall-cmd --reload
 ```
-

@@ -1,12 +1,13 @@
 ---
 title: clusterProfiler introduction failed, 发布之日即是死亡之日
-author: Zhuoer Dong
 date: '2017-11-29'
 slug: clusterprofiler-introduction-failed
 categories: 2017
 tags: []
 authors: []
 ---
+
+
 
 这篇旧博客写的本是一篇介绍 clusterProfiler 的文章失效的事，但我后来整理时回想起来我以前说过的一句话：
 

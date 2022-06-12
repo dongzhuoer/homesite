@@ -1,6 +1,5 @@
 ---
 title: Useful software and url
-author: Zhuoer Dong
 date: '2017-11-06'
 slug: software-and-url
 categories: book
@@ -10,12 +9,13 @@ authors: []
 ---
 
 
+
 # Useful url
 
 - [The mustache photo](http://kbroman.org/blog/2014/08/28/the-mustache-photo/)
 - [regex possessive quantifiers](https://chortle.ccsu.edu/FiniteAutomata/Section09/sect09_21.html)
 - [Linux Distribution Timeline](https://upload.wikimedia.org/wikipedia/commons/1/1b/Linux_Distribution_Timeline.svg)
-- 修改申请美国签证的密码 ^[我当时找了半天都找不到]: https://cgifederal.secure.force.com/ChangePassword
+- 修改申请美国签证的密码（我当时找了半天都找不到）: https://cgifederal.secure.force.com/ChangePassword
 
 
 

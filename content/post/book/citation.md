@@ -1,6 +1,5 @@
 ---
 title: citation is a great tool to waste both my and your time
-author: Zhuoer Dong
 date: '2018-01-25'
 slug: citation
 categories: book
@@ -8,6 +7,8 @@ tags:
   - book-research
 authors: []
 ---
+
+
 
 # APA
 

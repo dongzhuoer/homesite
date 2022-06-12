@@ -1,6 +1,5 @@
 ---
 title: Docker with GUI, using seafile as an example
-author: Zhuoer Dong
 date: '2019-01-21'
 slug: docker-with-gui-using-seafile-as-an-example
 categories: 2019
@@ -8,7 +7,9 @@ tags: []
 authors: []
 ---
 
-Seafile 是一个很好用的云盘，尤其是清华提供的 100G 空间，速度不知道甩某度几条街。可惜 Linux 客户端不够友好，在 Ubuntu 上某个系统依赖有问题。我鼓捣了好久，最终放弃了，转而依靠我配置的双系统 ^[给 Windows 留口饭吃]。
+
+
+Seafile 是一个很好用的云盘，尤其是清华提供的 100G 空间，速度不知道甩某度几条街。可惜 Linux 客户端不够友好，在 Ubuntu 上某个系统依赖有问题。我鼓捣了好久，最终放弃了，转而依靠我配置的双系统（给 Windows 留口饭吃）。
 
 -------------------------
 
@@ -42,4 +43,3 @@ USER zhuoer
 ENV HOME /home/zhuoer
 CMD /usr/bin/seafile-applet
 ```
-

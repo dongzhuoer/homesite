@@ -1,12 +1,12 @@
 ---
 title: remotes, a small step of devtools suite, a big step for my Travis carrer
-author: Zhuoer Dong
 date: '2018-11-29'
 slug: remotes-greatly-relieve-my-travis-carrer
 categories: 2018
 tags: []
 authors: []
 ---
+
 
 
 # Beginning
@@ -34,7 +34,7 @@ It just needs Git on your system (no **BiocInstaller** at all), and it's very li
 
 # Afterword
 
-By the way, the new **BiocManager** is also very nice. You can install it as a normal CRAN package, no more `source("https://bioconductor.org/biocLite.R")` ^[The damn network speed never troubles me any more, 何以解忧，唯有镜像].
+By the way, the new **BiocManager** is also very nice. You can install it as a normal CRAN package, no more `source("https://bioconductor.org/biocLite.R")` (The damn network speed never troubles me any more, 何以解忧，唯有镜像.)
 
 
 [^remotes-misconception]:
@@ -45,9 +45,3 @@ By the way, the new **BiocManager** is also very nice. You can install it as a n
     > You can mark any regular dependency defined in the Depends, Imports, Suggests or Enhances fields as being installed from a remote location by adding the remote location to Remotes in your DESCRIPTION file.
 
     注：原文来自 2018-06-03 的 post：It's me rather than devtools who is wrong | 错的并不是devtools，而是我
-    
-    
-    
-    
-
-

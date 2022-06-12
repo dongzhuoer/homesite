@@ -1,6 +1,5 @@
 ---
 title: 又造了一个小轮子：`ggtree::theme_tree2()`
-author: Zhuoer Dong
 date: '2017-11-09'
 slug: theme-tree2
 categories: 2017
@@ -10,7 +9,9 @@ authors: []
 
 
 
-当年在谢强老师实验室的时候，老师推荐我写一个把进化树画到地质年代图上的小程序 ^[https://github.com/dongzhuoer/ggxie]。
+> 后来演变成 **ggcsgb** 包，还帮小雅师姐的论文作图。
+
+当年在谢强老师实验室的时候，老师推荐我写一个把进化树画到地质年代图上的小程序。
 
 因为我要在树的下层加年代图，所以背景得改成透明的，但 x 轴又不想丢，于是就开始研究各种 `theme` 的黑魔法了，慢慢地就挖出了下面的代码：
 
@@ -30,4 +31,3 @@ theme_grey() %+replace%
 当时应该是在 `ggtree::theme_tree()` 的基础上加 `theme` 时总是有些地方改不到位，然后就一朝被蛇咬、十年怕井绳了。
 
 不过 `theme()` 这个事也确实有上山容易下山难的情况。比如 `theme1 = theme(...)`，前人一开心加了个 `theme2 = theme1 + theme(axis.text.x = element_blank())` 之后，你就很难从 `theme2` 再改回到 `theme1`。
-

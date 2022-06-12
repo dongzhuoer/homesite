@@ -1,12 +1,13 @@
 ---
 title: first step in reproduciable report using markdown
-author: Zhuoer Dong
 date: '2017-10-16'
 slug: first-step-repro-report-md
 categories: 2017
 tags: []
 authors: []
 ---
+
+
 
 > I can't haste `.docx` more. 
 

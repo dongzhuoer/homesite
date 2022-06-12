@@ -1,12 +1,12 @@
 ---
 title: Where there is an error, there is a log
-author: Zhuoer Dong
 date: '2017-12-09'
 slug: journalctl-solves-privoxy
 categories: 2017
 tags: []
 authors: []
 ---
+
 
 
 We all know one should test thing before use in the world of programming, but sometimes that is not enough. 
@@ -31,5 +31,3 @@ But I need also set SELinux
 ```bash
 semanage port -a -t http_cache_port_t -p tcp ****
 ```
-
-

@@ -1,8 +1,13 @@
 ---
 title: 继续鼓捣 .Rmd, 打死我也不会 library (WGCNA) 的
-author: Zhuoer Dong
 date: '2019-01-31'
+slug: never-library-wgcna
+categories: 2019
+tags: []
+authors: []
 ---
+
+
 
 ```{r install-pkg, message=FALSE, eval=Sys.getenv('CI') == 'true'}
 # install needed R packages

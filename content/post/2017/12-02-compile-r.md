@@ -1,6 +1,5 @@
 ---
 title: what's the feeling of compiling R by oneself?
-author: Zhuoer Dong
 date: '2017-12-02'
 slug: compile-r
 categories: 2017
@@ -8,9 +7,9 @@ tags: []
 authors: []
 ---
 
-> 多年以后真正需要 compile 时， 放狗一搜，人家早就把[教程](https://support.rstudio.com/hc/en-us/articles/215488098)准备好了。只需要一行命令，`sudo apt-get build-dep r-base`，就全部搞定了 ^[不过我还是犯了一定要挑选最合适 option 的老毛病，最终确定为`./configure --prefix=$HOME/.local/R-3.6.1 --with-blas --with-lapack --enable-memory-profiling`。]。   
->
-> --- 2019-12-12 记
+
+
+> （2019-12-12）多年以后真正需要 compile 时， 放狗一搜，人家早就把[教程](https://support.rstudio.com/hc/en-us/articles/215488098)准备好了。只需要一行命令，`sudo apt-get build-dep r-base`，就全部搞定了。不过我还是犯了一定要挑选最合适 option 的老毛病，最终确定为`./configure --prefix=$HOME/.local/R-3.6.1 --with-blas --with-lapack --enable-memory-profiling`。   
 
 > 当时正是钻研鸟哥的时候，Ubuntu 自带的 R 有点旧，我又没找到好用的添加 apt repository 的教程，于是就开始尝试自己编译 R。果然问题百出，不过最后好容易完成的时候，还挺有成就感的。
 

@@ -1,13 +1,13 @@
 ---
 title: 开始啃 CNS
-author: Zhuoer Dong
 date: '2020-05-31'
 slug: perface
 categories: paper
 tags: []
 authors: []
 ---
-   
+
+
 
 - 想看的论文自己收好
 
