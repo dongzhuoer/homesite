@@ -18,12 +18,7 @@
         },
         {
             "label": "test",
-            "windows": {
-                "command": "hugo server -p 1024 -F"
-            },
-            "linux":{
-                "command": "hugo server -p 8686 -F",
-            },
+            "command": "hugo server -p 1025 -F",
             "group": {
                 "kind": "test",
                 "isDefault": true
